@@ -2,3 +2,7 @@ node_modules
 public
 dist
 build
+projects/**/node_modules
+projects/**/public
+projects/**/dist
+projects/**/build
