@@ -1,0 +1,9 @@
+@import './variables';
+
+.App {
+  height: 100%;
+
+  &_red {
+    color: $red;
+  }
+}
