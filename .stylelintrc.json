@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier"
+  ],
+  "plugins": ["stylelint-scss", "stylelint-order"],
+  "rules": {
+    "order/properties-order": [
+      "position",
+      "z-index",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "display",
+      "float",
+      "flex-direction",
+      "justify-content",
+      "align-items",
+      "width",
+      "height",
+      "margin",
+      "padding",
+      "box-sizing",
+      "font-family",
+      "font-style",
+      "font-size",
+      "line-height",
+      "font-weight",
+      "text-align",
+      "color",
+      "background-color",
+      "border",
+      "border-radius",
+      "opacity"
+    ],
+    "color-hex-case": "lower",
+    "color-hex-length": "long",
+    "selector-class-pattern": "^[a-zA-Z]+.*",
+    "font-family-name-quotes": "always-unless-keyword"
+  },
+  "ignoreFiles": ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "**/*.html", "**/*.json", "**/*.md"]
+}
