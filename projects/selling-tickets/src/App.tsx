@@ -1,8 +1,17 @@
 import React, { FC } from 'react';
 import './App.scss';
+import { Button } from './components/Button/Button';
 
 const App: FC = () => {
-  return <div className="App App_red">Hello world</div>;
+  const handleClick = () => {
+    console.log('click')
+  }
+
+  return (
+    <div className="App">
+      <Button buttonText='Купить' handleClick={handleClick}/>
+    </div>
+  );
 };
 
 export default App;

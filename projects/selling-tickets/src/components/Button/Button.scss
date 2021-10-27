@@ -1,0 +1,17 @@
+@import '/src/variables';
+
+.Button {
+  width: 200px;
+  color: $red;
+  background-color: $blue;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  
+  &:hover{
+    color: $blue;
+    background-color: $red;
+  }
+}
+
+
