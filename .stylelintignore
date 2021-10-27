@@ -6,3 +6,4 @@ projects/**/node_modules
 projects/**/public
 projects/**/dist
 projects/**/build
+projects/**/src/assets
