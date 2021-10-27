@@ -12,7 +12,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header headerTitle = 'SkyTicket'/>
-      <Card />
+      <Card eventTitleText='Мероприятие' />
       <Button buttonText='Купить' handleClick={handleClick}/>
     </div>
   );
