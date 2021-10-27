@@ -3,13 +3,13 @@ import './App.scss';
 import { Button } from './components/Button/Button';
 
 const App: FC = () => {
-  const clickHandle = () => {
+  const handleClick = () => {
     console.log('click')
   }
 
   return (
     <div className="App">
-      <Button buttonText='Купить' clickHandle={clickHandle}/>
+      <Button buttonText='Купить' handleClick={handleClick}/>
     </div>
   );
 };

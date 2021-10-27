@@ -3,11 +3,11 @@ import './Button.scss'
 
 export type props = {
     buttonText: string
-    clickHandle: () => void
+    handleClick: () => void
 }
 
-export const Button: FC<props> = ({buttonText, clickHandle}) => {
+export const Button: FC<props> = ({buttonText, handleClick}) => {
     return (
-        <button className='Button' onClick={clickHandle}>{buttonText}</button>       
+        <button className='Button' onClick={handleClick}>{buttonText}</button>       
     );
 };
