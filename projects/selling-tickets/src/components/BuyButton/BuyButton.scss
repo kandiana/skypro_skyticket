@@ -1,0 +1,10 @@
+@import '/src/variables';
+
+.BuyButton {
+  width: 200px;
+  color: $red;
+  background-color: $blue;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}

@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import './App.scss';
+import { BuyButton } from './components/BuyButton/BuyButton';
 
 const App: FC = () => {
-  return <div className="App App_red">Hello world</div>;
+  return (
+    <BuyButton buttonText='Купить'/>
+  );
 };
 
 export default App;
