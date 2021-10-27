@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { EventImage } from '../EventImage/EventImage';
 import { EventTitle } from '../EventTitle/EventTitle';
 import { EventDate } from '../EventDate/EventDate';
-import { format, compareAsc } from 'date-fns';
+import { format } from 'date-fns';
 import './Card.scss'
 
 export type props = {
