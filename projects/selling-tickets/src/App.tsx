@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import './App.scss';
 import { Button } from './components/Button/Button';
+import { Card } from './components/Card/Card';
 import { Header } from './components/Header/Header';
 
 const App: FC = () => {
@@ -11,6 +12,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header headerTitle = 'SkyTicket'/>
+      <Card />
       <Button buttonText='Купить' handleClick={handleClick}/>
     </div>
   );
