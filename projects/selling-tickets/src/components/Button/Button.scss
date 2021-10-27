@@ -1,10 +1,15 @@
 @import '/src/variables';
 
-.BuyButton {
+.Button {
   width: 200px;
   color: $red;
   background-color: $blue;
   border: none;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.Button:hover{
+  color: $blue;
+  background-color: $red;
 }

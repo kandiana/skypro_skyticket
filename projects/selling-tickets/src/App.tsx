@@ -1,10 +1,16 @@
 import React, { FC } from 'react';
 import './App.scss';
-import { BuyButton } from './components/BuyButton/BuyButton';
+import { Button } from './components/Button/Button';
 
 const App: FC = () => {
+  const clickHandle = () => {
+    console.log('click')
+  }
+
   return (
-    <BuyButton buttonText='Купить'/>
+    <div className="App">
+      <Button buttonText='Купить' clickHandle={clickHandle}/>
+    </div>
   );
 };
 
