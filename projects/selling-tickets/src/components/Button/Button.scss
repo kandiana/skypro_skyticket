@@ -7,9 +7,11 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  
+  &:hover{
+    color: $blue;
+    background-color: $red;
+  }
 }
 
-.Button:hover{
-  color: $blue;
-  background-color: $red;
-}
+
