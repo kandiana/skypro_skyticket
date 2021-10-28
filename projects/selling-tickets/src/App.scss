@@ -5,8 +5,15 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  padding: 0 140px;
 
   &_red {
     color: $red;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .App {
+    padding: 0;
   }
 }
