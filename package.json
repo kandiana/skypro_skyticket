@@ -21,26 +21,24 @@
     "url": "https://github.com/kandiana/skypro_skyticket/issues"
   },
   "homepage": "https://github.com/kandiana/skypro_skyticket#readme",
-  "dependencies": {
-    "classnames": "2.3.1",
-    "date-fns": "2.25.0",
-    "node-sass": "6.0.1",
-    "typescript": "4.4.4"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.2.0",
     "@typescript-eslint/parser": "5.2.0",
+    "classnames": "2.3.1",
+    "date-fns": "2.25.0",
     "eslint": "7.11.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.26.1",
     "husky": "7.0.4",
+    "node-sass": "6.0.1",
     "prettier": "2.4.1",
     "stylelint": "14.0.0",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "23.0.0",
     "stylelint-config-standard-scss": "^2.0.0",
     "stylelint-order": "5.0.0",
-    "stylelint-scss": "4.0.0"
+    "stylelint-scss": "4.0.0",
+    "typescript": "4.4.4"
   }
 }
