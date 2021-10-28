@@ -7,15 +7,15 @@ import './Card.scss'
 
 export type props = {
     eventTitleText: string
-    pathImage: string
+    imagePath: string
     date: Date
 }
 
-export const Card: FC<props> = ({eventTitleText, pathImage, date}) => {
+export const Card: FC<props> = ({eventTitleText, imagePath, date}) => {
     
     return (
         <div className='Card' >
-            <EventImage pathImage={pathImage}/>
+            <EventImage imagePath={imagePath}/>
             <EventTitle eventTitleText={eventTitleText} />
             <EventDate date={date}/>
         </div>       

@@ -3,12 +3,12 @@ import './EventImage.scss';
 
 
 export type props = {
-    pathImage: string
+    imagePath: string
 }
 
-export const EventImage: FC<props> = ({pathImage}) => {
+export const EventImage: FC<props> = ({imagePath}) => {
     return (
-        <img className='EventImage' src={pathImage} alt='мероприятие'/>
+        <img className='EventImage' src={imagePath} alt='мероприятие'/>
 
     );
 };

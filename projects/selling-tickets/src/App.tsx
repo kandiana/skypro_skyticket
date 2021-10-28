@@ -3,7 +3,7 @@ import './App.scss';
 import { Button } from './components/Button/Button';
 import { Card } from './components/Card/Card';
 import { Header } from './components/Header/Header';
-import pathImage from './assets/images/theBeatlesTribute.jpg'
+import imagePath from './assets/images/theBeatlesTribute.jpg'
 
 
 const App: FC = () => {
@@ -16,7 +16,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header headerTitle = 'SkyTicket'/>
-      <Card pathImage={pathImage} eventTitleText='Мероприятие' date={date}/>
+      <Card imagePath={imagePath} eventTitleText='Мероприятие' date={date}/>
       <Button buttonText='Купить' handleClick={handleClick}/>
     </div>
   );
