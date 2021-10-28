@@ -8,7 +8,7 @@ import './Card.scss'
 export type props = {
     eventTitleText: string
     pathImage: string
-    date: () => void
+    date: Date
 }
 
 export const Card: FC<props> = ({eventTitleText, pathImage, date}) => {
