@@ -6,6 +6,7 @@ export type props = {
 }
 
 export const EventDate: FC<props> = ({date}) => {
+    console.log(date())
     return (
         <p className='EventDate' >{date}</p>       
     );

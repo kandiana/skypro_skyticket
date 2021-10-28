@@ -2,20 +2,22 @@ import { FC } from 'react';
 import { EventImage } from '../EventImage/EventImage';
 import { EventTitle } from '../EventTitle/EventTitle';
 import { EventDate } from '../EventDate/EventDate';
-import { format } from 'date-fns';
+
 import './Card.scss'
 
 export type props = {
     eventTitleText: string
+    pathImage: string
+    date: () => void
 }
 
-export const Card: FC<props> = ({eventTitleText}) => {
-
+export const Card: FC<props> = ({eventTitleText, pathImage, date}) => {
+    
     return (
         <div className='Card' >
-            <EventImage />
+            <EventImage pathImage={pathImage}/>
             <EventTitle eventTitleText={eventTitleText} />
-            <EventDate date={format(new Date(), 'dd.MM.yyyy')}/>
+            <EventDate date={date}/>
         </div>       
     );
 };
