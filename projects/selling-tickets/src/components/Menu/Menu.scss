@@ -1,0 +1,93 @@
+@import '/src/variables';
+
+.Menu {
+  width: 100%;
+  
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  &__input {
+    width: 200px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  &__burgerButton {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Menu {
+    &__wrapper {
+        display: none;
+    }
+    
+    &__burgerWrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: $grey;
+    }
+
+    &__input {
+      width: 250px;
+      height: 36px;
+      font-size: 20px;
+      color: $white;
+      background-color: $blue;
+      border: none;
+    }
+
+    &__burgerButton {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 10%;
+      display: block;
+      width: 64px;
+      height: 64px;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      
+      &--closed::after {
+        content: '';
+        position: absolute;
+        top: 26px;
+        right: 20px;
+        width: 24px;
+        height: 1.5px;
+        background-color: $red;
+        box-shadow: 0 8px 0 0 $red, 0 16px 0 0 $red;
+      }
+    }
+
+    &__burgerButton--opened {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 30px;
+        right: 19px;
+        width: 24px;
+        height: 2px;
+        background-color: $red;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+        box-shadow: none;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        box-shadow: none;
+      }
+    }
+  }
+}
