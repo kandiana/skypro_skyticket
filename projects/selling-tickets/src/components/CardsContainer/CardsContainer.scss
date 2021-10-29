@@ -1,0 +1,12 @@
+.CardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+@media screen and (max-width: 980px) {
+    .CardsContainer {
+      justify-content: center;
+    }
+  }
