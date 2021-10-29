@@ -3,8 +3,10 @@ import { Card } from '../Card/Card';
 import './CardsContainer.scss'
 import imagePath from '../../assets/images/theBeatlesTribute.jpg'
 
+type EventDataShort = { id: number; image: string; title: string; date: Date; }
+const arr: EventDataShort[] = []
 
-const arr: { id: number; image: string; title: string; date: Date; }[] = []
+
 for (let i=1; i<=10; i++) {
      arr.push({
         id: i,
