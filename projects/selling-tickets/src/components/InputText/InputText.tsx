@@ -22,7 +22,6 @@ export const InputText: FC<props> = ({id, name, placeholder}) => {
                 placeholder={placeholder}
                 onChange={handlerInputChange}
                 value={value}
-                
             /> 
         </div>  
     );
