@@ -1,15 +1,29 @@
-import { FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import './InputText.scss'
 
 export type props = {
-    value: string;
+    id: string
+    name: string
+    placeholder: string
 }
 
-export const InputText: FC<props> = ({value}) => {
+export const InputText: FC<props> = ({id, name, placeholder}) => {
+    const [value, setValue] = useState('');
+    const handlerInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
+    }, []);
+
     return (
-        <input
-            className='InputText'
-            value={value}
-        />   
+        <div className="input__conteiner">
+            <input
+                className='input__conteiner-InputText'
+                id={id}
+                name={name}
+                placeholder={placeholder}
+                onChange={handlerInputChange}
+                value={value}
+                
+            /> 
+        </div>  
     );
 };
