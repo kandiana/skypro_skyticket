@@ -1,12 +1,21 @@
 @import '/src/variables';
 
 .EventImage {
-    width: 100%;
-    height: 50%;
+  width: 100%;
+  max-width: 800px;
+  height: 50%;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: $tablet) {
     .EventImage {
       height: 65%;
     }
   }
+=======
+@media screen and (max-width: 768px) {
+  .EventImage {
+    height: 65%;
+  }
+}
+>>>>>>> 72fcfea (added EventPage, fixed EventCard)

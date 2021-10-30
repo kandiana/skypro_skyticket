@@ -7,11 +7,9 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  
-  &:hover{
+
+  &:hover {
     color: $blue;
     background-color: $red;
   }
 }
-
-
