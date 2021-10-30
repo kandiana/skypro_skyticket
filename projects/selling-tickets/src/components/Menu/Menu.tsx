@@ -9,10 +9,11 @@ export const Menu: FC = () => {
         wrapper: false,
     });
 
-    const toggleMenu = buttonState.toggle ? 'Menu__burgerButton--opened' : 'Menu__burgerButton--closed';
-    const wrapperMenu = buttonState.wrapper ? 'Menu__burgerWrapper' : 'Menu__wrapper';
+    const toggleMenu = buttonState.toggle ? 'Menu__burger-button_opened' : 'Menu__burger-button_closed';
+    const wrapperMenu = buttonState.wrapper ? 'Menu__burger-wrapper' : 'Menu__wrapper';
 
     const handleBurgerClick = (e: React.MouseEvent) => {
+        e.preventDefault();
         console.log('click')
         
         setButtonState(prev => ({
@@ -23,28 +24,25 @@ export const Menu: FC = () => {
         ) }
 
     return (
-        <form className='Menu'>
+        <form className='Menu' action=''>
             <div className={wrapperMenu}>
                 <div className='Menu__field'>
-                    <label htmlFor='calendar' className='Menu__label'></label>
                     <input className='Menu__input' />
                 </div>
                 <div className='Menu__field'>
-                    <label htmlFor='calendar' className='Menu__label'></label>
                     <input className='Menu__input' />
                 </div>
                 <div className='Menu__field'>
-                    <label htmlFor='event' className='Menu__label'></label>
                     <select className='Menu__input'>
                         <option value=''>Мероприятие</option>
                     </select>
                 </div>
                 <div className='Menu__field'>
-                    <label htmlFor='search' className='Menu__label'></label>
                     <input className='Menu__input' />
                 </div>
+                <button className='Menu__button'>Отправить</button>
             </div>
-            <button type='button' className={'Menu__burgerButton ' + toggleMenu} onClick={handleBurgerClick}></button>
+            <button type='button' className={'Menu__burger-button ' + toggleMenu} onClick={handleBurgerClick}></button>
         </form>
     );
 };
