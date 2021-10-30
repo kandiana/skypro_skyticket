@@ -2,13 +2,13 @@
 
 .Menu {
   width: 100%;
-  
+
   &__wrapper {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  
+
   &__input {
     width: 200px;
     height: 20px;
@@ -23,7 +23,7 @@
 @media screen and (max-width: $tablet) {
   .Menu {
     &__wrapper {
-        display: none;
+      display: none;
     }
     
     &__burger-wrapper{

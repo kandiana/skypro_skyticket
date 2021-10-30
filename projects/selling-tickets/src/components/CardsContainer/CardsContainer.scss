@@ -1,14 +1,14 @@
 @import '/src/variables';
 
 .CardsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 @media screen and (max-width: $tablet) {
-    .CardsContainer {
-      justify-content: center;
-    }
+  .CardsContainer {
+    justify-content: center;
   }
+}

@@ -1,13 +1,11 @@
 import { FC, useState } from 'react';
-import './Menu.scss'
-
-
+import './Menu.scss';
 
 export const Menu: FC = () => {
-    const [buttonState, setButtonState] = useState({
-        toggle: false,
-        wrapper: false,
-    });
+  const [buttonState, setButtonState] = useState({
+    toggle: false,
+    wrapper: false,
+  });
 
     const toggleMenu = buttonState.toggle ? 'Menu__burger-button_opened' : 'Menu__burger-button_closed';
     const wrapperMenu = buttonState.wrapper ? 'Menu__burger-wrapper' : 'Menu__wrapper';
