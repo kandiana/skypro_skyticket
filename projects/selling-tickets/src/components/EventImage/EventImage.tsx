@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import './EventImage.scss';
 
-export type props = {
+export type Props = {
   imagePath: string;
 };
 
-export const EventImage: FC<props> = ({ imagePath }) => {
+export const EventImage: FC<Props> = ({ imagePath }) => {
   return <img className="EventImage" src={imagePath} alt="мероприятие" />;
 };

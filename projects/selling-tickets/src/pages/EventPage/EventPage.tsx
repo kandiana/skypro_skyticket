@@ -6,8 +6,8 @@ import { EventDate } from '../../components/EventDate/EventDate';
 
 import './EventPage.scss';
 
-export type props = {
-  eventTitleText: string;
+export type Props = {
+  title: string;
   imagePath: string;
   date: Date;
   text: string;
@@ -17,13 +17,13 @@ type urlParams = {
   id: string;
 };
 
-export const EventPage: FC<props> = ({ eventTitleText, imagePath, date, text }) => {
+export const EventPage: FC<Props> = ({ title, imagePath, date, text }) => {
   let { id } = useParams<urlParams>();
   console.log(id);
   return (
     <div className="Event-page">
       <EventImage imagePath={imagePath} />
-      <EventTitle eventTitleText={eventTitleText} />
+      <EventTitle title={title} />
       <p>{text}</p>
       <EventDate date={date} />
     </div>

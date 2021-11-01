@@ -5,7 +5,7 @@ import './App.scss';
 import { Button } from './components/Button/Button';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { Header } from './components/Header/Header';
-import { InputText } from './components/InputText/InputText';
+import { Input } from './components/Input/Input';
 import { Menu } from './components/Menu/Menu';
 import { EventPage } from './pages/EventPage/EventPage';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
@@ -27,12 +27,12 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <Header headerTitle="SkyTicket" />
+      <Header title="SkyTicket" />
       <Switch>
         <Route path="/event/:id">
           <EventPage
             imagePath={cardPageElement.image}
-            eventTitleText={cardPageElement.title}
+            title={cardPageElement.title}
             date={cardPageElement.date}
             text={cardPageElement.text}
           />
@@ -53,8 +53,8 @@ const App: FC = () => {
             Большая
           </Button>
           <Button size="M" color="red" handleClick={handleClick}>
-            <FontAwesomeIcon icon={faPlus} /> 
-            {" Добавить"}
+            <FontAwesomeIcon icon={faPlus} />
+            {' Добавить'}
           </Button>
         </Route>
       </Switch>

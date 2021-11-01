@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import './EventTitle.scss';
 
-export type props = {
-  eventTitleText: string;
+export type Props = {
+  title: string;
 };
 
-export const EventTitle: FC<props> = ({ eventTitleText }) => {
-  return <h2 className="EventTitle">{eventTitleText}</h2>;
+export const EventTitle: FC<Props> = ({ title }) => {
+  return <h2 className="EventTitle">{title}</h2>;
 };

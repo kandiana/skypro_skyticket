@@ -1,26 +1,51 @@
 import { FC } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { EventCard } from '../EventCard/EventCard';
 import './CardsContainer.scss';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
-type EventDataShort = { id: number; image: string; title: string; date: Date };
-const arr: EventDataShort[] = [];
+let titleCard = ''
 
-for (let i = 1; i <= 10; i++) {
-  arr.push({
-    id: i,
+type EventDataShort = { id: number; image: string; title: string; date: Date };
+let newArr: EventDataShort[] = [];
+const arr: EventDataShort[] = [
+  {
+    id: 1,
     image: imagePath,
-    title: `Card ${i}`,
+    title: `Кино`,
     date: new Date(),
-  });
+  },
+  {
+    id: 2,
+    image: imagePath,
+    title: `Фестиваль`,
+    date: new Date(),
+  },
+  {
+    id: 3,
+    image: imagePath,
+    title: `Концерт`,
+    date: new Date(),
+  }
+];
+function getNewArr(arr: EventDataShort[], titleCard: string) {
+  if (!titleCard) {
+    newArr = arr;
+    return
+  }
+  for (let i=0; i<arr.length; i++) {
+    if(arr[i].title === titleCard) {
+      newArr.push(arr[i])
+    }
+  }
 }
+getNewArr(arr, titleCard)
+console.log(newArr)
 
 export const CardsContainer: FC = () => {
   return (
     <div className="CardsContainer">
-      {arr.map((card) => (
-        <EventCard id={card.id} imagePath={card.image} eventTitleText={card.title} date={card.date} />
+      {newArr.map((card) => (
+        <EventCard id={card.id} imagePath={card.image} title={card.title} date={card.date} />
       ))}
     </div>
   );
