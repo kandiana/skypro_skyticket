@@ -5,7 +5,6 @@ import './App.scss';
 import { Button } from './components/Button/Button';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { Header } from './components/Header/Header';
-import { Input } from './components/Input/Input';
 import { Menu } from './components/Menu/Menu';
 import { EventPage } from './pages/EventPage/EventPage';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
