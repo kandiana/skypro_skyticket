@@ -46,7 +46,7 @@ export const Menu: FC<Props> = ({ form, onSave, setForm}) => {
     }));
     console.log(e.target.name);
     console.log(e.target.value);
-  }, []);
+  }, [setForm]);
 
   return (
     <form className="Menu" action="" onSubmit={saveFormData}>

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { EventCard } from '../EventCard/EventCard';
 import { FormType } from '../../App';
 import './CardsContainer.scss';
@@ -31,7 +31,7 @@ type Props = {
 };
 
 export const CardsContainer: FC<Props> = ({ filter }) => {
-  let newArr: EventDataShort[] = [];
+  // let newArr: EventDataShort[] = [];
 
   function getNewArr(arr: EventDataShort[], titleCard: string) {
     console.log(arr);
