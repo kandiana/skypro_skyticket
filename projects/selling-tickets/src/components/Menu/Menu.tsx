@@ -1,19 +1,23 @@
 import { FC, useState, useCallback } from 'react';
 import { Input } from '../Input/Input';
 import { Selector } from '../Selector/Selector';
+import { FormType } from '../../App'
 import './Menu.scss';
 
-const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
+type Props = {
+    form: any
+    onSave: () => void;
+    setForm: (prev: any) => void;
+}
 
-const EMPTY_FORM = {
-  dateFrom: '',
-  dateTo: '',
-  search: '',
-  events: EVENTS,
-};
+export const Menu: FC<Props> = ({ form, onSave, setForm}) => {
+  const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
+    const saveFormData = useCallback((e) => {
+        e.preventDefault();
 
-export const Menu: FC = () => {
-  const [form, setForm] = useState(EMPTY_FORM);
+        onSave()
+    }, [onSave])
+
   const [buttonState, setButtonState] = useState({
     toggle: false,
     wrapper: false,
@@ -36,22 +40,13 @@ export const Menu: FC = () => {
   };
 
   const HandleChange = useCallback((e) => {
-    setForm((prev) => ({
+    setForm((prev: FormType) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
     console.log(e.target.name);
     console.log(e.target.value);
   }, []);
-
-  const saveFormData = useCallback(
-    (e) => {
-      e.preventDefault();
-
-      console.log(form);
-    },
-    [form]
-  );
 
   return (
     <form className="Menu" action="" onSubmit={saveFormData}>
@@ -68,7 +63,7 @@ export const Menu: FC = () => {
           <Input name="dateTo" placeholder="Дата до" onChange={HandleChange} value={form.dateTo} />
         </div>
         <div className="Menu__field">
-          <Selector name="events" placeholder="privet" onChange={HandleChange} value={form.events} />
+          <Selector name="event" placeholder="privet" onChange={HandleChange} options={EVENTS} />
         </div>
         <div className="Menu__field">
           <Input name="search" placeholder="Поиск" onChange={HandleChange} value={form.search} />

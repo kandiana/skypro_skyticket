@@ -1,12 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { EventCard } from '../EventCard/EventCard';
+import { FormType } from '../../App';
 import './CardsContainer.scss';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
-let titleCard = ''
-
 type EventDataShort = { id: number; image: string; title: string; date: Date };
-let newArr: EventDataShort[] = [];
 const arr: EventDataShort[] = [
   {
     id: 1,
@@ -25,26 +23,36 @@ const arr: EventDataShort[] = [
     image: imagePath,
     title: `Концерт`,
     date: new Date(),
-  }
+  },
 ];
-function getNewArr(arr: EventDataShort[], titleCard: string) {
-  if (!titleCard) {
-    newArr = arr;
-    return
-  }
-  for (let i=0; i<arr.length; i++) {
-    if(arr[i].title === titleCard) {
-      newArr.push(arr[i])
-    }
-  }
-}
-getNewArr(arr, titleCard)
-console.log(newArr)
 
-export const CardsContainer: FC = () => {
+type Props = {
+  filter: FormType;
+};
+
+export const CardsContainer: FC<Props> = ({ filter }) => {
+  let newArr: EventDataShort[] = [];
+
+  function getNewArr(arr: EventDataShort[], titleCard: string) {
+    console.log(arr);
+    let result = [];
+    console.log(titleCard);
+    if (titleCard === '') {
+      console.log(arr);
+      return arr;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].title.toLowerCase() === titleCard) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  }
+
   return (
     <div className="CardsContainer">
-      {newArr.map((card) => (
+      {getNewArr(arr, filter.event).map((card) => (
         <EventCard id={card.id} imagePath={card.image} title={card.title} date={card.date} />
       ))}
     </div>

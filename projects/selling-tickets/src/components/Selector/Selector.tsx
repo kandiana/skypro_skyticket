@@ -5,14 +5,16 @@ export type Props = {
   name: string;
   placeholder: string;
   onChange: (e: any) => void;
-  value: string[];
+  options: string[];
+
 };
 
-export const Selector: FC<Props> = ({ name, placeholder, onChange, value }) => {
+export const Selector: FC<Props> = ({ name, placeholder, onChange, options }) => {
+  // console.log(options)
   return (
-    <select className="Selector" name={name} onChange={onChange} value={value}>
-      <option value="">Выберите...</option>
-      {value.map((event) => (
+    <select className="Selector" name={name} onChange={onChange} >
+      <option key='choose' value=''>Выберите...</option>
+      {options.map((event) => (
         <option key={event} value={event.toLocaleLowerCase()}>
           {event}
         </option>

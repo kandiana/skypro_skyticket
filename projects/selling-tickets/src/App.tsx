@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import './App.scss';
 import { Button } from './components/Button/Button';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
@@ -20,9 +19,22 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
     console.log('click');
   };
+
+  const [form, setForm] = useState(EMPTY_FORM);
+  const saveFormData = useCallback(
+    (e) => {
+      // e.preventDefault();
+      // dispatch({type: 'counter/incremented', form: form})
+
+      console.log(form);
+    },
+    [form]
+  );
 
   return (
     <div className="App">
@@ -62,3 +74,6 @@ const App: FC = () => {
 };
 
 export default App;
+function useDispatch() {
+  throw new Error('Function not implemented.');
+}
