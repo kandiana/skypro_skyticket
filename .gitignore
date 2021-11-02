@@ -1,1 +1,5 @@
 node_modules
+
+# ignore local process environment settings
+.env
+**/*.env
