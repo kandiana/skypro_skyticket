@@ -74,6 +74,3 @@ const App: FC = () => {
 };
 
 export default App;
-function useDispatch() {
-  throw new Error('Function not implemented.');
-}
