@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../components/Button/Button';
 import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
@@ -25,12 +25,9 @@ export const MainPage: FC = () => {
 
   const dispatch = useDispatch();
 
-  const saveFilter = useCallback(
-    (e) => {
-      dispatch({ type: 'form/filter', form: form });
-    },
-    [form]
-  );
+  const saveFilter = () => {
+    dispatch({ type: 'form/filter', form: form });
+  };
 
   const handleClick = () => {
     console.log('click');
