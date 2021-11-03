@@ -1,6 +1,6 @@
 @import '/src/variables';
 
-.Menu {
+.EventFilter {
   width: 100%;
 
   &__wrapper {
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: $tablet) {
-  .Menu {
+  .EventFilter {
     &__wrapper {
       display: none;
     }

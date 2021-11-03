@@ -4,7 +4,7 @@ import './App.scss';
 import { Button } from './components/Button/Button';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { Header } from './components/Header/Header';
-import { Menu } from './components/Menu/Menu';
+import { EventFilter } from './components/EventFilter/EventFilter';
 import { EventPage } from './pages/EventPage/EventPage';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
 import { text } from './pages/EventPage/EventPage.json';
@@ -28,13 +28,14 @@ const App: FC = () => {
   const [form, setForm] = useState(EMPTY_FORM);
   const saveFormData = useCallback(
     (e) => {
-      // e.preventDefault();
-      // dispatch({type: 'counter/incremented', form: form})
+      store.dispatch({ type: 'counter/incremented', form: form });
 
       console.log(form);
     },
     [form]
   );
+
+  // let filter = store.getState().value
 
   return (
     <div className="App">

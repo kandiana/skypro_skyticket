@@ -3,8 +3,10 @@ import { EventCard } from '../EventCard/EventCard';
 import { FormType } from '../../App';
 import './CardsContainer.scss';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
+import { store } from '../../store/store';
 
 type EventDataShort = { id: number; image: string; title: string; date: Date };
+
 const arr: EventDataShort[] = [
   {
     id: 1,
@@ -12,12 +14,14 @@ const arr: EventDataShort[] = [
     title: `Кино`,
     date: new Date(),
   },
+
   {
     id: 2,
     image: imagePath,
     title: `Фестиваль`,
     date: new Date(),
   },
+
   {
     id: 3,
     image: imagePath,
@@ -26,19 +30,19 @@ const arr: EventDataShort[] = [
   },
 ];
 
-type Props = {
+type CardsContainerProps = {
   filter: FormType;
 };
 
-export const CardsContainer: FC<Props> = ({ filter }) => {
+export const CardsContainer: FC<CardsContainerProps> = ({ filter }) => {
   // let newArr: EventDataShort[] = [];
+  // @ts-ignore
+  
 
   function getNewArr(arr: EventDataShort[], titleCard: string) {
-    console.log(arr);
     let result = [];
-    console.log(titleCard);
+
     if (titleCard === '') {
-      console.log(arr);
       return arr;
     }
 

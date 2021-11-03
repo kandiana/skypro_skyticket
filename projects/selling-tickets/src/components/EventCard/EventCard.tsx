@@ -6,19 +6,20 @@ import { EventDate } from '../EventDate/EventDate';
 
 import './EventCard.scss';
 
-export type Props = {
+export type EventCardProps = {
   title: string;
   imagePath: string;
   date: Date;
   id: number;
 };
 
-export const EventCard: FC<Props> = ({ title, imagePath, date, id }) => {
+export const EventCard: FC<EventCardProps> = ({ title, imagePath, date, id }) => {
   const history = useHistory();
-  console.log(id);
+
   const goToEventPage = () => {
     history.push(`/event/${id}`);
   };
+  
   return (
     <div className="EventCard" onClick={goToEventPage}>
       <EventImage imagePath={imagePath} />

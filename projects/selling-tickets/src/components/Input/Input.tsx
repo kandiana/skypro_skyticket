@@ -1,14 +1,15 @@
-import React, { FC } from 'react';
+import React, { ChangeEventHandler, FC } from 'react';
 import './Input.scss';
 
-export type Props = {
+export type InputProps = {
   name: string;
   placeholder: string;
-  onChange: (e: any) => void;
+  onChange: ChangeEventHandler;
   value: string;
 };
 
-export const Input: FC<Props> = ({ name, placeholder, onChange, value }) => {
+export const Input: FC<InputProps> = ({ name, placeholder, onChange, value }) => {
+  
   return (
     <input
       className="Input"

@@ -1,10 +1,11 @@
 import { createStore } from 'redux';
+
 // @ts-ignore
 function counterReducer(state = { value: 0 }, action) {
+  
   switch (action.type) {
     case 'counter/incremented':
-      console.log(action.form);
-      return { value: state.value + 1 };
+      return { value: action.form };
     case 'counter/decremented':
       return { value: state.value - 1 };
     default:
@@ -14,4 +15,6 @@ function counterReducer(state = { value: 0 }, action) {
 
 export const store = createStore(counterReducer);
 
-store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => 
+console.log(store.getState())
+);

@@ -2,11 +2,11 @@ import { FC } from 'react';
 import './Header.scss';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 
-export type Props = {
+export type HeaderProps = {
   title: string;
 };
 
-export const Header: FC<Props> = ({ title }) => {
+export const Header: FC<HeaderProps> = ({ title }) => {
   return (
     <header className="Header">
       <Logo className="Header__logo" />
