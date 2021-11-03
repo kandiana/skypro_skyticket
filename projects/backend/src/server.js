@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const setupMiddlewares = require('./middlewares');
 const mongoClient = require('./db');
-const { mainRouter } = require('./routers');
+const { mainRouter, testRouter, eventsRouter, ticketsRouter } = require('./routers');
 const app = express();
 
 // connecting to database and if we succeeded start listening to port (see config)
@@ -20,7 +20,10 @@ app.use((req, _, next) => {
   next();
 });
 
-// routes
+// setting up routes
+app.use('/test', testRouter);
+app.use('/events', eventsRouter);
+app.use('/tickets', ticketsRouter);
 app.use('/', mainRouter);
 
 // what happens after you press Ctrl+C

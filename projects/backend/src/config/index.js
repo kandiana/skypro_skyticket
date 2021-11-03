@@ -7,7 +7,7 @@ const DB_URL =
     ? process.env.DB_URL || 'mongodb://localhost:27017'
     : process.env.DB_URL_LOCAL || 'mongodb://localhost:27017';
 
-const DB_NAME = 'skyTicket';
+const DB_NAME = process.env.DB_NAME || 'skyTicket';
 
 const imagesFolder = path.resolve(__dirname, '../files/images');
 
