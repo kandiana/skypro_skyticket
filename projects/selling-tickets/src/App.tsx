@@ -9,14 +9,16 @@ import { InputText } from './components/InputText/InputText';
 import { Menu } from './components/Menu/Menu';
 import { EventPage } from './pages/EventPage/EventPage';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
-import { text } from './pages/EventPage/EventPage.json'
+import { text } from './pages/EventPage/EventPage.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const cardPageElement = {
   image: imagePath,
   title: `Новое событие`,
   date: new Date(),
   text: text,
-}
+};
 
 const App: FC = () => {
   const handleClick = () => {
@@ -28,12 +30,32 @@ const App: FC = () => {
       <Header headerTitle="SkyTicket" />
       <Switch>
         <Route path="/event/:id">
-          <EventPage imagePath={cardPageElement.image} eventTitleText={cardPageElement.title} date={cardPageElement.date} text={cardPageElement.text}/>
+          <EventPage
+            imagePath={cardPageElement.image}
+            eventTitleText={cardPageElement.title}
+            date={cardPageElement.date}
+            text={cardPageElement.text}
+          />
         </Route>
         <Route path="/">
           <Menu />
           <CardsContainer />
-          <Button buttonText="Купить" handleClick={handleClick} />
+          <Button color="red" handleClick={handleClick}>
+            Купить
+          </Button>
+          <Button size="S" handleClick={handleClick}>
+            <FontAwesomeIcon icon={faPlus} />
+          </Button>
+          <Button size="M" handleClick={handleClick}>
+            Средняя
+          </Button>
+          <Button size="L" color="blue" handleClick={handleClick}>
+            Большая
+          </Button>
+          <Button size="M" color="red" handleClick={handleClick}>
+            <FontAwesomeIcon icon={faPlus} /> 
+            {" Добавить"}
+          </Button>
         </Route>
       </Switch>
     </div>

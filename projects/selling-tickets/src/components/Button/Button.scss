@@ -1,15 +1,73 @@
 @import '/src/variables';
 
 .Button {
-  width: 200px;
-  color: $red;
-  background-color: $blue;
-  border: none;
-  border-radius: 30px;
+  min-width: 100px;
+  margin-bottom: 5px;
+  background-color: $light-gray;
+  border: 2px solid transparent;
   cursor: pointer;
 
   &:hover {
-    color: $blue;
-    background-color: $red;
+    background-color: $gray;
+  }
+
+  &:focus {
+    border-color: $dark-gray;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &_small {
+    min-width: 20px;
+    padding: 3px;
+    font-size: $font-size-small;
+    border-radius: 5px;
+    border-width: 1px;
+  }
+
+  &_medium {
+    min-width: 50px;
+    padding: 5px 8px;
+    font-size: $font-size-normal;
+    border-radius: 10px;
+    border-width: 2px;
+  }
+
+  &_large {
+    min-width: 100px;
+    padding: 10px 20px;
+    font-size: $font-size-large;
+    border-radius: 20px;
+    border-width: 4px;
+  }
+
+  &_blue {
+    background-color: $light-blue;
+
+    &:hover {
+      color: white;
+      fill: white;
+      background-color: $blue;
+    }
+
+    &:focus {
+      border-color: $dark-blue;
+    }
+  }
+
+  &_red {
+    background-color: $light-red;
+
+    &:hover {
+      color: white;
+      fill: white;
+      background-color: $red;
+    }
+
+    &:focus {
+      border-color: $dark-red;
+    }
   }
 }
