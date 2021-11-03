@@ -1,15 +1,15 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './App.scss';
-import { Button } from './components/Button/Button';
-import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { Header } from './components/Header/Header';
-import { EventFilter } from './components/EventFilter/EventFilter';
 import { EventPage } from './pages/EventPage/EventPage';
-import imagePath from './assets/images/theBeatlesTribute.jpg';
+import { MainPage } from './pages/MainPage/MainPage';
 import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import imagePath from './assets/images/theBeatlesTribute.jpg';
+
+import './App.scss';
+import { Button } from './components/Button/Button';
 
 const cardPageElement = {
   image: imagePath,
@@ -19,24 +19,6 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    console.log('click');
-  };
-
-  const [form, setForm] = useState(EMPTY_FORM);
-  const saveFormData = useCallback(
-    (e) => {
-      store.dispatch({ type: 'counter/incremented', form: form });
-
-      console.log(form);
-    },
-    [form]
-  );
-
-  // let filter = store.getState().value
-
   return (
     <div className="App">
       <Header title="SkyTicket" />
@@ -68,6 +50,7 @@ const App: FC = () => {
             <FontAwesomeIcon icon={faPlus} />
             {' Добавить'}
           </Button>
+          <MainPage />
         </Route>
       </Switch>
     </div>

@@ -1,13 +1,13 @@
 import { FC, useState, useCallback } from 'react';
+import { connect } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
-import { FormType } from '../../App';
-// import { store } from '../../store/store'
+import { FormType } from '../../pages/MainPage/MainPage';
+
 import './EventFilter.scss';
-import { connect } from 'react-redux';
 
 type EventFilterProps = {
-  form: any;
+  form: FormType;
   onSave: () => void;
   setForm: (prev: any) => void;
 };
@@ -87,6 +87,6 @@ const EventFilterComponent: FC<EventFilterProps> = ({ form, onSave, setForm }) =
   );
 };
 // @ts-ignore
-const mapState = (state) => ({ form: state.value})
+const mapState = (state) => ({ form: state.formData})
 
 export const EventFilter = connect(mapState)(EventFilterComponent)

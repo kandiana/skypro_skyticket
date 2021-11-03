@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import './EventDate.scss';
 import { format } from 'date-fns';
+
+import './EventDate.scss';
 
 export type EventDateProps = {
   date: Date;

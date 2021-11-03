@@ -19,7 +19,7 @@ export const EventCard: FC<EventCardProps> = ({ title, imagePath, date, id }) =>
   const goToEventPage = () => {
     history.push(`/event/${id}`);
   };
-  
+
   return (
     <div className="EventCard" onClick={goToEventPage}>
       <EventImage imagePath={imagePath} />

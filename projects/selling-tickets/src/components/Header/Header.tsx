@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import './Header.scss';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
+
+import './Header.scss';
 
 export type HeaderProps = {
   title: string;
