@@ -3,7 +3,7 @@ import { EventCard } from '../EventCard/EventCard';
 import { FormType } from '../../App';
 import './CardsContainer.scss';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
-import { store } from '../../store/store';
+// import { store } from '../../store/store';
 
 type EventDataShort = { id: number; image: string; title: string; date: Date };
 

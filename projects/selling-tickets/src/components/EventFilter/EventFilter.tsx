@@ -2,7 +2,7 @@ import { FC, useState, useCallback } from 'react';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../App';
-import { store } from '../../store/store'
+// import { store } from '../../store/store'
 import './EventFilter.scss';
 import { connect } from 'react-redux';
 
