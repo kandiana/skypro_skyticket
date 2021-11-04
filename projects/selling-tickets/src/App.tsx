@@ -1,17 +1,15 @@
 import React, { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
-import './App.scss';
-import { Button } from './components/Button/Button';
-import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { Header } from './components/Header/Header';
-import { InputText } from './components/InputText/InputText';
-import { Menu } from './components/Menu/Menu';
 import { EventPage } from './pages/EventPage/EventPage';
-import imagePath from './assets/images/theBeatlesTribute.jpg';
+import { MainPage } from './pages/MainPage/MainPage';
 import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import imagePath from './assets/images/theBeatlesTribute.jpg';
+
+import './App.scss';
+import { Button } from './components/Button/Button';
 
 const cardPageElement = {
   image: imagePath,
@@ -21,25 +19,24 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
+
   const handleClick = () => {
     console.log('click');
   };
-
+  
   return (
     <div className="App">
-      <Header headerTitle="SkyTicket" />
+      <Header title="SkyTicket" />
       <Switch>
         <Route path="/event/:id">
           <EventPage
             imagePath={cardPageElement.image}
-            eventTitleText={cardPageElement.title}
+            title={cardPageElement.title}
             date={cardPageElement.date}
             text={cardPageElement.text}
           />
         </Route>
         <Route path="/">
-          <Menu />
-          <CardsContainer />
           <Button color="red" handleClick={handleClick}>
             Купить
           </Button>
@@ -53,9 +50,10 @@ const App: FC = () => {
             Большая
           </Button>
           <Button size="M" color="red" handleClick={handleClick}>
-            <FontAwesomeIcon icon={faPlus} /> 
-            {" Добавить"}
+            <FontAwesomeIcon icon={faPlus} />
+            {' Добавить'}
           </Button>
+          <MainPage />
         </Route>
       </Switch>
     </div>
