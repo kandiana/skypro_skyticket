@@ -13,6 +13,9 @@ module.exports = (req, res) => {
 
   delete req.body.ticketsTotal;
 
+  req.body.created = new Date();
+  req.body.updated = req.body.created;
+
   db.collection('test').insertOne(req.body, (err, result) => {
     if (err) {
       res.send({ status: 'error', message: 'writing to the database has failed' });
