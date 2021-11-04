@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form action="/test/new" class="form">
+      <div class="form__field">
+        <label>
+          Картинка
+          <input type="file" id="image" name="image" accept="image/png, image/jpeg" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Название
+          <input type="text" id="title" name="title" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Город
+          <input type="text" id="city" name="city" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Адрес
+          <input type="text" id="address" name="address" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Описание<br />
+          <textarea type="text" id="description" name="description" required></textarea>
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Категория
+          <select id="category" name="category" required>
+            <option value="" selected>Выберите...</option>
+            <option value="театр">Театр</option>
+            <option value="фестиваль">Фестиваль</option>
+            <option value="спорт">Спорт</option>
+            <option value="кино">Кино</option>
+            <option value="стендап">Стендап</option>
+            <option value="экскурсия">Экскурсия</option>
+            <option value="шоу">Шоу</option>
+            <option value="дети">Дети</option>
+            <option value="другое">Другое</option>
+          </select>
+          <input type="text" id="other-category" name="other-category" class="hidden" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Начало
+          <input type="datetime-local" id="dateStart" name="dateStart" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Окончание
+          <input type="datetime-local" id="dateEnd" name="dateEnd" required />
+        </label>
+      </div>
+      <div class="form__field">
+        <label>
+          Билеты
+          <input type="number" id="ticketsTotal" name="ticketsTotal" required />
+        </label>
+      </div>
+      <button>Отправить</button>
+    </form>
+    <script>
+      const select = document.querySelector('#category');
+      const selectInput = document.querySelector('#other-category');
+
+      select.addEventListener('change', (event) => {
+        const target = event.target;
+        if (target.value === 'другое') {
+          selectInput.classList.remove('hidden');
+        } else {
+          selectInput.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

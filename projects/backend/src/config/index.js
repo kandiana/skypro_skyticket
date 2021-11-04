@@ -9,7 +9,7 @@ const DB_URL =
 
 const DB_NAME = process.env.DB_NAME || 'skyTicket';
 
-const imagesFolder = path.resolve(__dirname, '../files/images');
+const imagesFolder = path.resolve(__dirname, '../../public/images');
 
 module.exports = {
   PORT,
