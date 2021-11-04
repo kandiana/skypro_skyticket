@@ -18,9 +18,6 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
-  const handleClick = () => {
-    console.log('click');
-  };
 
   return (
     <div className="App">
