@@ -1,15 +1,15 @@
 const { Router } = require('express');
 
 const { imagesFolder } = require('./config');
+const { nanoid } = require('nanoid');
 const multer = require('multer');
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, imagesFolder);
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    const extension = file.mimetype.split('/')[1];
-    req.body.img = `${uniqueSuffix}.${extension}`;
+    req.body.img = `${nanoid()}.${file.mimetype.split('/')[1]}`;
     cb(null, req.body.img);
   },
 });
@@ -23,9 +23,9 @@ const test = require('./controllers/test');
 
 const testRouter = new Router();
 
-testRouter.get('/one/:id', test.readItem);
-testRouter.get('/all', test.readAllItems);
-testRouter.post('/new', upload.single('image'), test.insertItem);
+testRouter.get('/:id', test.readItem);
+testRouter.get('/', test.readAllItems);
+testRouter.post('/', upload.single('image'), test.insertItem);
 
 const eventsRouter = new Router();
 

@@ -1,13 +1,23 @@
 module.exports = (req, res) => {
   const db = req.db;
 
-  // console.log(req);
+  if (req.body['category-other'] === '') {
+    delete req.body['category-other'];
+  }
+
+  req.body.tickets = {
+    total: req.body.ticketsTotal,
+    sold: 0,
+    checked: 0,
+  };
+
+  delete req.body.ticketsTotal;
 
   db.collection('test').insertOne(req.body, (err, result) => {
     if (err) {
-      res.send({ error: 'An error has occurred' });
+      res.send({ status: 'error', message: 'writing to the database has failed' });
     } else {
-      res.send(result);
+      res.send({ status: 'ok', eventId: result.insertedId });
     }
   });
 };

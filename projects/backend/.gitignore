@@ -1,3 +1,4 @@
-files/**
-!files/.gitkeep
+public/images/**
+!public/images/.gitkeep
 notes.txt
+
