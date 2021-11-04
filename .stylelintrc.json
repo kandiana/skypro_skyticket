@@ -40,5 +40,14 @@
     "selector-class-pattern": "^[a-zA-Z]+.*",
     "font-family-name-quotes": "always-unless-keyword"
   },
-  "ignoreFiles": ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "**/*.html", "**/*.json", "**/*.md"]
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.json",
+    "**/*.md",
+    "**/*.txt"
+  ]
 }

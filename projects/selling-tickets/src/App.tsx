@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from './components/Header/Header';
+import { Menu } from './components/Menu/Menu';
 import { EventPage } from './pages/EventPage/EventPage';
 import { MainPage } from './pages/MainPage/MainPage';
 import { text } from './pages/EventPage/EventPage.json';
