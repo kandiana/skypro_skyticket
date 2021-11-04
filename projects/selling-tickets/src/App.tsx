@@ -19,6 +19,11 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
+
+  const handleClick = () => {
+    console.log('click');
+  };
+  
   return (
     <div className="App">
       <Header title="SkyTicket" />
@@ -32,8 +37,6 @@ const App: FC = () => {
           />
         </Route>
         <Route path="/">
-          <Menu />
-          <CardsContainer />
           <Button color="red" handleClick={handleClick}>
             Купить
           </Button>

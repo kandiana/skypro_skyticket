@@ -38,7 +38,7 @@ export const MainPage: FC = () => {
       {/* @ts-ignore */}
       <EventFilter form={form} onSave={saveFilter} setForm={setForm} />
       <CardsContainer />
-      <Button onClick={handleClick}>Купить</Button>
+      <Button handleClick={handleClick}>Купить</Button>
     </div>
   );
 };

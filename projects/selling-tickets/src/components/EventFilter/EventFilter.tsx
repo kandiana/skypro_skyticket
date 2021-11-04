@@ -1,5 +1,5 @@
 import { FC, useState, useCallback } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
@@ -7,13 +7,14 @@ import { FormType } from '../../pages/MainPage/MainPage';
 import './EventFilter.scss';
 
 type EventFilterProps = {
-  form: FormType;
   onSave: () => void;
   setForm: (prev: any) => void;
 };
 
-const EventFilterComponent: FC<EventFilterProps> = ({ form, onSave, setForm }) => {
+export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
   const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
+// @ts-ignore
+  const form = useSelector((state) => state.formData)
 
   const saveFormData = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
@@ -86,7 +87,4 @@ const EventFilterComponent: FC<EventFilterProps> = ({ form, onSave, setForm }) =
     </form>
   );
 };
-// @ts-ignore
-const mapState = (state) => ({ form: state.formData})
 
-export const EventFilter = connect(mapState)(EventFilterComponent)
