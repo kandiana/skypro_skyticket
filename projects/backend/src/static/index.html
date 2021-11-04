@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <form action="/test/new" class="form">
+    <form action="/test/new" method="post" class="form" enctype="multipart/form-data">
       <div class="form__field">
         <label>
           Картинка
@@ -55,7 +55,7 @@
             <option value="дети">Дети</option>
             <option value="другое">Другое</option>
           </select>
-          <input type="text" id="other-category" name="other-category" class="hidden" required />
+          <input type="text" id="other-category" name="other-category" class="hidden" />
         </label>
       </div>
       <div class="form__field">
@@ -86,8 +86,10 @@
         const target = event.target;
         if (target.value === 'другое') {
           selectInput.classList.remove('hidden');
+          selectInput.required = true;
         } else {
           selectInput.classList.add('hidden');
+          selectInput.required = false;
         }
       });
     </script>
