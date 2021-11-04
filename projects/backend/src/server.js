@@ -16,7 +16,7 @@ mongoClient(app).then((database) => {
 setupMiddlewares(app);
 
 app.use((req, _, next) => {
-  req.db = db;
+  req[db] = db;
   next();
 });
 

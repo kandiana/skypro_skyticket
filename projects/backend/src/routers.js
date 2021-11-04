@@ -2,8 +2,8 @@ const { Router } = require('express');
 
 const ping = require('./controllers/ping');
 const test = require('./controllers/test');
-const events = require('./controllers/events');
-const tickets = require('./controllers/tickets');
+// const events = require('./controllers/events');
+// const tickets = require('./controllers/tickets');
 
 const testRouter = new Router();
 
