@@ -7,7 +7,8 @@ import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
-import { BuyPage } from './pages/BuyPage/BuyPage';
+
+import './App.scss';
 import { Button } from './components/Button/Button';
 
 const cardPageElement = {
@@ -18,6 +19,9 @@ const cardPageElement = {
 };
 
 const App: FC = () => {
+  const handleClick = () => {
+    console.log('click');
+  };
 
   return (
     <div className="App">
@@ -27,14 +31,6 @@ const App: FC = () => {
           <EventPage
             imagePath={cardPageElement.image}
             title={cardPageElement.title}
-            date={cardPageElement.date}
-            text={cardPageElement.text}
-          />
-        </Route>
-        <Route path="/buy/:id">
-          <BuyPage
-            imagePath={cardPageElement.image}
-            eventTitleText={cardPageElement.title}
             date={cardPageElement.date}
             text={cardPageElement.text}
           />
