@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button } from '../../components/Button/Button';
 import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
 import { EventFilter } from '../../components/EventFilter/EventFilter';
 
@@ -29,16 +28,11 @@ export const MainPage: FC = () => {
     dispatch({ type: 'form/filter', form: form });
   };
 
-  const handleClick = () => {
-    console.log('click');
-  };
-
   return (
     <div className="MainPage">
       {/* @ts-ignore */}
       <EventFilter form={form} onSave={saveFilter} setForm={setForm} />
       <CardsContainer />
-      <Button handleClick={handleClick}>Купить</Button>
     </div>
   );
 };

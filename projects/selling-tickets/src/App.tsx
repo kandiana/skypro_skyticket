@@ -7,8 +7,8 @@ import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
-import { BuyPage } from './pages/BuyPage/BuyPage';
 import { Button } from './components/Button/Button';
+import { BuyPage } from './pages/BuyPage/BuyPage';
 
 const cardPageElement = {
   image: imagePath,
@@ -35,27 +35,22 @@ const App: FC = () => {
           />
         </Route>
         <Route path="/buy/:id">
-          <BuyPage
-            imagePath={cardPageElement.image}
-            eventTitleText={cardPageElement.title}
-            date={cardPageElement.date}
-            text={cardPageElement.text}
-          />
+          <BuyPage date={cardPageElement.date} text={cardPageElement.text} imagePath={''} />
         </Route>
         <Route path="/">
-          <Button color="red" handleClick={handleClick}>
+          <Button color="red" handleClick={handleClick} buttonText={''}>
             Купить
           </Button>
-          <Button size="S" handleClick={handleClick}>
+          <Button size="S" handleClick={handleClick} buttonText={''}>
             <FontAwesomeIcon icon={faPlus} />
           </Button>
-          <Button size="M" handleClick={handleClick}>
+          <Button size="M" handleClick={handleClick} buttonText={''}>
             Средняя
           </Button>
-          <Button size="L" color="blue" handleClick={handleClick}>
+          <Button size="L" color="blue" handleClick={handleClick} buttonText={''}>
             Большая
           </Button>
-          <Button size="M" color="red" handleClick={handleClick}>
+          <Button size="M" color="red" handleClick={handleClick} buttonText={''}>
             <FontAwesomeIcon icon={faPlus} />
             {' Добавить'}
           </Button>
