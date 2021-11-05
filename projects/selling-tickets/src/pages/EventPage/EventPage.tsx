@@ -31,7 +31,7 @@ export const EventPage: FC<EventPageProps> = ({ title, imagePath, date, text }) 
       <EventTitle title={title} />
       <p>{text}</p>
       <EventDate date={date} />
-      <Button color="red" handleClick={goToBuyPage} buttonText={''}>
+      <Button color="red" handleClick={goToBuyPage}>
         Купить
       </Button>
     </div>

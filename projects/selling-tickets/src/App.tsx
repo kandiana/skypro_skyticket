@@ -38,19 +38,19 @@ const App: FC = () => {
           <BuyPage date={cardPageElement.date} text={cardPageElement.text} />
         </Route>
         <Route path="/">
-          <Button color="red" handleClick={handleClick} buttonText={''}>
+          <Button color="red" handleClick={handleClick}>
             Купить
           </Button>
-          <Button size="S" handleClick={handleClick} buttonText={''}>
+          <Button size="S" handleClick={handleClick}>
             <FontAwesomeIcon icon={faPlus} />
           </Button>
-          <Button size="M" handleClick={handleClick} buttonText={''}>
+          <Button size="M" handleClick={handleClick}>
             Средняя
           </Button>
-          <Button size="L" color="blue" handleClick={handleClick} buttonText={''}>
+          <Button size="L" color="blue" handleClick={handleClick}>
             Большая
           </Button>
-          <Button size="M" color="red" handleClick={handleClick} buttonText={''}>
+          <Button size="M" color="red" handleClick={handleClick}>
             <FontAwesomeIcon icon={faPlus} />
             {' Добавить'}
           </Button>
