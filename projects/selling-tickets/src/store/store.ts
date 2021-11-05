@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import axios from 'axios';
 import { arrCards } from '../components/CardsContainer/CardsContainer';
 
 const INITIAL_STATE = {
@@ -21,17 +22,31 @@ function reducer(state = INITIAL_STATE, action) {
         formData: action.form,
       };
     case 'arr/cards':
-      const newArrayCards = [];
+      const newArrCards = [];
 
-      for(let i = 0; i < arrCards.length; i++) {
-        newArrayCards.push(arrCards[i])
+      for (let i = 0; i < arrCards.length; i++) {
+        newArrCards.push(arrCards[i]);
       }
 
       return {
         ...state,
-        console: console.log('Пришли из CardsConteiner'),
-        cardsData: [...newArrayCards]
+        // console: console.log('Пришли из CardsConteiner'),
+        cardsData: [...newArrCards],
       };
+
+    case 'array/post':
+      const fetchBuilds = async () => {
+        // return async () => {
+          const response = await axios.get('http://localhost:5000/ping/');
+          console.log(response)
+        // };
+      };
+
+      return {
+        ...state,
+        postData: fetchBuilds(),
+      };
+
     default:
       return state;
   }
