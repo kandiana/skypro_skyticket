@@ -1,11 +1,8 @@
 import { FC, useEffect } from 'react';
 import { EventCard } from '../EventCard/EventCard';
 import { useDispatch, useSelector } from 'react-redux';
-<<<<<<< HEAD
 import { EventLoader } from '../EventLoader/EventLoader';
 import { getArrCards } from '../../store/actions';
-=======
->>>>>>> 3018858 (add newArrayCards in store)
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
 import './CardsContainer.scss';
@@ -47,13 +44,6 @@ export const CardsContainer: FC = () => {
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
 
-  let dispatch = useDispatch();
-  dispatch({ type: 'arr/cards'});
-
-// @ts-ignore
-  const cardsData = useSelector((state) => state.cardsData)
-  console.log(cardsData)
-
   function getNewArr(arr: EventDataShort[], titleCard: string) {
     let result = [];
 
@@ -71,7 +61,6 @@ export const CardsContainer: FC = () => {
 
   return (
     <div className="CardsContainer">
-<<<<<<< HEAD
       {cardsData === undefined ? (
         <EventLoader />
       ) : (
@@ -85,17 +74,6 @@ export const CardsContainer: FC = () => {
           />
         ))
       )}
-=======
-      {getNewArr(cardsData, filter.event).map((card) => (
-        <EventCard
-          key={card.id}
-          id={card.id}
-          imagePath={card.image}
-          title={card.title}
-          date={card.date}
-        />
-      ))}
->>>>>>> 3018858 (add newArrayCards in store)
     </div>
   );
 };

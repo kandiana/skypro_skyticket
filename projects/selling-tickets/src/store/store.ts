@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import axios from 'axios';
 import { arrCards } from '../components/CardsContainer/CardsContainer';
 
 const sagaMiddleware = createSagaMiddleware();
