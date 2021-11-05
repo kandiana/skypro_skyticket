@@ -1,0 +1,39 @@
+Ни одна перегрузка не соответствует этому вызову.
+  Перегрузка 1 из 2, "(reducer: Reducer<{ formData: { dateFrom: string; dateTo: string; search: string; event: string; }; }, any>, enhancer?: StoreEnhancer<unknown, unknown> | undefined):
+   Store<{ formData: { ...; }; }, any>", возвратила следующую ошибку.
+    Аргумент типа "(state: { formData: { dateFrom: string; dateTo: string; search: string; event: string; }; } | undefined, action: any) => { formData: any; postData?: undefined; } |
+     { console: void; cardsData: EventDataShort[]; formData: { ...; }; postData?: undefined; } | { ...; }" нельзя назначить параметру типа "Reducer<{ formData: 
+     { dateFrom: string; dateTo: string; search: string; event: string; }; }, any>".
+      Тип "{ formData: any; postData?: undefined; } | { console: void; cardsData: EventDataShort[]; formData: { dateFrom: string; dateTo: string; search: string; event: string; }; 
+      postData?: undefined; } | { ...; }" не может быть назначен для типа "{ formData: { dateFrom: string; dateTo: string; search: string; event: string; }; }".
+        Свойство "formData" отсутствует в типе "{ postData: () => () => Promise<void>; }" и является обязательным в типе "{ formData: { dateFrom: string; dateTo: string; search: 
+        string; event: string; }; }".
+  Перегрузка 2 из 2, "(reducer: Reducer<{ formData: { dateFrom: string; dateTo: string; search: string; event: string; }; }, any>, preloadedState?: { formData: { dateFrom: string; 
+  dateTo: string; search: string; event: string; }; } | undefined, enhancer?: StoreEnhancer<...> | undefined): Store<...>", возвратила следующую ошибку.
+    Аргумент типа "(state: { formData: { dateFrom: string; dateTo: string; search: string; event: string; }; } | undefined, action: any) => { formData: any; postData?: undefined; } | 
+    { console: void; cardsData: EventDataShort[]; formData: { ...; }; postData?: undefined; } | { ...; }" нельзя назначить параметру типа "Reducer<{ formData: { dateFrom: string; dateTo: 
+    tring; search: string; event: string; }; }, any>".ts(2769)
+store.ts(7, 3): Здесь объявлен "formData".
+function reducer(state: {
+    formData: {
+        dateFrom: string;
+        dateTo: string;
+        search: string;
+        event: string;
+    };
+} | undefined, action: any): {
+    formData: any;
+    postData?: undefined;
+} | {
+    console: void;
+    cardsData: EventDataShort[];
+    formData: {
+        dateFrom: string;
+        dateTo: string;
+        search: string;
+        event: string;
+    };
+    postData?: undefined;
+} | {
+    ...;
+}
