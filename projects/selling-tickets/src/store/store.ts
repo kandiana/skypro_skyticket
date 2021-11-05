@@ -1,7 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { reducer } from './reducers';
-import testSaga from './sagas';
+import thunk from 'redux-thunk';
+import { arrCards } from '../components/CardsContainer/CardsContainer';
 
 const sagaMiddleware = createSagaMiddleware();
 
