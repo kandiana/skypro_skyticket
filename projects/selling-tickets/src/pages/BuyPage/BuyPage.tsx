@@ -22,7 +22,6 @@ export const BuyPage: FC<Props> = ({ date, text }) => {
 
   QRCode.toString(id, function (err: any, string: any) {
     if (err) throw err;
-    console.log(string);
     svg = string;
   });
 

@@ -10,6 +10,8 @@ import imagePath from './assets/images/theBeatlesTribute.jpg';
 import { Button } from './components/Button/Button';
 import { BuyPage } from './pages/BuyPage/BuyPage';
 
+import './App.scss';
+
 const cardPageElement = {
   image: imagePath,
   title: `Новое событие`,

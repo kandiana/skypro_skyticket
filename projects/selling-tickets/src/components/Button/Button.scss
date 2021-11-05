@@ -1,12 +1,10 @@
 @import '/src/variables';
 
 .Button {
-  width: 200px;
-  height: 50px;
-  color: $red;
-  background-color: $blue;
-  border: none;
-  border-radius: 30px;
+  min-width: 100px;
+  margin-bottom: 5px;
+  background-color: $light-gray;
+  border: 2px solid transparent;
   cursor: pointer;
 
   &:hover {
