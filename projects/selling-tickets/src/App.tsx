@@ -35,7 +35,7 @@ const App: FC = () => {
           />
         </Route>
         <Route path="/buy/:id">
-          <BuyPage date={cardPageElement.date} text={cardPageElement.text} imagePath={''} />
+          <BuyPage date={cardPageElement.date} text={cardPageElement.text} />
         </Route>
         <Route path="/">
           <Button color="red" handleClick={handleClick} buttonText={''}>

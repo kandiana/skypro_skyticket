@@ -10,7 +10,7 @@ export type EventCardProps = {
   title: string;
   imagePath: string;
   date: Date;
-  id: number;
+  id: string;
 };
 
 export const EventCard: FC<EventCardProps> = ({ title, imagePath, date, id }) => {

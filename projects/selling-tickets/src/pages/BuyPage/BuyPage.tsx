@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { EventDate } from '../../components/EventDate/EventDate';
 
 import './BuyPage.scss';
 
+let QRCode = require('qrcode');
+
 export type Props = {
-  imagePath: string;
   date: Date;
   text: string;
 };
@@ -16,10 +17,18 @@ type urlParams = {
 
 export const BuyPage: FC<Props> = ({ date, text }) => {
   let { id } = useParams<urlParams>();
-  console.log(id);
+
+  let svg;
+
+  QRCode.toString(id, function (err: any, string: any) {
+    if (err) throw err;
+    console.log(string);
+    svg = string;
+  });
 
   return (
     <div className="Buy-page">
+      <div dangerouslySetInnerHTML={{ __html: String(svg) }} />
       <p>{text}</p>
       <EventDate date={date} />
     </div>

@@ -2,28 +2,29 @@ import { FC } from 'react';
 import { EventCard } from '../EventCard/EventCard';
 import { useSelector } from 'react-redux';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
+import { v4 as uuidv4 } from 'uuid';
 
 import './CardsContainer.scss';
 
-type EventDataShort = { id: number; image: string; title: string; date: Date };
+type EventDataShort = { id: string; image: string; title: string; date: Date };
 
 const arr: EventDataShort[] = [
   {
-    id: 1,
+    id: uuidv4(),
     image: imagePath,
     title: `Кино`,
     date: new Date(),
   },
 
   {
-    id: 2,
+    id: uuidv4(),
     image: imagePath,
     title: `Фестиваль`,
     date: new Date(),
   },
 
   {
-    id: 3,
+    id: uuidv4(),
     image: imagePath,
     title: `Концерт`,
     date: new Date(),
