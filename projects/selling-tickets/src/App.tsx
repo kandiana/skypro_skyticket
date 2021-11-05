@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { EventPage } from './pages/EventPage/EventPage';
@@ -7,8 +7,7 @@ import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import imagePath from './assets/images/theBeatlesTribute.jpg';
-
-import './App.scss';
+import { BuyPage } from './pages/BuyPage/BuyPage';
 import { Button } from './components/Button/Button';
 
 const cardPageElement = {
@@ -31,6 +30,14 @@ const App: FC = () => {
           <EventPage
             imagePath={cardPageElement.image}
             title={cardPageElement.title}
+            date={cardPageElement.date}
+            text={cardPageElement.text}
+          />
+        </Route>
+        <Route path="/buy/:id">
+          <BuyPage
+            imagePath={cardPageElement.image}
+            eventTitleText={cardPageElement.title}
             date={cardPageElement.date}
             text={cardPageElement.text}
           />
