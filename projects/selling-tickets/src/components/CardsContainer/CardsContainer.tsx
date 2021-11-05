@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { EventCard } from '../EventCard/EventCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
 import './CardsContainer.scss';
 
 type EventDataShort = { id: number; image: string; title: string; date: Date };
 
-const arr: EventDataShort[] = [
+export const arrCards: EventDataShort[] = [
   {
     id: 1,
     image: imagePath,
@@ -34,6 +34,13 @@ export const CardsContainer: FC = () => {
   // @ts-ignore
   let filter = useSelector((state) => state.formData);
 
+  let dispatch = useDispatch();
+  dispatch({ type: 'arr/cards'});
+
+// @ts-ignore
+  const cardsData = useSelector((state) => state.cardsData)
+  console.log(cardsData)
+
   function getNewArr(arr: EventDataShort[], titleCard: string) {
     let result = [];
 
@@ -51,7 +58,7 @@ export const CardsContainer: FC = () => {
 
   return (
     <div className="CardsContainer">
-      {getNewArr(arr, filter.event).map((card) => (
+      {getNewArr(cardsData, filter.event).map((card) => (
         <EventCard
           key={card.id}
           id={card.id}
