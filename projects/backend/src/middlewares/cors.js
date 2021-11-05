@@ -4,7 +4,7 @@ const cors = (req, res, next) => {
   for (let i = 0; i < origins.length; i++) {
     const origin = origins[i];
 
-    if (req.headers.origin.indexOf(origin) > -1) {
+    if (req.headers.origin?.indexOf(origin) > -1) {
       res.header('Access-Control-Allow-Origin', req.headers.origin);
     }
   }
