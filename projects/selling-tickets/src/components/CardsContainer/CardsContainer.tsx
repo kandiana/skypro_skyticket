@@ -7,6 +7,7 @@ import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
 import './CardsContainer.scss';
 import { RootState } from '../../store/store';
+import { fetchEventsShortData } from '../../store/thunks';
 
 export type EventDataShort = { id: number; image: string; title: string; date: Date };
 
@@ -39,7 +40,7 @@ export const CardsContainer: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getArrCards());
+    dispatch(fetchEventsShortData());
   }, [dispatch]);
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
