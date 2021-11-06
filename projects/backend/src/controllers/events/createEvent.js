@@ -1,28 +1,31 @@
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const db = req.db;
 
   if (req.body.categoryOther === '') {
     delete req.body.categoryOther;
   }
 
+  req.body.startTimestamp =
+    Number(req.body.startTimestamp) || new Date(req.body.startTimestamp).getTime();
+  req.body.endTimestamp =
+    Number(req.body.endTimestamp) || new Date(req.body.endTimestamp).getTime();
+
   req.body.tickets = {
-    total: req.body.ticketsTotal,
+    total: Number(req.body.ticketsTotal),
     sold: 0,
     checked: 0,
   };
 
   delete req.body.ticketsTotal;
 
-  req.body.created = new Date();
+  req.body.created = Date.now();
   req.body.updated = req.body.created;
 
-  db.events.insertOne(req.body, (err, result) => {
-    if (err) {
-      console.log(err);
-      res.send({ status: 'error', message: 'writing to the database has failed' });
-      return;
-    }
-
-    res.send({ status: 'ok', eventId: result.insertedId });
-  });
+  try {
+    const event = await db.events.insertOne(req.body);
+    res.send({ status: 'ok', eventId: event.insertedId });
+  } catch (err) {
+    console.log(err);
+    res.send({ status: 'error', message: 'writing to the database has failed' });
+  }
 };
