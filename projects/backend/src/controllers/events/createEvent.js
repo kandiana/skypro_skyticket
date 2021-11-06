@@ -1,3 +1,5 @@
+const ObjectId = require('mongodb').ObjectId;
+
 module.exports = async (req, res) => {
   const db = req.db;
 
@@ -22,8 +24,12 @@ module.exports = async (req, res) => {
   req.body.updated = req.body.created;
 
   try {
-    const event = await db.events.insertOne(req.body);
-    res.send({ status: 'ok', eventId: event.insertedId });
+    const result = await db.events.insertOne(req.body);
+
+    const filter = { _id: new ObjectId(result.insertedId) };
+    const event = await db.events.findOne(filter);
+
+    res.send({ status: 'ok', event: event });
   } catch (err) {
     console.log(err);
     res.send({ status: 'error', message: 'writing to the database has failed' });
