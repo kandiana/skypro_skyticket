@@ -1,28 +1,27 @@
 const ObjectId = require('mongodb').ObjectId;
-const fs = require('fs');
 const { imagesFolder } = require('../../config');
+const { deleteFile } = require('../../utils');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
   const filter = { _id: new ObjectId(id) };
 
-  db.events.findOneAndDelete(filter, (_, item) => {
+  try {
+    const item = await db.events.findOneAndDelete(filter);
     const event = item.value;
+
     if (!event) {
       res.send({ status: 'warning', message: 'event not found' });
       return;
     }
 
-    const path = `${imagesFolder}/${event.img.name}`;
-    try {
-      fs.unlinkSync(path);
-      console.log(`file ${path} was deleted`);
-    } catch (err) {
-      console.log(err);
-    }
+    deleteFile(imagesFolder, event.img.name);
 
     res.send({ status: 'ok', eventId: id });
-  });
+  } catch (err) {
+    console.log(err);
+    res.send({ status: 'error', message: 'something went wrong' });
+  }
 };

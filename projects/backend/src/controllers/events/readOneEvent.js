@@ -1,17 +1,21 @@
 const ObjectId = require('mongodb').ObjectId;
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
   const filter = { _id: new ObjectId(id) };
 
-  db.events.findOne(filter, (_, item) => {
-    if (!item) {
+  try {
+    const event = await db.events.findOne(filter);
+    if (!event) {
       res.send({ status: 'error', message: 'event not found' });
       return;
     }
 
-    res.send({ status: 'ok', event: item });
-  });
+    res.send({ status: 'ok', event: event });
+  } catch (err) {
+    console.log(err);
+    res.send({ status: 'error', message: 'reading from the database has failed' });
+  }
 };

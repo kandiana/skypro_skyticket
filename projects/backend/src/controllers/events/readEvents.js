@@ -1,13 +1,35 @@
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const db = req.db;
+  const query = {};
+  let { type, start, size } = req.query;
 
-  db.events.find().toArray(function (err, result) {
-    if (err) {
-      console.log(err);
-      res.send({ error: 'An error has occurred' });
-      return;
-    }
+  switch (type) {
+    case 'actual':
+      query.endTimestamp = { $gt: Date.now() };
+      break;
+    case 'old':
+      query.endTimestamp = { $lte: Date.now() };
+      break;
+  }
 
-    res.send(JSON.stringify(result));
-  });
+  if (!start) {
+    start = 0;
+  } else {
+    start = Number(start);
+  }
+
+  if (!size) {
+    size = 0;
+  } else {
+    size = Number(size);
+  }
+
+  try {
+    const events = await db.events.find(query).skip(start).limit(size).toArray();
+    res.send(JSON.stringify(events));
+  } catch (err) {
+    console.log(err);
+    res.send({ status: 'error', message: 'reading from the database has failed' });
+    return;
+  }
 };
