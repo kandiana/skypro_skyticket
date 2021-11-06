@@ -81,12 +81,12 @@ module.exports = async (req, res) => {
       return;
     }
 
+    const event = await db.events.findOne(filter);
+
     res.send({
       status: 'ok',
-      modified: {
-        count: result.modifiedCount,
-        id: id,
-      },
+      modified: result.modifiedCount,
+      event: event,
     });
   } catch (err) {
     console.log(err);
