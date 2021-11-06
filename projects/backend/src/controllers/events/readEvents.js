@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
   try {
     const events = await db.events.find(query).skip(start).limit(size).toArray();
-    res.send(JSON.stringify(events));
+    res.send({ status: 'ok', events: events });
   } catch (err) {
     console.log(err);
     res.send({ status: 'error', message: 'reading from the database has failed' });
