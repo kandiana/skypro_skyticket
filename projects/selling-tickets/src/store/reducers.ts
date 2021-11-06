@@ -1,6 +1,7 @@
-import { arrCards, EventDataShort } from '../components/CardsContainer/CardsContainer';
+import { EventDataShort } from '../components/CardsContainer/CardsContainer';
 import { FormType } from '../pages/MainPage/MainPage';
 import { ARR_CARDS_ACTION, FORM_FILTER_ACTION, RootAction } from './actions';
+
 
 type STATE = {
   formData: FormType;
