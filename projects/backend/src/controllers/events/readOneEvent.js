@@ -8,6 +8,7 @@ module.exports = async (req, res) => {
 
   try {
     const event = await db.events.findOne(filter);
+
     if (!event) {
       res.send({ status: 'error', message: 'event not found' });
       return;

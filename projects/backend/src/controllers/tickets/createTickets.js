@@ -5,25 +5,30 @@ module.exports = async (req, res) => {
   let number = 1;
   let event, filter;
 
+  // if no eventId, send error
   if (!req.body.eventId) {
     res.send({ status: 'error', message: 'cannot create ticket(s) for an uknown event' });
     return;
   }
 
+  // get number of tickets to create
   if (req.body.number) {
     number = Number(req.body.number);
   }
   delete req.body.number;
 
   try {
+    // find needed event
     filter = { _id: new ObjectId(req.body.eventId) };
     event = await db.events.findOne(filter);
 
+    // send error if event not found
     if (!event) {
       res.send({ status: 'error', message: 'event not found' });
       return;
     }
 
+    // check if there are enough tickets left
     const ticketsLeft = event.tickets.total - event.tickets.sold;
 
     if (ticketsLeft < number) {
@@ -37,6 +42,7 @@ module.exports = async (req, res) => {
     return;
   }
 
+  // set other tickets parameters
   req.body.data = Date.now();
   req.body.checked = false;
 
