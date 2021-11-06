@@ -1,9 +1,11 @@
 const createTickets = require('./createTickets');
-const readTicket = require('./readTicket');
+const readOneTicket = require('./readOneTicket');
+const readEventTickets = require('./readEventTickets');
 const checkTicket = require('./checkTicket');
 
 module.exports = {
   createTickets,
-  readTicket,
+  readOneTicket,
+  readEventTickets,
   checkTicket,
 };
