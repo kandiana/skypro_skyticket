@@ -7,7 +7,7 @@ export type TestResponse = {
 
 export const api = {
   test: async function () {
-    const response = await fetch(`${backendDomain}/test`);
+    const response = await fetch(`${backendDomain}/ping`);
 
     const json = await response.json();
 
