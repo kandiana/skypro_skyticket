@@ -27,7 +27,7 @@ export const MainPage: FC = () => {
   const dispatch = useDispatch();
 
   const saveFilter = () => {
-    dispatch(getFormFilter(), { form: form });
+    dispatch(getFormFilter(form));
   };
 
   const handleClick = () => {
@@ -36,7 +36,7 @@ export const MainPage: FC = () => {
 
   return (
     <div className="MainPage">
-      <EventFilter form={form} onSave={saveFilter} setForm={setForm} />
+      <EventFilter onSave={saveFilter} setForm={setForm} />
       <CardsContainer />
       <Button handleClick={handleClick}>Купить</Button>
     </div>
