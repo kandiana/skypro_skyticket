@@ -5,6 +5,8 @@ import { api, TestResponse } from '../api/api';
 function* fetchTest(action: ArrCardsActionType) {
   try {
     const data: TestResponse = yield call(api.test);
+    console.log(data);
+    
     yield put(getArrCardsSuccess());
   } catch (e) {
     console.error(e);
