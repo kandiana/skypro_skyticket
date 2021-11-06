@@ -3,11 +3,11 @@ module.exports = async (req, res) => {
   const query = {};
   const { eventId, checked } = req.query;
 
-  if (eventId !== '') {
+  if (eventId && eventId !== '') {
     query.eventId = { $eq: eventId };
   }
 
-  if (checked !== '') {
+  if (checked && checked !== '') {
     query.checked = { $eq: checked === 'true' ? true : false };
   }
 
