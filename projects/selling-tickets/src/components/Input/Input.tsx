@@ -6,9 +6,10 @@ export type InputProps = {
   placeholder: string;
   onChange: ChangeEventHandler;
   value: string;
+  type: string;
 };
 
-export const Input: FC<InputProps> = ({ name, placeholder, onChange, value }) => {
+export const Input: FC<InputProps> = ({ name, placeholder, onChange, value, type }) => {
   return (
     <input
       className="Input"
@@ -16,6 +17,7 @@ export const Input: FC<InputProps> = ({ name, placeholder, onChange, value }) =>
       placeholder={placeholder}
       onChange={onChange}
       value={value}
+      type={type}
     />
   );
 };

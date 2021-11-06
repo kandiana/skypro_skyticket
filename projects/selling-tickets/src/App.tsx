@@ -37,7 +37,11 @@ const App: FC = () => {
           />
         </Route>
         <Route path="/buy/:id">
-          <BuyPage date={cardPageElement.date} text={cardPageElement.text} />
+          <BuyPage
+            date={cardPageElement.date}
+            text={cardPageElement.text}
+            tickets={'74ad8909-7de6-4244-9809-c11445aa0eb2'}
+          />
         </Route>
         <Route path="/">
           <Button color="red" handleClick={handleClick}>

@@ -44,7 +44,7 @@
     "web-vitals": "1.1.2"
   },
   "dependencies": {
-    "qrcode": "^1.4.4",
+    "qrcode.react": "^1.0.1",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "uuid": "^8.3.2"

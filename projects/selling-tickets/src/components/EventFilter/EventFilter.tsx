@@ -13,14 +13,14 @@ type EventFilterProps = {
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
   const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
-// @ts-ignore
-  const form = useSelector((state) => state.formData)
+  // @ts-ignore
+  const form = useSelector((state) => state.formData);
 
-  const saveFormData = (e: { preventDefault: () => void; }) => {
-      e.preventDefault();
+  const saveFormData = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
 
-      onSave();
-    }
+    onSave();
+  };
 
   const [buttonState, setButtonState] = useState({
     toggle: false,
@@ -64,16 +64,29 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
             placeholder="Дата от"
             onChange={handleChange}
             value={form.dateFrom}
+            type={'text'}
           />
         </div>
         <div className="EventFilter__field">
-          <Input name="dateTo" placeholder="Дата до" onChange={handleChange} value={form.dateTo} />
+          <Input
+            name="dateTo"
+            placeholder="Дата до"
+            onChange={handleChange}
+            value={form.dateTo}
+            type={'text'}
+          />
         </div>
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
         </div>
         <div className="EventFilter__field">
-          <Input name="search" placeholder="Поиск" onChange={handleChange} value={form.search} />
+          <Input
+            name="search"
+            placeholder="Поиск"
+            onChange={handleChange}
+            value={form.search}
+            type={'text'}
+          />
         </div>
         <button type="submit" className="EventFilter__button">
           Отправить
@@ -87,4 +100,3 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
     </form>
   );
 };
-
