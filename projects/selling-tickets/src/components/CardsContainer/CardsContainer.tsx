@@ -8,7 +8,7 @@ import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 import './CardsContainer.scss';
 import { RootState } from '../../store/store';
 
-type EventDataShort = { id: number; image: string; title: string; date: Date };
+export type EventDataShort = { id: number; image: string; title: string; date: Date };
 
 export const arrCards: EventDataShort[] = [
   {
