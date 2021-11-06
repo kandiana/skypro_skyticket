@@ -1,4 +1,4 @@
-import { EventDataShort } from '../components/CardsContainer/CardsContainer';
+import { arrCards, EventDataShort } from '../components/CardsContainer/CardsContainer';
 import { FormType } from '../pages/MainPage/MainPage';
 import { ARR_CARDS_ACTION, FORM_FILTER_ACTION, RootAction } from './actions';
 
@@ -17,7 +17,6 @@ const INITIAL_STATE = {
 };
 
 export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
-  
   switch (action.type) {
     case FORM_FILTER_ACTION:
       return {
