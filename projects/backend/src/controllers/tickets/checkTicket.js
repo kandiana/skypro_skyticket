@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
     // get updated ticket
     const ticketNew = await db.tickets.findOne(ticketFilter);
 
-    res.send({ status: 'ok', tickets: ticketNew, ticketsSold: message || ticketsChecked });
+    res.send({ status: 'ok', ticket: ticketNew, ticketsChecked: message || ticketsChecked });
   } catch (err) {
     console.log(err);
     res.send({ status: 'error', message: 'reading from the database has failed' });
