@@ -20,8 +20,9 @@ module.exports = (req, res) => {
     if (err) {
       console.log(err);
       res.send({ status: 'error', message: 'writing to the database has failed' });
-    } else {
-      res.send({ status: 'ok', eventId: result.insertedId });
+      return;
     }
+
+    res.send({ status: 'ok', eventId: result.insertedId });
   });
 };
