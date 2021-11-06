@@ -1,9 +1,12 @@
 import { FC, useEffect } from 'react';
 import { EventCard } from '../EventCard/EventCard';
 import { useDispatch, useSelector } from 'react-redux';
+import { EventLoader } from '../EventLoader/EventLoader';
+import { getArrCards } from '../../store/actions';
 import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
 import './CardsContainer.scss';
+import { RootState } from '../../store/store';
 
 type EventDataShort = { id: number; image: string; title: string; date: Date };
 
@@ -31,19 +34,15 @@ export const arrCards: EventDataShort[] = [
 ];
 
 export const CardsContainer: FC = () => {
-  // @ts-ignore
-  let filter = useSelector((state) => state.formData);
+  let filter = useSelector((state: RootState) => state.formData);
 
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'arr/cards' });
-    dispatch({ type: 'array/post' });
+    dispatch(getArrCards());
   }, [dispatch]);
 
-  // @ts-ignore
-  const cardsData = useSelector((state) => state.cardsData);
-  // console.log(cardsData);
+  const cardsData = useSelector((state: RootState) => state.cardsData);
 
   function getNewArr(arr: EventDataShort[], titleCard: string) {
     let result = [];
@@ -62,17 +61,19 @@ export const CardsContainer: FC = () => {
 
   return (
     <div className="CardsContainer">
-      {cardsData === undefined
-        ? 'подождите'
-        : getNewArr(cardsData, filter.event).map((card) => (
-            <EventCard
-              key={card.id}
-              id={card.id}
-              imagePath={card.image}
-              title={card.title}
-              date={card.date}
-            />
-          ))}
+      {cardsData === undefined ? (
+        <EventLoader />
+      ) : (
+        getNewArr(cardsData, filter.event).map((card) => (
+          <EventCard
+            key={card.id}
+            id={card.id}
+            imagePath={card.image}
+            title={card.title}
+            date={card.date}
+          />
+        ))
+      )}
     </div>
   );
 };
