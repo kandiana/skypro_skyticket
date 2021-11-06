@@ -43,7 +43,7 @@ const ticketsRouter = new Router();
 ticketsRouter.post('/create', tickets.createTickets);
 ticketsRouter.put('/:id/check', tickets.checkTicket);
 ticketsRouter.get('/:id', tickets.readOneTicket);
-ticketsRouter.get('/', tickets.readEventTickets);
+ticketsRouter.get('/', tickets.readTickets);
 
 // main router
 const mainRouter = new Router();
