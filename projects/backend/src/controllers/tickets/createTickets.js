@@ -65,12 +65,13 @@ module.exports = async (req, res) => {
       date: { $eq: req.body.date },
     };
 
-    const tickets = await db.tickets.find(query).toArray();
+    const ticketsCreated = await db.tickets.find(query).toArray();
+    const { tickets } = await db.events.findOne(filter);
 
     res.send({
       status: 'ok',
-      tickets: tickets,
-      ticketsSold: message || event.tickets.sold + number,
+      tickets: ticketsCreated,
+      ticketsSold: message || tickets.sold,
     });
   } catch (err) {
     console.log(err);

@@ -1,6 +1,14 @@
 module.exports = async (req, res) => {
   const db = req.db;
   const query = {};
+  const projection = {
+    img: { url: 1 },
+    title: 1,
+    city: 1,
+    category: 1,
+    startTimestamp: 1,
+    endTimestamp: 1,
+  };
   const sort = {};
   let { type, start, size } = req.query;
 
@@ -34,7 +42,13 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const events = await db.events.find(query).sort(sort).skip(start).limit(size).toArray();
+    const events = await db.events
+      .find(query)
+      .project(projection)
+      .sort(sort)
+      .skip(start)
+      .limit(size)
+      .toArray();
     res.send({ status: 'ok', events: events });
   } catch (err) {
     console.log(err);
