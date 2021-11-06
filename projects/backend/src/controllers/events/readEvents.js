@@ -1,14 +1,21 @@
 module.exports = async (req, res) => {
   const db = req.db;
   const query = {};
+  const sort = {};
   let { type, start, size } = req.query;
 
   switch (type) {
     case 'actual':
       query.endTimestamp = { $gt: Date.now() };
+      sort.startTimeStamp = 1;
+      sort.endTimestamp = 1;
+      sort.created = 1;
       break;
     case 'old':
       query.endTimestamp = { $lte: Date.now() };
+      sort.startTimeStamp = -1;
+      sort.endTimestamp = -1;
+      sort.created = -1;
       break;
   }
 
@@ -25,7 +32,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const events = await db.events.find(query).skip(start).limit(size).toArray();
+    const events = await db.events.find(query).sort(sort).skip(start).limit(size).toArray();
     res.send({ status: 'ok', events: events });
   } catch (err) {
     console.log(err);
