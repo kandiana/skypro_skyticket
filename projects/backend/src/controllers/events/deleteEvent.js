@@ -17,6 +17,7 @@ module.exports = async (req, res) => {
       return;
     }
 
+    // delete event image
     deleteFile(imagesFolder, event.img.name);
 
     res.send({ status: 'ok', eventId: id });

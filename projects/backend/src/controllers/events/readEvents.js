@@ -4,6 +4,7 @@ module.exports = async (req, res) => {
   const sort = {};
   let { type, start, size } = req.query;
 
+  // set query and sort parameters
   switch (type) {
     case 'actual':
       query.endTimestamp = { $gt: Date.now() };
@@ -11,6 +12,7 @@ module.exports = async (req, res) => {
       sort.endTimestamp = 1;
       sort.created = 1;
       break;
+
     case 'old':
       query.endTimestamp = { $lte: Date.now() };
       sort.startTimeStamp = -1;

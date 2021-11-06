@@ -3,15 +3,18 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = async (req, res) => {
   const db = req.db;
 
+  // categoryOther is saved only when not empty
   if (req.body.categoryOther === '') {
     delete req.body.categoryOther;
   }
 
+  // if dates are not numbers, change them to numbers
   req.body.startTimestamp =
     Number(req.body.startTimestamp) || new Date(req.body.startTimestamp).getTime();
   req.body.endTimestamp =
     Number(req.body.endTimestamp) || new Date(req.body.endTimestamp).getTime();
 
+  // set tickets object
   req.body.tickets = {
     total: Number(req.body.ticketsTotal),
     sold: 0,
@@ -20,6 +23,7 @@ module.exports = async (req, res) => {
 
   delete req.body.ticketsTotal;
 
+  // set create/update dates
   req.body.created = Date.now();
   req.body.updated = req.body.created;
 

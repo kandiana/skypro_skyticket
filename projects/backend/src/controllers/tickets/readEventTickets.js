@@ -4,7 +4,6 @@ module.exports = async (req, res) => {
   const query = { eventId: { $eq: eventId } };
 
   try {
-    console.log(query);
     const tickets = await db.tickets.find(query).toArray();
     res.send({ status: 'ok', ticket: tickets });
   } catch (err) {

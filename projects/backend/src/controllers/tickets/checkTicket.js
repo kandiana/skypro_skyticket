@@ -7,7 +7,9 @@ module.exports = async (req, res) => {
   const ticketFilter = { _id: new ObjectId(id) };
 
   try {
+    // look fot ticket to check
     const ticketOld = await db.tickets.findOne(ticketFilter);
+    // if not found or checked send eror
     if (!ticketOld) {
       res.send({ status: 'error', message: 'ticket not found' });
       return;

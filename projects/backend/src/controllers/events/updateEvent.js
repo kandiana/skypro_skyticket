@@ -28,6 +28,7 @@ module.exports = async (req, res) => {
     return;
   }
 
+  // set fields to update and to remove (categoryOther if not needed)
   const update = {};
   const remove = {};
   req.body.updated = Date.now();
@@ -72,6 +73,7 @@ module.exports = async (req, res) => {
   try {
     const result = await db.events.updateOne(filter, { $set: update, $unset: remove });
 
+    // if nothing is modified, delete uploaded image and send error
     if (result.modifiedCount === 0) {
       if (req.body.img) {
         deleteFile(imagesFolder, req.body.img.name);
