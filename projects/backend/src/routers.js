@@ -9,8 +9,15 @@ const storage = multer.diskStorage({
     cb(null, imagesFolder);
   },
   filename: function (req, file, cb) {
-    req.body.imgPath = `${nanoid()}.${file.mimetype.split('/')[1]}`;
-    cb(null, req.body.imgPath);
+    const imgName = `${nanoid()}.${file.mimetype.split('/')[1]}`;
+
+    req.body.img = {
+      name: imgName,
+      url: `${req.headers.host}/images/${imgName}`,
+      originalName: file.originalname,
+      mimetype: file.mimetype,
+    };
+    cb(null, req.body.img.name);
   },
 });
 
@@ -25,7 +32,7 @@ const tickets = require('./controllers/tickets');
 const eventsRouter = new Router();
 
 eventsRouter.post('/create', upload.single('image'), events.createEvent);
-// eventsRouter.put('/:id/update', events.updateEvent);
+eventsRouter.put('/:id/update', upload.single('image'), events.updateEvent);
 eventsRouter.delete('/:id/delete', events.deleteEvent);
 eventsRouter.get('/:id', events.readOneEvent);
 eventsRouter.get('/', events.readEvents);

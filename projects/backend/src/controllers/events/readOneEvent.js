@@ -4,13 +4,14 @@ module.exports = (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
-  const details = { _id: new ObjectId(id) };
+  const filter = { _id: new ObjectId(id) };
 
-  db.events.findOne(details, (_, item) => {
+  db.events.findOne(filter, (_, item) => {
     if (!item) {
       res.send({ status: 'error', message: 'event not found' });
-    } else {
-      res.send({ status: 'ok', event: item });
+      return;
     }
+
+    res.send({ status: 'ok', event: item });
   });
 };
