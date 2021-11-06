@@ -47,12 +47,13 @@ module.exports = async (req, res) => {
     }
 
     // get updated ticket
-    const ticketNew = await db.tickets.findOne(ticketFilter);
+    const ticketUpdated = await db.tickets.findOne(ticketFilter);
+    const { tickets } = await db.events.findOne(eventFilter);
 
     res.send({
       status: 'ok',
-      ticket: ticketNew,
-      ticketsChecked: message || event.tickets.checked + 1,
+      ticket: ticketUpdated,
+      ticketsChecked: message || tickets.checked,
     });
   } catch (err) {
     console.log(err);
