@@ -3,7 +3,6 @@ import { FormType } from '../pages/MainPage/MainPage';
 
 export const FORM_FILTER_ACTION = 'FORM@FILTER' as const;
 export const ARR_CARDS_ACTION = 'ARR@CARDS' as const;
-export const ARR_CARDS_SUCCESS_ACTION = 'ARR@CARDS_SUCCESS' as const;
 
 export function getFormFilter(form: FormType) {
   return { type: FORM_FILTER_ACTION, form };
