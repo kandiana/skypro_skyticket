@@ -1,7 +1,15 @@
 module.exports = async (req, res) => {
   const db = req.db;
-  const { eventId } = req.params;
-  const query = { eventId: { $eq: eventId } };
+  const query = {};
+  const { eventId, checked } = req.query;
+
+  if (eventId !== '') {
+    query.eventId = { $eq: eventId };
+  }
+
+  if (checked !== '') {
+    query.checked = { $eq: checked === 'true' ? true : false };
+  }
 
   try {
     const tickets = await db.tickets.find(query).toArray();
