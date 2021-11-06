@@ -1,57 +1,16 @@
 import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import axios from 'axios';
-import { arrCards } from '../components/CardsContainer/CardsContainer';
+import createSagaMiddleware from 'redux-saga';
+import { reducer } from './reducers';
+import testSaga from './sagas';
 
-const INITIAL_STATE = {
-  formData: {
-    dateFrom: '',
-    dateTo: '',
-    search: '',
-    event: '',
-  },
-};
+const sagaMiddleware = createSagaMiddleware();
 
-// @ts-ignore
-function reducer(state = INITIAL_STATE, action) {
-  console.log(action)
-  switch (action.type) {
-    case 'form/filter':
-      return {
-        ...state,
-        formData: action.form,
-      };
-    case 'arr/cards':
-      const newArrCards = [];
+export const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-      for (let i = 0; i < arrCards.length; i++) {
-        newArrCards.push(arrCards[i]);
-      }
+sagaMiddleware.run(testSaga);
 
-      return {
-        ...state,
-        // console: console.log('Пришли из CardsConteiner'),
-        cardsData: [...newArrCards],
-      };
-
-    case 'array/post':
-      const fetchBuilds = async () => {
-        // return async () => {
-          const response = await axios.get('http://localhost:5000/ping/');
-          console.log(response)
-        // };
-      };
-
-      return {
-        ...state,
-        postData: fetchBuilds(),
-      };
-
-    default:
-      return state;
-  }
-}
-
-export const store = createStore(reducer, applyMiddleware(thunk));
+export type RootState = ReturnType<typeof reducer>;
 
 store.subscribe(() => console.log(store.getState()));
+
+

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from '../../components/Button/Button';
 import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
 import { EventFilter } from '../../components/EventFilter/EventFilter';
+import { getFormFilter } from '../../store/actions';
 
 import './MainPage.scss';
 
@@ -26,7 +27,7 @@ export const MainPage: FC = () => {
   const dispatch = useDispatch();
 
   const saveFilter = () => {
-    dispatch({ type: 'form/filter', form: form });
+    dispatch(getFormFilter(), { form: form });
   };
 
   const handleClick = () => {
@@ -35,7 +36,6 @@ export const MainPage: FC = () => {
 
   return (
     <div className="MainPage">
-      {/* @ts-ignore */}
       <EventFilter form={form} onSave={saveFilter} setForm={setForm} />
       <CardsContainer />
       <Button handleClick={handleClick}>Купить</Button>
