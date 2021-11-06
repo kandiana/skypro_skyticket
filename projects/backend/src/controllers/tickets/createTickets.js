@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
   }
 
   // set other tickets parameters
-  req.body.data = Date.now();
+  req.body.date = Date.now();
   req.body.checked = false;
 
   try {
@@ -53,14 +53,7 @@ module.exports = async (req, res) => {
       .map((el, i) => ({ ...el, number: event.tickets.sold + i + 1 }));
     await db.tickets.insertMany(ticketsData);
 
-    // update number of sold tickets in events
-    const ticketsSold = event.tickets.sold + number;
-    const eventTickets = {
-      ...event.tickets,
-      sold: ticketsSold,
-    };
-
-    const result = await db.events.updateOne(filter, { $set: { tickets: eventTickets } });
+    const result = await db.events.updateOne(filter, { $inc: { 'tickets.sold': number } });
     let message;
 
     if (result.modifiedCount === 0) {
@@ -69,12 +62,16 @@ module.exports = async (req, res) => {
 
     // find all created tickets
     const query = {
-      data: { $eq: req.body.data },
+      date: { $eq: req.body.date },
     };
 
     const tickets = await db.tickets.find(query).toArray();
 
-    res.send({ status: 'ok', tickets: tickets, ticketsSold: message || ticketsSold });
+    res.send({
+      status: 'ok',
+      tickets: tickets,
+      ticketsSold: message || event.tickets.sold + number,
+    });
   } catch (err) {
     console.log(err);
     res.send({ status: 'error', message: 'something went wrong' });

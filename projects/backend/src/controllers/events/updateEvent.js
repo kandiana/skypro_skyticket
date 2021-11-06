@@ -51,10 +51,7 @@ module.exports = async (req, res) => {
         break;
 
       case 'ticketsTotal':
-        update.tickets = {
-          ...eventOld.tickets,
-          total: Number(value),
-        };
+        update['tickets.total'] = Number(value);
         break;
 
       case 'img':

@@ -37,15 +37,8 @@ module.exports = async (req, res) => {
       return;
     }
 
-    // update number of sold tickets in events
-    const ticketsChecked = event.tickets.checked + 1;
-    const eventTickets = {
-      ...event.tickets,
-      checked: ticketsChecked,
-    };
-
     const eventUpdateResult = await db.events.updateOne(eventFilter, {
-      $set: { tickets: eventTickets },
+      $inc: { 'tickets.checked': 1 },
     });
     let message;
 
@@ -56,7 +49,11 @@ module.exports = async (req, res) => {
     // get updated ticket
     const ticketNew = await db.tickets.findOne(ticketFilter);
 
-    res.send({ status: 'ok', ticket: ticketNew, ticketsChecked: message || ticketsChecked });
+    res.send({
+      status: 'ok',
+      ticket: ticketNew,
+      ticketsChecked: message || event.tickets.checked + 1,
+    });
   } catch (err) {
     console.log(err);
     res.send({ status: 'error', message: 'reading from the database has failed' });
