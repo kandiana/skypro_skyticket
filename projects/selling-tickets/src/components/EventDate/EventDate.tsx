@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 import './EventDate.scss';
 
@@ -8,5 +8,9 @@ export type EventDateProps = {
 };
 
 export const EventDate: FC<EventDateProps> = ({ date }) => {
-  return <p className="EventDate">{format(date, 'dd.MM.yyyy')}</p>;
+  const dateX = new Date()
+  console.log(dateX)
+  // return <p className="EventDate">{format(date, 'dd.MM.yyyy')}</p>;
+  return <p className="EventDate">{date}</p>;
 };
+
