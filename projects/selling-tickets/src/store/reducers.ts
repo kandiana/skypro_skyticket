@@ -17,6 +17,7 @@ const INITIAL_STATE = {
 };
 
 export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
+  
   switch (action.type) {
     case FORM_FILTER_ACTION:
       return {
@@ -25,22 +26,18 @@ export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
       };
 
     case ARR_CARDS_ACTION:
+            const newArrCards = [];
+
+      for (let i = 0; i < action.eventCards.length; i++) {
+        newArrCards.push(action.eventCards[i]);
+      }
+
+      console.log(newArrCards)
       return {
         ...state,
-        eventCards: action.eventCards,
+        cardsData: [...newArrCards],
       };
-    // case ARR_CARDS_ACTION:
-    //   const newArrCards = [];
-
-    //   for (let i = 0; i < arrCards.length; i++) {
-    //     newArrCards.push(arrCards[i]);
-    //   }
-
-    //   return {
-    //     ...state,
-    //     cardsData: [...newArrCards],
-    //   };
-
+      
     default:
       return state;
   }
