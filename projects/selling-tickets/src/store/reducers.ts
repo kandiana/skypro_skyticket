@@ -1,6 +1,6 @@
 import { EventDataShort } from '../components/CardsContainer/CardsContainer';
 import { FormType } from '../pages/MainPage/MainPage';
-import { ARR_CARDS_ACTION, FORM_FILTER_ACTION, RootAction, TEST_BACK_ACTION } from './actions';
+import { ARR_CARDS_ACTION, FORM_FILTER_ACTION, RootAction } from './actions';
 
 type STATE = {
   formData: FormType;
@@ -37,7 +37,7 @@ export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
         ...state,
         cardsData: [...newArrCards],
       };
-      
+
     default:
       return state;
   }
