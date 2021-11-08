@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react';
 import { EventCard } from '../EventCard/EventCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventLoader } from '../EventLoader/EventLoader';
-import imagePath from '../../assets/images/theBeatlesTribute.jpg';
 
 import './CardsContainer.scss';
 import { RootState } from '../../store/store';
