@@ -5,7 +5,7 @@ import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
 
 import './EventPage.scss';
-import { EventDataShort } from '../../components/CardsContainer/CardsContainer';
+// import { EventDataShort } from '../../components/CardsContainer/CardsContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { fetchEventPage } from '../../store/thunks';
@@ -26,32 +26,32 @@ export const EventPage: FC = () => {
 
   useEffect(() => {
     dispatch(fetchEventPage(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
-  const cardsData = useSelector((state: RootState) => state.cardsData);
-  console.log(cardsData);
+  const cardData = useSelector((state: RootState) => state.cardData);
+  console.log(cardData);
 
-  function getNewArr(arr: EventDataShort[], id: string) {
-    let result = [];
+  // function getNewArr(arr: EventDataShort[], id: string) {
+  //   let result = [];
 
-    if (id === '') {
-      return arr;
-    }
+  //   if (id === '') {
+  //     return arr;
+  //   }
 
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i]._id === id) {
-        result.push(arr[i]);
-      }
-    }
-    return result;
-  }
+  //   for (let i = 0; i < arr.length; i++) {
+  //     if (arr[i]._id === id) {
+  //       result.push(arr[i]);
+  //     }
+  //   }
+  //   return result;
+  // }
 
   return (
     <div className="EventPage">
-      {cardsData === undefined ? (
+      {cardData === undefined ? (
         <EventLoader />
       ) : (
-        getNewArr(cardsData, id).map((card) => (
+        cardData.map((card) => (
           <div>
             <EventImage imagePath={`http://${card.img.url}`} />
             <EventTitle title={card.title} />

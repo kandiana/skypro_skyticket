@@ -5,7 +5,8 @@ import { ARR_CARDS_ACTION, EVENT_PAGE_ACTION, FORM_FILTER_ACTION, RootAction } f
 
 type STATE = {
   formData: FormType;
-  cardsData?: EventDataShort[];
+  cardsData?: EventDataShort[]; // [{}, {}, {}] это карточки для отображения на главной странице
+  cardData?: EventDataShort[]; // {} Данные для отображения конкретной страницы
 };
 
 const INITIAL_STATE = {
@@ -39,11 +40,12 @@ export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
       };
 
     case EVENT_PAGE_ACTION:
-      console.log(action.eventCards)
+      const arrEventPage = [action.eventCard]
+      console.log(arrEventPage)
 
       return {
         ...state,
-        cardsData: [...action.eventCards],
+        cardData: action.eventCard, // cardsData: [{ id: 1 }, { id: 2 }] -> [{ id: 1 }]
       };
 
     default:
