@@ -3,10 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { EventPage } from './pages/EventPage/EventPage';
 import { MainPage } from './pages/MainPage/MainPage';
-import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import imagePath from './assets/images/theBeatlesTribute.jpg';
 
 import './App.scss';
 import { Button } from './components/Button/Button';

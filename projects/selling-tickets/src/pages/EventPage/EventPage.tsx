@@ -11,7 +11,6 @@ import { RootState } from '../../store/store';
 import { fetchEventPage } from '../../store/thunks';
 import { EventCity } from '../../components/EventCity/EventCity';
 import { EventAddress } from '../../components/EventAddress/EventAddress';
-import { EventCard } from '../../components/EventCard/EventCard';
 import { EventLoader } from '../../components/EventLoader/EventLoader';
 import { EventDescription } from '../../components/CardsContainer/EventDescription/EventDescription';
 
@@ -26,7 +25,7 @@ export const EventPage: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchEventPage(id));
+    dispatch(fetchEventPage());
   }, [dispatch]);
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
