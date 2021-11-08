@@ -14,8 +14,12 @@ module.exports = async (app) => {
       console.log(`Server started on port ${PORT}`);
     });
 
-    return client.db(DB_NAME);
-    
+    const db = client.db(DB_NAME);
+
+    db.events = db.collection('events');
+    db.tickets = db.collection('tickets');
+
+    return db;
   } catch (err) {
     console.log(err);
   }
