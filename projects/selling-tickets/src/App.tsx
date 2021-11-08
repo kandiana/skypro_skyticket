@@ -11,13 +11,6 @@ import imagePath from './assets/images/theBeatlesTribute.jpg';
 import './App.scss';
 import { Button } from './components/Button/Button';
 
-const cardPageElement = {
-  image: imagePath,
-  title: `Новое событие`,
-  date: new Date(),
-  text: text,
-};
-
 const App: FC = () => {
   const handleClick = () => {
     console.log('click');
@@ -27,13 +20,8 @@ const App: FC = () => {
     <div className="App">
       <Header title="SkyTicket" />
       <Switch>
-        <Route path="/event/:id">
-          <EventPage
-            imagePath={cardPageElement.image}
-            title={cardPageElement.title}
-            date={cardPageElement.date}
-            text={cardPageElement.text}
-          />
+        <Route path="/test/:id">
+          <EventPage />
         </Route>
         <Route path="/">
           <Button color="red" handleClick={handleClick}>

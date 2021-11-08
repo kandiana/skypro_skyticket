@@ -1,32 +1,68 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { EventImage } from '../../components/EventImage/EventImage';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
 
 import './EventPage.scss';
-
-export type EventPageProps = {
-  title: string;
-  imagePath: string;
-  date: Date;
-  text: string;
-};
+import { EventDataShort } from '../../components/CardsContainer/CardsContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { fetchEventPage } from '../../store/thunks';
+import { EventCity } from '../../components/EventCity/EventCity';
+import { EventAddress } from '../../components/EventAddress/EventAddress';
+import { EventCard } from '../../components/EventCard/EventCard';
+import { EventLoader } from '../../components/EventLoader/EventLoader';
+import { EventDescription } from '../../components/CardsContainer/EventDescription/EventDescription';
 
 type urlParams = {
   id: string;
 };
 
-export const EventPage: FC<EventPageProps> = ({ title, imagePath, date, text }) => {
+export const EventPage: FC = () => {
   let { id } = useParams<urlParams>();
   console.log(id);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchEventPage(id));
+  }, [dispatch]);
+
+  const cardsData = useSelector((state: RootState) => state.cardsData);
+  console.log(cardsData);
+
+  function getNewArr(arr: EventDataShort[], id: string) {
+    let result = [];
+
+    if (id === '') {
+      return arr;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i]._id === id) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  }
+
   return (
     <div className="EventPage">
-      <EventImage imagePath={imagePath} />
-      <EventTitle title={title} />
-      <p>{text}</p>
-      <EventDate date={date} />
+      {cardsData === undefined ? (
+        <EventLoader />
+      ) : (
+        getNewArr(cardsData, id).map((card) => (
+          <div>
+            <EventImage imagePath={card.img} />
+            <EventTitle title={card.title} />
+            <EventDescription description={card.description} />
+            <EventCity city={card.city} />
+            <EventAddress address={card.address} />
+            <EventDate date={card.created} />
+          </div>
+        ))
+      )}
     </div>
   );
 };
