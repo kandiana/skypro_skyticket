@@ -8,24 +8,38 @@ module.exports = async (req, res) => {
     category: 1,
     startTimestamp: 1,
     endTimestamp: 1,
+    tickets: {
+      total: 1,
+      sold: 1,
+    },
   };
   const sort = {};
   let { type, start, size } = req.query;
+  const today = Date.now();
+  const tomorrow = new Date().setHours(24, 0, 0, 0);
 
   // set query and sort parameters
   switch (type) {
     case 'actual':
-      query.endTimestamp = { $gt: Date.now() };
+      query.endTimestamp = { $gt: today };
       sort.startTimeStamp = 1;
       sort.endTimestamp = 1;
       sort.created = 1;
       break;
 
     case 'old':
-      query.endTimestamp = { $lte: Date.now() };
+      query.endTimestamp = { $lte: today };
       sort.startTimeStamp = -1;
       sort.endTimestamp = -1;
       sort.created = -1;
+      break;
+
+    case 'today':
+      query.endTimestamp = { $gt: today };
+      query.startTimestamp = { $lt: tomorrow };
+      sort.startTimeStamp = 1;
+      sort.endTimestamp = 1;
+      sort.created = 1;
       break;
   }
 

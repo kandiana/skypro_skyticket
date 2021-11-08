@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
     req.body.img = {
       name: imgName,
-      url: `${req.headers.host}/images/${imgName}`,
+      url: `http://${req.headers.host}/images/${imgName}`,
       originalName: file.originalname,
       mimetype: file.mimetype,
     };

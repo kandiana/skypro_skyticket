@@ -54,6 +54,7 @@ module.exports = async (req, res) => {
       status: 'ok',
       ticket: ticketUpdated,
       ticketsChecked: message || tickets.checked,
+      ticketsSold: tickets.sold,
     });
   } catch (err) {
     console.log(err);
