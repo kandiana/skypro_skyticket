@@ -13,7 +13,7 @@ type EventFilterProps = {
 };
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
-  const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
+  const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
 
   const form = useSelector((state: RootState) => state.formData);
 

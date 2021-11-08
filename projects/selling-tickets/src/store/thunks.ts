@@ -12,3 +12,13 @@ export const fetchEventsShortData = () => {
     dispatch({ type: ARR_CARDS_ACTION, eventCards: response.data });
   };
 };
+
+export const fetchEventPage = (id: string) => {
+  return async (dispatch: Dispatch, getState: () => RootState) => {
+    const storeData = getState();
+    console.log(storeData);
+    const response = await axios.get(`http://localhost:5000/test/:${id}`);
+
+    dispatch({ type: ARR_CARDS_ACTION, eventCards: response.data });
+  };
+};

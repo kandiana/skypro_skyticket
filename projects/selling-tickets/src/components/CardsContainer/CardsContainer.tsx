@@ -8,30 +8,18 @@ import './CardsContainer.scss';
 import { RootState } from '../../store/store';
 import { fetchEventsShortData } from '../../store/thunks';
 
-export type EventDataShort = { id: number; image: string; title: string; date: Date };
-
-export const arrCards: EventDataShort[] = [
-  {
-    id: 1,
-    image: imagePath,
-    title: `Кино`,
-    date: new Date(),
-  },
-
-  {
-    id: 2,
-    image: imagePath,
-    title: `Фестиваль`,
-    date: new Date(),
-  },
-
-  {
-    id: 3,
-    image: imagePath,
-    title: `Концерт`,
-    date: new Date(),
-  },
-];
+export type EventDataShort = {
+  _id: string;
+  category: string;
+  categoryOther: string;
+  img: string;
+  title: string;
+  description: string;
+  city: string;
+  address: string;
+  created: Date;
+  tickets: {total: string};
+};
 
 export const CardsContainer: FC = () => {
   let filter = useSelector((state: RootState) => state.formData);
@@ -44,21 +32,20 @@ export const CardsContainer: FC = () => {
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
 
-  function getNewArr(arr: EventDataShort[], titleCard: string) {
+  function getNewArr(arr: EventDataShort[], categoryCard: string) {
     let result = [];
 
-    if (titleCard === '') {
+    if (categoryCard === '') {
       return arr;
     }
 
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i].title.toLowerCase() === titleCard) {
+      if (arr[i].category.toLowerCase() === categoryCard) {
         result.push(arr[i]);
       }
     }
     return result;
   }
-
   return (
     <div className="CardsContainer">
       {cardsData === undefined ? (
@@ -66,11 +53,17 @@ export const CardsContainer: FC = () => {
       ) : (
         getNewArr(cardsData, filter.event).map((card) => (
           <EventCard
-            key={card.id}
-            id={card.id}
-            imagePath={card.image}
+            key={card._id}
+            _id={card._id}
+            category={card.category}
+            img={card.img}
             title={card.title}
-            date={card.date}
+            description={card.description}
+            city={card.city}
+            address={card.address}
+            created={card.created} 
+            categoryOther={''} 
+            tickets={{ total: '' }}
           />
         ))
       )}

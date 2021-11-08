@@ -6,5 +6,6 @@ export type EventImageProps = {
 };
 
 export const EventImage: FC<EventImageProps> = ({ imagePath }) => {
+  console.log(imagePath)
   return <img className="EventImage" src={imagePath} alt="мероприятие" />;
 };
