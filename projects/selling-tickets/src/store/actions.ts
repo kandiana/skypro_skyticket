@@ -14,8 +14,8 @@ export function getArrCards(eventCards: EventDataShort[]) {
   return { type: ARR_CARDS_ACTION, eventCards };
 }
 
-export function getEventPage(eventCards: EventDataShort[]) {
-  return { type: EVENT_PAGE_ACTION, eventCards };
+export function getEventPage(eventCard: EventDataShort[]) {
+  return { type: EVENT_PAGE_ACTION, eventCard };
 }
 
 export type FormFilterActionType = ReturnType<typeof getFormFilter>;
