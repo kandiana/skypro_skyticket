@@ -44,17 +44,6 @@ export const CardsContainer: FC = () => {
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
 
-  let dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: 'arr/cards' });
-    dispatch({ type: 'array/post' });
-  }, [dispatch]);
-
-  // @ts-ignore
-  const cardsData = useSelector((state) => state.cardsData);
-  // console.log(cardsData);
-
   function getNewArr(arr: EventDataShort[], titleCard: string) {
     let result = [];
 
