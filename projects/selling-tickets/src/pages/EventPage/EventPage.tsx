@@ -25,7 +25,7 @@ export const EventPage: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchEventPage());
+    dispatch(fetchEventPage(id));
   }, [dispatch]);
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
@@ -53,12 +53,12 @@ export const EventPage: FC = () => {
       ) : (
         getNewArr(cardsData, id).map((card) => (
           <div>
-            <EventImage imagePath={card.img} />
+            <EventImage imagePath={`http://${card.img.url}`} />
             <EventTitle title={card.title} />
             <EventDescription description={card.description} />
             <EventCity city={card.city} />
             <EventAddress address={card.address} />
-            <EventDate date={card.created} />
+            <EventDate date={card.startTimestamp} />
           </div>
         ))
       )}

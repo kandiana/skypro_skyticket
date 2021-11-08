@@ -11,12 +11,12 @@ export type EventDataShort = {
   _id: string;
   category: string;
   categoryOther: string;
-  img: string;
+  img: {url: string};
   title: string;
   description: string;
   city: string;
   address: string;
-  created: Date;
+  startTimestamp: Date;
   tickets: {total: string};
 };
 
@@ -60,7 +60,7 @@ export const CardsContainer: FC = () => {
             description={card.description}
             city={card.city}
             address={card.address}
-            created={card.created} 
+            startTimestamp={card.startTimestamp} 
             categoryOther={''} 
             tickets={{ total: '' }}
           />

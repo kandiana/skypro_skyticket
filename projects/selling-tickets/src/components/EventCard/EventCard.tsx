@@ -12,7 +12,7 @@ import './EventCard.scss';
 export const EventCard: FC<EventDataShort> = ({
   title,
   img,
-  created,
+  startTimestamp,
   _id,
   category,
   tickets,
@@ -22,16 +22,16 @@ export const EventCard: FC<EventDataShort> = ({
   const history = useHistory();
 
   const goToEventPage = () => {
-    history.push(`/test/${_id}`);
+    history.push(`/events/${_id}`);
   };
 
   return (
     <div className="EventCard" onClick={goToEventPage}>
-      <EventImage imagePath={img} />
+      <EventImage imagePath={`http://${img.url}`} />
       <EventTitle title={title} />
       <EventCity city={city} />
       <EventAddress address={address} />
-      <EventDate date={created} />
+      <EventDate date={startTimestamp} />
     </div>
   );
 };
