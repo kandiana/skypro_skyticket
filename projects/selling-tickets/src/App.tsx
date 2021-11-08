@@ -18,7 +18,7 @@ const App: FC = () => {
     <div className="App">
       <Header title="SkyTicket" />
       <Switch>
-        <Route path="/test/:id">
+        <Route path="/events/:id">
           <EventPage />
         </Route>
         <Route path="/">
