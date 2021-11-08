@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 type urlParams = {
-  eventId: string;
+  id: string;
 };
 
 export const CheckEventTicketsPage: FC = () => {
-  const { eventId } = useParams<urlParams>();
-  return <div>{`Тут будут проверяться билеты на мероприятие ${eventId}`} </div>;
+  const { id } = useParams<urlParams>();
+  return <main>{`Тут будут проверяться билеты на мероприятие ${id}`} </main>;
 };
