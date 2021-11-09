@@ -31,15 +31,21 @@ export const CardsContainer: FC = () => {
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
 
-  function getNewArr(arr: EventDataShort[], categoryCard: string) {
+  function getNewArr(arr: EventDataShort[], categoryCard: string, titleCard: string) {
     let result = [];
 
-    if (categoryCard === '') {
+    if (categoryCard === '' && titleCard === '') {
       return arr;
     }
 
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].category.toLowerCase() === categoryCard) {
+        result.push(arr[i]);
+      }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].title.toLowerCase().includes(titleCard)) {
         result.push(arr[i]);
       }
     }
@@ -50,7 +56,7 @@ export const CardsContainer: FC = () => {
       {cardsData === undefined ? (
         <EventLoader />
       ) : (
-        getNewArr(cardsData, filter.event).map((card) => (
+        getNewArr(cardsData, filter.event, filter.search).map((card) => (
           <EventCard
             key={card._id}
             _id={card._id}

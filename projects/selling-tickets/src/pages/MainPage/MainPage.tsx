@@ -23,6 +23,7 @@ const EMPTY_FORM: FormType = {
 
 export const MainPage: FC = () => {
   const [form, setForm] = useState(EMPTY_FORM);
+  console.log('!!!', form)
 
   const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ export const MainPage: FC = () => {
 
   return (
     <div className="MainPage">
-      <EventFilter onSave={saveFilter} setForm={setForm} />
+      <EventFilter onSave={saveFilter} setForm={setForm} form={form}/>
       <CardsContainer />
       <Button handleClick={handleClick}>Купить</Button>
     </div>

@@ -10,12 +10,13 @@ import { RootState } from '../../store/store';
 type EventFilterProps = {
   onSave: () => void;
   setForm: (prev: any) => void;
+  form: FormType;
 };
 
-export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
+export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
   const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
 
-  const form = useSelector((state: RootState) => state.formData);
+  const filter = useSelector((state: RootState) => state.formData);
 
   const saveFormData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
