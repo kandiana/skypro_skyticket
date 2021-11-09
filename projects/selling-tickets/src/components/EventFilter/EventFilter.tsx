@@ -17,6 +17,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
 
   const filter = useSelector((state: RootState) => state.formData);
+  console.log(filter);
 
   const saveFormData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
