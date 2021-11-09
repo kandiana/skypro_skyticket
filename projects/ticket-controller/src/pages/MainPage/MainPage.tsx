@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventCard } from '../../components/EventCard/EventCard';
-import { getEvents } from '../../store/actions/events';
-import { EventsDataShort } from '../../store/reducers/events';
+import { getEvents } from '../../store/actions';
+import { EventsDataShort } from '../../store/reducer';
 import { RootState } from '../../store/store';
 
 export const MainPage: FC = () => {
@@ -19,7 +19,7 @@ export const MainPage: FC = () => {
   };
 
   const getEventsArray = (): EventsDataShort[] => {
-    return Object.keys(eventsData.events).map((id: string) => eventsData.events[id]);
+    return Object.keys(eventsData.data).map((id: string) => eventsData.data[id]);
   };
 
   const filterEventsData = (array: EventsDataShort[]) => {
