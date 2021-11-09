@@ -4,7 +4,6 @@ import { checkEventTicket } from '../../../store/actions';
 import { EventsDataShort } from '../../../store/reducer';
 
 import { EventData } from '../../../components/EventData/EventData';
-import { TicketData } from '../../../components/TicketData/TicketData';
 import { RootState } from '../../../store/store';
 
 export type PageDataProps = {
@@ -44,11 +43,9 @@ export const PageData: FC<PageDataProps> = ({ event }) => {
 
   return (
     <div>
-      <EventData key={'event'} title={event.title} tickets={event.tickets} />
-      <TicketData key={'ticket'} id={ticketId} onChange={handleInputChange} />
-      <button key={'check'} onClick={checkTicket}>
-        Проверить
-      </button>
+      <EventData title={event.title} tickets={event.tickets} />
+      <input value={ticketId} onChange={handleInputChange} />
+      <button onClick={checkTicket}>Проверить</button>
       <p>{showStatusMessage()}</p>
     </div>
   );
