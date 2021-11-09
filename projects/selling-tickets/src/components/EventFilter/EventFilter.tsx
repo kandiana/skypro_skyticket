@@ -5,22 +5,25 @@ import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
 
 import './EventFilter.scss';
+import { RootState } from '../../store/store';
 
 type EventFilterProps = {
   onSave: () => void;
   setForm: (prev: any) => void;
+  form: FormType;
 };
 
-export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
-  const EVENTS = ['Кино', 'Фестиваль', 'Концерт'];
-// @ts-ignore
-  const form = useSelector((state) => state.formData)
+export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
+  const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
 
-  const saveFormData = (e: { preventDefault: () => void; }) => {
-      e.preventDefault();
+  const filter = useSelector((state: RootState) => state.formData);
+  console.log(filter);
 
-      onSave();
-    }
+  const saveFormData = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    onSave();
+  };
 
   const [buttonState, setButtonState] = useState({
     toggle: false,
@@ -87,4 +90,3 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm }) => {
     </form>
   );
 };
-

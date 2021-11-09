@@ -3,28 +3,35 @@ import { useHistory } from 'react-router-dom';
 import { EventImage } from '../EventImage/EventImage';
 import { EventTitle } from '../EventTitle/EventTitle';
 import { EventDate } from '../EventDate/EventDate';
+import { EventDataShort } from '../CardsContainer/CardsContainer';
+import { EventCity } from '../EventCity/EventCity';
+import { EventAddress } from '../EventAddress/EventAddress';
 
 import './EventCard.scss';
 
-export type EventCardProps = {
-  title: string;
-  imagePath: string;
-  date: Date;
-  id: number;
-};
-
-export const EventCard: FC<EventCardProps> = ({ title, imagePath, date, id }) => {
+export const EventCard: FC<EventDataShort> = ({
+  title,
+  img,
+  startTimestamp,
+  _id,
+  category,
+  tickets,
+  city,
+  address,
+}) => {
   const history = useHistory();
 
   const goToEventPage = () => {
-    history.push(`/event/${id}`);
+    history.push(`/events/${_id}`);
   };
 
   return (
     <div className="EventCard" onClick={goToEventPage}>
-      <EventImage imagePath={imagePath} />
+      <EventImage imagePath={img.url} />
       <EventTitle title={title} />
-      <EventDate date={date} />
+      <EventCity city={city} />
+      <EventAddress address={address} />
+      <EventDate date={startTimestamp} />
     </div>
   );
 };

@@ -1,65 +1,77 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { EventCard } from '../EventCard/EventCard';
-import { useSelector } from 'react-redux';
-import imagePath from '../../assets/images/theBeatlesTribute.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { EventLoader } from '../EventLoader/EventLoader';
 
 import './CardsContainer.scss';
+import { RootState } from '../../store/store';
+import { fetchEventsShortData } from '../../store/thunks';
 
-type EventDataShort = { id: number; image: string; title: string; date: Date };
-
-const arr: EventDataShort[] = [
-  {
-    id: 1,
-    image: imagePath,
-    title: `Кино`,
-    date: new Date(),
-  },
-
-  {
-    id: 2,
-    image: imagePath,
-    title: `Фестиваль`,
-    date: new Date(),
-  },
-
-  {
-    id: 3,
-    image: imagePath,
-    title: `Концерт`,
-    date: new Date(),
-  },
-];
+export type EventDataShort = {
+  _id: string;
+  category: string;
+  categoryOther: string;
+  img: {url: string};
+  title: string;
+  description: string;
+  city: string;
+  address: string;
+  startTimestamp: Date;
+  tickets: {total: string};
+};
 
 export const CardsContainer: FC = () => {
-  // @ts-ignore
-  let filter = useSelector((state) => state.formData);
+  let filter = useSelector((state: RootState) => state.formData);
 
-  function getNewArr(arr: EventDataShort[], titleCard: string) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchEventsShortData());
+  }, [dispatch]);
+
+  const cardsData = useSelector((state: RootState) => state.cardsData);
+
+  function getNewArr(arr: EventDataShort[], categoryCard: string, titleCard: string) {
     let result = [];
 
-    if (titleCard === '') {
+    if (categoryCard === '' && titleCard === '') {
       return arr;
     }
 
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i].title.toLowerCase() === titleCard) {
+      if (arr[i].category.toLowerCase() === categoryCard) {
+        result.push(arr[i]);
+      }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].title.toLowerCase().includes(titleCard)) {
         result.push(arr[i]);
       }
     }
     return result;
   }
-
   return (
     <div className="CardsContainer">
-      {getNewArr(arr, filter.event).map((card) => (
-        <EventCard
-          key={card.id}
-          id={card.id}
-          imagePath={card.image}
-          title={card.title}
-          date={card.date}
-        />
-      ))}
+      {cardsData === undefined ? (
+        <EventLoader />
+      ) : (
+        getNewArr(cardsData, filter.event, filter.search).map((card) => (
+          <EventCard
+            key={card._id}
+            _id={card._id}
+            category={card.category}
+            img={card.img}
+            title={card.title}
+            description={card.description}
+            city={card.city}
+            address={card.address}
+            startTimestamp={card.startTimestamp} 
+            categoryOther={''} 
+            tickets={{ total: '' }}
+          />
+        ))
+      )}
     </div>
   );
 };

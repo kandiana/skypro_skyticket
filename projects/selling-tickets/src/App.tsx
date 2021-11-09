@@ -3,20 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { EventPage } from './pages/EventPage/EventPage';
 import { MainPage } from './pages/MainPage/MainPage';
-import { text } from './pages/EventPage/EventPage.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import imagePath from './assets/images/theBeatlesTribute.jpg';
 
 import './App.scss';
 import { Button } from './components/Button/Button';
-
-const cardPageElement = {
-  image: imagePath,
-  title: `Новое событие`,
-  date: new Date(),
-  text: text,
-};
 
 const App: FC = () => {
   const handleClick = () => {
@@ -27,13 +18,8 @@ const App: FC = () => {
     <div className="App">
       <Header title="SkyTicket" />
       <Switch>
-        <Route path="/event/:id">
-          <EventPage
-            imagePath={cardPageElement.image}
-            title={cardPageElement.title}
-            date={cardPageElement.date}
-            text={cardPageElement.text}
-          />
+        <Route path="/events/:id">
+          <EventPage />
         </Route>
         <Route path="/">
           <Button color="red" handleClick={handleClick}>

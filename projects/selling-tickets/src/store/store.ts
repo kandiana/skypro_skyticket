@@ -1,27 +1,9 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { reducer } from './reducers';
 
-const INITIAL_STATE = {
-  formData: {
-    dateFrom: '',
-    dateTo: '',
-    search: '',
-    event: '',
-  },
-};
+export const store = createStore(reducer, applyMiddleware(thunk));
 
-// @ts-ignore
-function reducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case 'form/filter':
-      return {
-        ...state,
-        formData: action.form,
-      };
-    default:
-      return state;
-  }
-}
-
-export const store = createStore(reducer);
+export type RootState = ReturnType<typeof reducer>;
 
 store.subscribe(() => console.log(store.getState()));
