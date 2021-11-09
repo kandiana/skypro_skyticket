@@ -15,7 +15,7 @@ export const MainPage: FC = () => {
   }, [dispatch]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(event.target.value);
+    setFilter(event.currentTarget.value);
   };
 
   const getEventsArray = (): EventsDataShort[] => {

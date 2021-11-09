@@ -5,6 +5,8 @@ import {
   GET_EVENT_DATA_BY_ID,
   GET_EVENTS_DATA_FROM_BD_ERROR,
   CHECK_EVENT_TICKET,
+  CHECK_EVENT_TICKET_ERROR,
+  CHECK_EVENT_TICKET_REQUEST_ERROR,
 } from './actions';
 
 export type EventsDataShort = {
@@ -21,6 +23,28 @@ export type Events = {
   [key: string]: EventsDataShort;
 };
 
+export type TicketData = {
+  _id: string;
+  eventId: string;
+  buyer: string;
+  date: number;
+  checked: boolean;
+  number: number;
+};
+
+export type CheckTicketSuccessData = {
+  status: 'ok';
+  ticket: TicketData;
+  ticketsChecked: string | number;
+  ticketsSold: number;
+};
+
+export type CheckTicketErrorData = {
+  status: 'error';
+  message: string;
+  messageRus: string;
+};
+
 export type STATE_TYPE = {
   events: {
     status: string;
@@ -29,6 +53,7 @@ export type STATE_TYPE = {
   };
   tickets: {
     status: string;
+    data?: CheckTicketSuccessData | CheckTicketErrorData;
     message?: string;
   };
 };
@@ -62,7 +87,7 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
       };
 
     case GET_EVENT_DATA_BY_ID:
-      const eventId = action.data.event._id;
+      const id = action.data.event._id;
 
       return {
         ...state,
@@ -70,8 +95,8 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
           status: action.data.status,
           data: {
             ...state.events.data,
-            [eventId]: {
-              ...state.events.data[eventId],
+            [id]: {
+              ...state.events.data[id],
               ...action.data.event,
             },
           },
@@ -90,7 +115,41 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
       };
 
     case CHECK_EVENT_TICKET:
-      return state;
+      const eventId = action.eventId;
+
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          status: 'ok',
+          message: '',
+          data: action.data,
+        },
+        events: {
+          ...state.events,
+          data: {
+            ...state.events.data,
+            [eventId]: {
+              ...state.events.data[eventId],
+              tickets: {
+                ...state.events.data[eventId].tickets,
+                checked: action.data.ticketsChecked,
+                sold: action.data.ticketsSold,
+              },
+            },
+          },
+        },
+      };
+
+    case CHECK_EVENT_TICKET_REQUEST_ERROR:
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          status: 'error',
+          message: action.error,
+        },
+      };
 
     default:
       return state;
