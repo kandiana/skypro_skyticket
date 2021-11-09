@@ -10,4 +10,3 @@ export type EventDateProps = {
 export const EventDate: FC<EventDateProps> = ({ date }) => {
   return <p className="EventDate">{format(date, 'dd.MM.yyyy')}</p>;
 };
-

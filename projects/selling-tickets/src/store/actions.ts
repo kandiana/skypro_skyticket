@@ -1,9 +1,8 @@
 import { EventDataShort } from '../components/CardsContainer/CardsContainer';
 import { FormType } from '../pages/MainPage/MainPage';
 
-export const FORM_FILTER_ACTION = 'FORM@FILTER' as const;
-export const ARR_CARDS_ACTION = 'ARR@CARDS' as const;
-export const TEST_BACK_ACTION = 'TEST_BACK' as const;
+export const FORM_FILTER_ACTION = 'FORM_FILTER' as const;
+export const ARR_CARDS_ACTION = 'ARR_CARDS' as const;
 export const EVENT_PAGE_ACTION = 'EVENT_PAGE' as const;
 
 export function getFormFilter(form: FormType) {
@@ -14,7 +13,7 @@ export function getArrCards(eventCards: EventDataShort[]) {
   return { type: ARR_CARDS_ACTION, eventCards };
 }
 
-export function getEventPage(eventCard: EventDataShort[]) {
+export function getEventPage(eventCard: EventDataShort) {
   return { type: EVENT_PAGE_ACTION, eventCard };
 }
 
