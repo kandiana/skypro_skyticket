@@ -27,7 +27,7 @@ export const EventCard: FC<EventDataShort> = ({
 
   return (
     <div className="EventCard" onClick={goToEventPage}>
-      <EventImage imagePath={`http://${img.url}`} />
+      <EventImage imagePath={img.url} />
       <EventTitle title={title} />
       <EventCity city={city} />
       <EventAddress address={address} />
