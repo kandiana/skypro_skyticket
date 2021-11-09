@@ -7,6 +7,7 @@ import {
   CHECK_EVENT_TICKET,
   CHECK_EVENT_TICKET_ERROR,
   CHECK_EVENT_TICKET_REQUEST_ERROR,
+  RESET_TICKETS_DATA,
 } from './actions';
 
 export type EventsDataShort = {
@@ -159,6 +160,17 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
           ...state.tickets,
           status: 'error',
           message: action.error,
+        },
+      };
+
+    case RESET_TICKETS_DATA:
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          status: '',
+          message: undefined,
+          data: undefined,
         },
       };
 

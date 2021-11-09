@@ -9,6 +9,7 @@ export const GET_EVENTS_DATA_FROM_BD_ERROR = 'GET_EVENTS_DATA_FROM_BD_ERROR' as 
 export const CHECK_EVENT_TICKET = 'CHECK_EVENT_TICKET' as const;
 export const CHECK_EVENT_TICKET_ERROR = 'CHECK_EVENT_TICKET_ERROR' as const;
 export const CHECK_EVENT_TICKET_REQUEST_ERROR = 'CHECK_EVENT_TICKET_REQUEST_ERROR' as const;
+export const RESET_TICKETS_DATA = 'RESET_TICKETS_DATA' as const;
 
 export const getEvents = () => {
   return async (dispatch: Dispatch) => {
@@ -59,4 +60,8 @@ export const checkEventTicket = (data: checkEventTicketProps) => {
       dispatch({ type: CHECK_EVENT_TICKET_REQUEST_ERROR, error: err });
     }
   };
+};
+
+export const resetTicketsData = () => {
+  return { type: RESET_TICKETS_DATA };
 };

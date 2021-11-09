@@ -1,10 +1,14 @@
-import { FC, useState, useCallback } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { checkEventTicket } from '../../../store/actions';
 import { EventsDataShort } from '../../../store/reducer';
 
 import { EventData } from '../../../components/EventData/EventData';
 import { RootState } from '../../../store/store';
+
+import { ContinuousQrScanner } from 'react-webcam-qr-scanner.ts';
+import QRScanner from 'qr-scanner';
 
 export type PageDataProps = {
   event: EventsDataShort;
@@ -13,15 +17,16 @@ export type PageDataProps = {
 export const PageData: FC<PageDataProps> = ({ event }) => {
   const dispatch = useDispatch();
   const ticketData = useSelector((state: RootState) => state.tickets);
-  const [ticketId, setTicketId] = useState('');
+  const [qrCode, setQrCode] = useState('');
+  QRScanner.WORKER_PATH = '/qr-scanner-worker.min.js';
 
-  const handleInputChange = useCallback((event) => {
-    setTicketId(event.currentTarget.value);
-  }, []);
+  useEffect(() => {
+    if (qrCode === '') {
+      return;
+    }
 
-  const checkTicket = () => {
-    dispatch(checkEventTicket({ eventId: event._id, ticketId: ticketId }));
-  };
+    dispatch(checkEventTicket({ eventId: event._id, ticketId: qrCode }));
+  }, [dispatch, event._id, qrCode]);
 
   const showStatusMessage = () => {
     if (ticketData.status === 'error') {
@@ -44,8 +49,10 @@ export const PageData: FC<PageDataProps> = ({ event }) => {
   return (
     <div>
       <EventData title={event.title} tickets={event.tickets} />
-      <input value={ticketId} onChange={handleInputChange} />
-      <button onClick={checkTicket}>Проверить</button>
+      <p>
+        Ticket Id: <code>{qrCode}</code>
+      </p>
+      <ContinuousQrScanner onQrCode={setQrCode} style={{ height: '200px' }} />
       <p>{showStatusMessage()}</p>
     </div>
   );

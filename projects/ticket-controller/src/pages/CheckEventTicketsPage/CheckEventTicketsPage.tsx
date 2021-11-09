@@ -1,7 +1,7 @@
-import { FC, useEffect, useState, useCallback } from 'react';
+import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getEventById } from '../../store/actions';
+import { getEventById, resetTicketsData } from '../../store/actions';
 import { RootState } from '../../store/store';
 
 import { PageData } from './PageData/PageData';
@@ -20,6 +20,11 @@ export const CheckEventTicketsPage: FC = () => {
     dispatch(getEventById(id));
   }, [dispatch, id]);
 
+  const goBack = () => {
+    dispatch(resetTicketsData());
+    history.push('/');
+  };
+
   const renderPageData = () => {
     switch (eventsData.status) {
       case 'ok':
@@ -36,7 +41,7 @@ export const CheckEventTicketsPage: FC = () => {
   return (
     <main>
       {renderPageData()}
-      <button onClick={() => history.push('/')}>Назад</button>{' '}
+      <button onClick={goBack}>Назад</button>
     </main>
   );
 };
