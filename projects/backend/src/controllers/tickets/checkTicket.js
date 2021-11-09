@@ -3,6 +3,12 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
+  const { eventId } = req.body;
+
+  if (!eventId) {
+    res.send({ status: 'error', message: 'unknown event' });
+    return;
+  }
 
   const ticketFilter = { _id: new ObjectId(id) };
 
@@ -12,6 +18,11 @@ module.exports = async (req, res) => {
     // if not found or checked send eror
     if (!ticketOld) {
       res.send({ status: 'error', message: 'ticket not found' });
+      return;
+    }
+
+    if (ticketOld.eventId !== eventId) {
+      res.send({ status: 'error', message: 'wrong event' });
       return;
     }
 
