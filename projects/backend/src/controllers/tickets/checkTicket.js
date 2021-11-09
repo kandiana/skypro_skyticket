@@ -67,10 +67,9 @@ module.exports = async (req, res) => {
     const eventUpdateResult = await db.events.updateOne(eventFilter, {
       $inc: { 'tickets.checked': 1 },
     });
-    let message;
 
     if (eventUpdateResult.modifiedCount === 0) {
-      message = 'failed to update number of checked tickets';
+      console.log('failed to update number of checked tickets');
     }
 
     // get updated ticket
@@ -80,7 +79,7 @@ module.exports = async (req, res) => {
     res.send({
       status: 'ok',
       ticket: ticketUpdated,
-      ticketsChecked: message || tickets.checked,
+      ticketsChecked: tickets.checked,
       ticketsSold: tickets.sold,
     });
   } catch (err) {

@@ -54,10 +54,9 @@ module.exports = async (req, res) => {
     await db.tickets.insertMany(ticketsData);
 
     const result = await db.events.updateOne(filter, { $inc: { 'tickets.sold': number } });
-    let message;
 
     if (result.modifiedCount === 0) {
-      message = 'failed to update number of sold tickets';
+      console.log('failed to update number of sold tickets');
     }
 
     // find all created tickets
@@ -71,7 +70,7 @@ module.exports = async (req, res) => {
     res.send({
       status: 'ok',
       tickets: ticketsCreated,
-      ticketsSold: message || tickets.sold,
+      ticketsSold: tickets.sold,
     });
   } catch (err) {
     console.log(err);
