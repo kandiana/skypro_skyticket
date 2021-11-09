@@ -119,3 +119,8 @@ GET `/tickets` - достать все билеты
 - `checked = true/false/undefined` - вернуть только отмеченные/неотмеченные билеты или все
 
 Пример запроса: `/tickets?eventId=618673f5c894bc4c6caebc1d&checked=false` - достать неотмеченные билеты мероприятия с id=618673f5c894bc4c6caebc1d
+
+### Авторизация:
+
+POST `/auth` - авторизоваться в админской панели.  
+Если все хорошо, вернет `{ status: 'ok'}`. Если нет, вернет `{ status: 'error', message: 'authorization denied' }`  
