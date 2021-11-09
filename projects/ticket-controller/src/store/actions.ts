@@ -46,7 +46,14 @@ export const checkEventTicket = (data: checkEventTicketProps) => {
         eventId: data.eventId,
       });
 
-      dispatch({ type: CHECK_EVENT_TICKET, data: response.data, eventId: data.eventId });
+      switch (response.data.status) {
+        case 'ok':
+          dispatch({ type: CHECK_EVENT_TICKET, data: response.data, eventId: data.eventId });
+          break;
+
+        default:
+          dispatch({ type: CHECK_EVENT_TICKET_ERROR, data: response.data });
+      }
     } catch (err) {
       console.log(err);
       dispatch({ type: CHECK_EVENT_TICKET_REQUEST_ERROR, error: err });

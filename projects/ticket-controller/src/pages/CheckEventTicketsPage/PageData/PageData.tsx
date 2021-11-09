@@ -1,4 +1,4 @@
-import { FC, ChangeEventHandler, useEffect, useState, useCallback } from 'react';
+import { FC, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkEventTicket } from '../../../store/actions';
 import { EventsDataShort } from '../../../store/reducer';

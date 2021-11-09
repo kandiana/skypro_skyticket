@@ -141,6 +141,17 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
         },
       };
 
+    case CHECK_EVENT_TICKET_ERROR:
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          status: 'ok',
+          message: '',
+          data: action.data,
+        },
+      };
+
     case CHECK_EVENT_TICKET_REQUEST_ERROR:
       return {
         ...state,
