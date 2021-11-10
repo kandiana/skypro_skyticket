@@ -4,7 +4,6 @@ const { PORT, DB_URL, DB_NAME } = require('../config');
 
 module.exports = async (app) => {
   let client;
-  console.log(process.env.NODE_ENV);
 
   try {
     client = await MongoClient.connect(DB_URL);

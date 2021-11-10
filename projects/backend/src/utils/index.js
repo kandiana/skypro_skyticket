@@ -1,7 +1,7 @@
 const deleteFile = require('./deleteFile');
-const upload = require('./upload');
+const multerConfig = require('./multerConfig');
 
 module.exports = {
   deleteFile,
-  upload,
+  multerConfig,
 };

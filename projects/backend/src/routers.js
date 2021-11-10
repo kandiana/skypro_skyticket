@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { upload } = require('./utils');
+const { multerConfig } = require('./utils');
 
 // router controllers
 const ping = require('./controllers/ping');
@@ -10,8 +10,8 @@ const tickets = require('./controllers/tickets');
 // events router
 const eventsRouter = new Router();
 
-eventsRouter.post('/create', upload.single('image'), events.createEvent);
-eventsRouter.put('/:id/update', upload.single('image'), events.updateEvent);
+eventsRouter.post('/create', multerConfig.upload.single('image'), events.createEvent);
+eventsRouter.put('/:id/update', multerConfig.upload.single('image'), events.updateEvent);
 eventsRouter.delete('/:id/delete', events.deleteEvent);
 eventsRouter.get('/:id', events.readOneEvent);
 eventsRouter.get('/', events.readEvents);

@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const setupMiddlewares = require('./middlewares');
 const mongoClient = require('./db');
+const { multerConfig } = require('./utils');
 const { imagesFolder } = require('./config');
 const { mainRouter, eventsRouter, ticketsRouter } = require('./routers');
 const app = express();
@@ -19,6 +20,7 @@ setupMiddlewares(app);
 
 app.use((req, _, next) => {
   req.db = db;
+  req.s3 = multerConfig.s3;
   next();
 });
 
