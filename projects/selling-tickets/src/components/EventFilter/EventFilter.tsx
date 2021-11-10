@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
+import  flatpickr  from 'flatpickr'
 
 import './EventFilter.scss';
 import { RootState } from '../../store/store';
@@ -58,6 +59,24 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
     [setForm]
   );
 
+  const handleFocus = () => {
+    console.log('focus')
+    let date = datePicker
+    console.log(date)
+  };
+
+  const datePicker = flatpickr('element', {
+    allowInput: true,
+    enableTime: true,
+    mode: "single",
+    minDate: "today",
+    time_24hr: true,
+    dateFormat: "d-m-Y H:i",
+    locale: "ru",
+  });
+  console.log(datePicker)
+
+
   return (
     <form className="EventFilter" action="" onSubmit={saveFormData}>
       <div className={filterWrapper}>
@@ -66,17 +85,30 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             name="dateFrom"
             placeholder="Дата от"
             onChange={handleChange}
+            onFocus={handleFocus}
             value={form.dateFrom}
           />
         </div>
         <div className="EventFilter__field">
-          <Input name="dateTo" placeholder="Дата до" onChange={handleChange} value={form.dateTo} />
+          <Input
+            name="dateTo"
+            placeholder="Дата до"
+            onChange={handleChange}
+            onFocus={handleFocus}
+            value={form.dateTo}
+          />
         </div>
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
         </div>
         <div className="EventFilter__field">
-          <Input name="search" placeholder="Поиск" onChange={handleChange} value={form.search} />
+          <Input
+            name="search"
+            placeholder="Поиск"
+            onChange={handleChange}
+            onFocus={handleFocus}
+            value={form.search}
+          />
         </div>
         <button type="submit" className="EventFilter__button">
           Отправить
