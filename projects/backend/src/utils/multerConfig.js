@@ -6,8 +6,8 @@ const { nanoid } = require('nanoid');
 const { imagesFolder } = require('../config');
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_USER_KEY,
-  secretAccessKey: process.env.AWS_USER_SECRET,
+  accessKeyId: process.env.AWS_IAM_USER_KEY,
+  secretAccessKey: process.env.AWS_IAM_USER_SECRET,
   Bucket: process.env.AWS_BUCKET_NAME,
 });
 
