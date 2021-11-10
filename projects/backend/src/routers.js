@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
     req.body.img = {
       name: imgName,
-      url: `${req.headers.host}/images/${imgName}`,
+      url: `${req.protocol}://${req.headers.host}/images/${imgName}`,
       originalName: file.originalname,
       mimetype: file.mimetype,
     };
@@ -25,6 +25,7 @@ const upload = multer({ storage: storage });
 
 // router controllers
 const ping = require('./controllers/ping');
+const auth = require('./controllers/auth');
 const events = require('./controllers/events');
 const tickets = require('./controllers/tickets');
 
@@ -49,6 +50,7 @@ ticketsRouter.get('/', tickets.readTickets);
 const mainRouter = new Router();
 
 mainRouter.get('/ping', ping);
+mainRouter.post('/auth', auth);
 
 module.exports = {
   mainRouter,

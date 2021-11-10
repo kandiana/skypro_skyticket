@@ -6,9 +6,9 @@ module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
-  const filter = { _id: new ObjectId(id) };
-
   try {
+    const filter = { _id: new ObjectId(id) };
+
     const item = await db.events.findOneAndDelete(filter);
     const event = item.value;
 

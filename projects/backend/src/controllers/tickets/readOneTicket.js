@@ -4,9 +4,9 @@ module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
-  const filter = { _id: new ObjectId(id) };
-
   try {
+    const filter = { _id: new ObjectId(id) };
+
     const ticket = await db.tickets.findOne(filter);
     if (!ticket) {
       res.send({ status: 'error', message: 'ticket not found' });

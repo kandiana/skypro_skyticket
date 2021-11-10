@@ -6,11 +6,12 @@ module.exports = async (req, res) => {
   const db = req.db;
   const { id } = req.params;
 
-  const filter = { _id: new ObjectId(id) };
-  let eventOld;
+  let eventOld, filter;
 
   // look for needed item in bd
   try {
+    filter = { _id: new ObjectId(id) };
+
     eventOld = await db.events.findOne(filter);
 
     // if not found, delete uploaded file if there was one and send error
