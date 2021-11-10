@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
-import  flatpickr  from 'flatpickr'
+import DatePicker from 'react-datepicker';
 
 import './EventFilter.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 import { RootState } from '../../store/store';
 
 type EventFilterProps = {
@@ -16,6 +17,13 @@ type EventFilterProps = {
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
   const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
+  const [startDate, setStartDate] = useState<Date|null>(null);
+  const [endDate, setEndDate] = useState<Date|null>(null);
+
+  if (startDate)
+  form.dateFrom = String(+new Date(startDate));
+  if (endDate)
+  form.dateTo = String(+new Date(endDate));
 
   const filter = useSelector((state: RootState) => state.formData);
   console.log(filter);
@@ -60,43 +68,52 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   );
 
   const handleFocus = () => {
-    console.log('focus')
-    let date = datePicker
-    console.log(date)
+    console.log('focus');
   };
-
-  const datePicker = flatpickr('element', {
-    allowInput: true,
-    enableTime: true,
-    mode: "single",
-    minDate: "today",
-    time_24hr: true,
-    dateFormat: "d-m-Y H:i",
-    locale: "ru",
-  });
-  console.log(datePicker)
-
 
   return (
     <form className="EventFilter" action="" onSubmit={saveFormData}>
       <div className={filterWrapper}>
         <div className="EventFilter__field">
-          <Input
+          <DatePicker 
+            selected={startDate} 
+            onChange={(date: Date | null) => setStartDate(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate} 
+            minDate={new Date()}
+            showDisabledMonthNavigation
+            isClearable={true}
+            placeholderText="Дата от"
+            dateFormat="dd.MM.yyyy"
+          />
+          {/* <Input
             name="dateFrom"
             placeholder="Дата от"
             onChange={handleChange}
             onFocus={handleFocus}
             value={form.dateFrom}
-          />
+          /> */}
         </div>
         <div className="EventFilter__field">
-          <Input
+        <DatePicker 
+            selected={endDate} 
+            onChange={(date: Date | null) => setEndDate(date)} 
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            isClearable={true}
+            placeholderText="Дата до"
+            dateFormat="dd.MM.yyyy"
+          />
+          {/* <Input
             name="dateTo"
             placeholder="Дата до"
             onChange={handleChange}
             onFocus={handleFocus}
             value={form.dateTo}
-          />
+          /> */}
         </div>
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
