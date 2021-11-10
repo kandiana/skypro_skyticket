@@ -1,27 +1,5 @@
 const { Router } = require('express');
-
-const { imagesFolder } = require('./config');
-const { nanoid } = require('nanoid');
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, imagesFolder);
-  },
-  filename: function (req, file, cb) {
-    const imgName = `${nanoid()}.${file.mimetype.split('/')[1]}`;
-
-    req.body.img = {
-      name: imgName,
-      url: `${req.protocol}://${req.headers.host}/images/${imgName}`,
-      originalName: file.originalname,
-      mimetype: file.mimetype,
-    };
-    cb(null, req.body.img.name);
-  },
-});
-
-const upload = multer({ storage: storage });
+const { upload } = require('./utils');
 
 // router controllers
 const ping = require('./controllers/ping');

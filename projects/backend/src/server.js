@@ -8,13 +8,13 @@ const { imagesFolder } = require('./config');
 const { mainRouter, eventsRouter, ticketsRouter } = require('./routers');
 const app = express();
 
-// connecting to database and if we succeeded start listening to port (see config)
+// connect to database and (if succeeded) start listening to port (see config)
 let db;
 mongoClient(app).then((database) => {
   db = database;
 });
 
-// setting up middlewares
+// set up middlewares
 setupMiddlewares(app);
 
 app.use((req, _, next) => {
@@ -26,7 +26,7 @@ app.use((req, _, next) => {
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use('/images', express.static(imagesFolder));
 
-// setting up routes
+// set up routes
 app.use('/events', eventsRouter);
 app.use('/tickets', ticketsRouter);
 app.use('/', mainRouter);
