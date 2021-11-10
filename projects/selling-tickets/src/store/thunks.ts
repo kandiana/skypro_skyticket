@@ -5,10 +5,8 @@ import { RootState } from './store';
 
 export const fetchEventsShortData = () => {
   return async (dispatch: Dispatch, getState: () => RootState) => {
-    const storeData = getState();
-    console.log(storeData);
+    // const storeData = getState();
     const response = await axios.get('http://localhost:5000/events');
-    console.log('response', response);
 
     dispatch({ type: ARR_CARDS_ACTION, eventCards: response.data.events });
   };
@@ -16,10 +14,8 @@ export const fetchEventsShortData = () => {
 
 export const fetchEventPage = (id: string) => {
   return async (dispatch: Dispatch, getState: () => RootState) => {
-    const storeData = getState();
-    console.log(storeData);
+    // const storeData = getState();
     const response = await axios.get(`http://localhost:5000/events/${id}`);
-    console.log('response', response);
 
     dispatch({ type: EVENT_PAGE_ACTION, eventCard: response.data.event });
   };

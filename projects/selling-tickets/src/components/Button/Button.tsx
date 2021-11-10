@@ -4,6 +4,7 @@ import './Button.scss';
 
 export type props = {
   handleClick: () => void;
+  disabled: boolean;
   size?: 'S' | 'M' | 'L';
   color?: 'red' | 'blue';
 };
@@ -11,6 +12,7 @@ export type props = {
 export const Button: FC<props> = ({
   children,
   handleClick,
+  disabled,
   size = undefined,
   color = undefined,
 }) => {
@@ -25,7 +27,7 @@ export const Button: FC<props> = ({
   );
 
   return (
-    <button className={buttonClasses} onClick={handleClick}>
+    <button className={buttonClasses} onClick={handleClick} disabled={disabled}>
       {children}
     </button>
   );

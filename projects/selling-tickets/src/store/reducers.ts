@@ -26,16 +26,15 @@ export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
       };
 
     case ARR_CARDS_ACTION:
-      const newArrCards = [];
+      const allArrCards=[];
 
       for (let i = 0; i < action.eventCards.length; i++) {
-        newArrCards.push(action.eventCards[i]);
+        allArrCards.push(action.eventCards[i]);
       }
 
-      console.log(newArrCards);
       return {
         ...state,
-        cardsData: [...newArrCards],
+        cardsData: [...allArrCards],
       };
 
     case EVENT_PAGE_ACTION:

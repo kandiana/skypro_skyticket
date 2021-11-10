@@ -1,5 +1,4 @@
 import { FC, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
@@ -8,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import './EventFilter.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
 
 type EventFilterProps = {
   onSave: () => void;
@@ -16,7 +16,7 @@ type EventFilterProps = {
 };
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
-  const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
+  const EVENTS = ['Театр', 'Фестиваль', 'Спорт', 'Кино', 'Стендап', 'Экскурсия', 'Шоу', 'Дети'];
   const [startDate, setStartDate] = useState<Date|null>(null);
   const [endDate, setEndDate] = useState<Date|null>(null);
 
@@ -27,6 +27,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
 
   const filter = useSelector((state: RootState) => state.formData);
   console.log(filter);
+  
 
   const saveFormData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
