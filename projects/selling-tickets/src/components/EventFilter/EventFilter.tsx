@@ -1,11 +1,9 @@
 import { FC, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
 
 import './EventFilter.scss';
-import { RootState } from '../../store/store';
 
 type EventFilterProps = {
   onSave: () => void;
@@ -14,10 +12,7 @@ type EventFilterProps = {
 };
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
-  const EVENTS = ['Кино', 'Фестиваль', 'Концерт', 'Театр'];
-
-  const filter = useSelector((state: RootState) => state.formData);
-  console.log(filter);
+  const EVENTS = ['Театр', 'Фестиваль', 'Спорт', 'Кино', 'Стендап', 'Экскурсия', 'Шоу', 'Дети'];
 
   const saveFormData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
