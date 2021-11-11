@@ -1,0 +1,15 @@
+@import '/src/variables';
+
+.Button {
+  width: 100%;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: $font-size-normal;
+  border: 1px solid $color-gray;
+  border-radius: 5px;
+
+  &:focus {
+    color: white;
+    background-color: $color-gray;
+  }
+}

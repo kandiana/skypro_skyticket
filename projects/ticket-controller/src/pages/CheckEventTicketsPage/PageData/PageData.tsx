@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { checkEventTicket } from '../../../store/actions';
 import { EventDataType } from '../../../store/reducer';
+import { RootState } from '../../../store/store';
 
 import { EventData } from '../../../components/EventData/EventData';
-import { RootState } from '../../../store/store';
 
 import { ContinuousQrScanner } from 'react-webcam-qr-scanner.ts';
 import QRScanner from 'qr-scanner';
+
+import './PageData.scss';
 
 export type PageDataProps = {
   event: EventDataType;
@@ -47,13 +49,10 @@ export const PageData: FC<PageDataProps> = ({ event }) => {
   };
 
   return (
-    <div>
-      <EventData title={event.title} tickets={event.tickets} />
-      <p>
-        Ticket Id: <code>{qrCode}</code>
-      </p>
-      <ContinuousQrScanner onQrCode={setQrCode} style={{ height: '200px' }} />
-      <p>{showStatusMessage()}</p>
+    <div className="PageData">
+      <EventData event={event} />
+      <p className="PageData__status">Статус: {showStatusMessage()}</p>
+      <ContinuousQrScanner className="PageData__scanner" onQrCode={setQrCode} />
     </div>
   );
 };

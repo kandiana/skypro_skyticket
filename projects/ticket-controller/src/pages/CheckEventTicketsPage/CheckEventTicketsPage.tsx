@@ -1,10 +1,14 @@
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+
 import { getEventById, resetTicketsData } from '../../store/actions';
 import { RootState } from '../../store/store';
 
 import { PageData } from './PageData/PageData';
+import { Button } from '../../components/Button/Button';
+
+import './CheckEventTicketsPage.scss';
 
 type urlParams = {
   id: string;
@@ -39,9 +43,12 @@ export const CheckEventTicketsPage: FC = () => {
   };
 
   return (
-    <main>
-      {renderPageData()}
-      <button onClick={goBack}>Назад</button>
+    <main className="CheckEventTicketsPage">
+      <div className="container CheckEventTicketsPage__container">
+        <h1 className="visually-hidden">Проверка билетов</h1>
+        {renderPageData()}
+        <Button onClick={goBack}>Назад</Button>
+      </div>
     </main>
   );
 };

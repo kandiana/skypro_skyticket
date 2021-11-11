@@ -1,9 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { EventCard } from '../../components/EventCard/EventCard';
+
 import { getEvents } from '../../store/actions';
 import { EventDataType } from '../../store/reducer';
 import { RootState } from '../../store/store';
+
+import { EventCard } from '../../components/EventCard/EventCard';
+import { Loader } from '../../components/Loader/Loader';
 
 import './MainPage.scss';
 
@@ -43,13 +46,14 @@ export const MainPage: FC = () => {
         return 'Ошибка подключения к базе данных';
 
       default:
-        return 'Лоадер';
+        return <Loader />;
     }
   };
 
   return (
     <main className="MainPage">
       <div className="container">
+        <h1 className="visually-hidden">Ближайшие мероприятия</h1>
         <input
           className="MainPage__input"
           value={filter}
