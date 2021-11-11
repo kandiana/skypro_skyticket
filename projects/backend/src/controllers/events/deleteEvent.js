@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
     }
 
     // delete event image
-    deleteFile(imagesFolder, event.img.name);
+    deleteFile(imagesFolder, event.img.name, req.s3);
 
     res.send({ status: 'ok', eventId: id });
   } catch (err) {

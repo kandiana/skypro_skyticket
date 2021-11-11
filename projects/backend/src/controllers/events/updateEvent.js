@@ -16,10 +16,7 @@ module.exports = async (req, res) => {
 
     // if not found, delete uploaded file if there was one and send error
     if (!eventOld) {
-      if (req.body.img) {
-        deleteFile(imagesFolder, req.body.img.name);
-      }
-
+      deleteFile(imagesFolder, req.body.img.name, req.s3);
       res.send({ status: 'error', message: 'event not found' });
       return;
     }
@@ -56,7 +53,7 @@ module.exports = async (req, res) => {
         break;
 
       case 'img':
-        deleteFile(imagesFolder, eventOld.img.name);
+        deleteFile(imagesFolder, eventOld.img.name, req.s3);
         update[key] = value;
         break;
 
@@ -73,9 +70,7 @@ module.exports = async (req, res) => {
 
     // if nothing is modified, delete uploaded image and send error
     if (result.modifiedCount === 0) {
-      if (req.body.img) {
-        deleteFile(imagesFolder, req.body.img.name);
-      }
+      deleteFile(imagesFolder, req.body.img.name, req.s3);
 
       res.send({ status: 'error', message: 'nothing was modified' });
       return;

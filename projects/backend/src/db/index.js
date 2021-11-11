@@ -8,7 +8,9 @@ module.exports = async (app) => {
   try {
     client = await MongoClient.connect(DB_URL);
 
-    console.log(`MongoDB connected on ${DB_URL}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`MongoDB connected on ${DB_URL}`);
+    }
 
     app.listen(PORT, () => {
       console.log(`Server started on port ${PORT}`);
