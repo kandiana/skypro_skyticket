@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
   const sort = {};
   let { type, start, size } = req.query;
   const today = Date.now();
+  const twoHoursLater = today + 2 * 60 * 60 * 1000;
   const tomorrow = new Date().setHours(24, 0, 0, 0);
 
   // set query and sort parameters
@@ -36,7 +37,7 @@ module.exports = async (req, res) => {
 
     case 'today':
       query.endTimestamp = { $gt: today };
-      query.startTimestamp = { $lt: tomorrow };
+      query.startTimestamp = { $lt: Math.max(twoHoursLater, tomorrow) };
       sort.startTimeStamp = 1;
       sort.endTimestamp = 1;
       sort.created = 1;
