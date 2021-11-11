@@ -33,6 +33,7 @@
     "eslint-plugin-react": "7.26.1",
     "husky": "7.0.4",
     "prettier": "2.4.1",
+    "redux-devtools-extension": "^2.13.9",
     "stylelint": "14.0.0",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "23.0.0",

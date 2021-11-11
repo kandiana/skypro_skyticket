@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { CardsContainer} from '../../components/CardsContainer/CardsContainer';
+import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
 import { EventFilter } from '../../components/EventFilter/EventFilter';
 import { getFormFilter } from '../../store/actions';
 
@@ -12,6 +12,12 @@ export type FormType = {
   event: string;
 };
 
+export type BuyTicketType = {
+  id: string;
+  name: string;
+  ticket: [];
+};
+
 const EMPTY_FORM: FormType = {
   dateFrom: '',
   dateTo: '',
@@ -21,6 +27,7 @@ const EMPTY_FORM: FormType = {
 
 export const MainPage: FC = () => {
   const [form, setForm] = useState(EMPTY_FORM);
+  console.log('!!!', form);
 
   const dispatch = useDispatch();
 
@@ -30,7 +37,7 @@ export const MainPage: FC = () => {
 
   return (
     <div className="MainPage">
-      <EventFilter onSave={saveFilter} setForm={setForm} form={form}/>
+      <EventFilter onSave={saveFilter} setForm={setForm} form={form} />
       <CardsContainer />
     </div>
   );

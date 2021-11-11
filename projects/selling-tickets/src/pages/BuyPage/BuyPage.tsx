@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventImage } from '../../components/EventImage/EventImage';
@@ -12,6 +12,18 @@ import { EventLoader } from '../../components/EventLoader/EventLoader';
 import { EventDescription } from '../../components/EventDescription/EventDescription';
 
 import './BuyPage.scss';
+
+// export type FormBuyType = {
+//   nameBayer: string;
+//   countTicket: number;
+// };
+
+// const EMPTY_FORM: FormBuyType = {
+//   nameBayer: '',
+//   countTicket: 1,
+// };
+
+// const [form, setForm] = useState(EMPTY_FORM);
 
 type urlParams = {
   id: string;
