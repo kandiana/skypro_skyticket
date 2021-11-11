@@ -1,17 +1,31 @@
 import { FC } from 'react';
 import { useHistory } from 'react-router-dom';
+import { format } from 'date-fns';
+import { EventDataType } from '../../store/reducer';
 
-export type EvetnCardProps = {
-  id: string;
-  text: string;
+import './EventCard.scss';
+
+export type EventCardProps = {
+  event: EventDataType;
 };
 
-export const EventCard: FC<EvetnCardProps> = ({ id, text }) => {
+export const EventCard: FC<EventCardProps> = ({ event }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/event/${id}`);
+    history.push(`/event/${event._id}`);
   };
 
-  return <div onClick={handleClick}>{text}</div>;
+  const startTime = format(event.startTimestamp, 'dd.MM.yyyy, HH:mm');
+  const endTime = format(event.endTimestamp, 'dd.MM.yyyy, HH:mm');
+
+  return (
+    <div className="EventCard" onClick={handleClick}>
+      <h1 className="EventCard__title">{event.title}</h1>
+      <p className="EventCard__text">Город: {event.city}</p>
+      <p className="EventCard__text">Тип: {event.category}</p>
+      <p className="EventCard__text">Начало: {startTime}</p>
+      <p className="EventCard__text">Конец: {endTime}</p>
+    </div>
+  );
 };

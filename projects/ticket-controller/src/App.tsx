@@ -5,6 +5,7 @@ import { CheckEventTicketsPage } from './pages/CheckEventTicketsPage/CheckEventT
 import { MainPage } from './pages/MainPage/MainPage';
 
 import './App.scss';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <MainPage />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

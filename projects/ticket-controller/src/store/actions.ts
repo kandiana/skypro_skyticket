@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-// import { STATE_TYPE } from './reducer';
+
+const BACKEND_URL =
+  process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_BACK_URL
+    : process.env.REACT_APP_BACK_URL_LOCAL;
 
 export const GET_TODAYS_EVENTS_FROM_BD = 'GET_TODAYS_EVENTS_FROM_BD' as const;
 export const GET_EVENT_DATA_BY_ID = 'GET_EVENT_DATA_BY_ID' as const;
@@ -14,7 +18,7 @@ export const RESET_TICKETS_DATA = 'RESET_TICKETS_DATA' as const;
 export const getEvents = () => {
   return async (dispatch: Dispatch) => {
     try {
-      const response = await axios.get('http://localhost:5000/events?type=today');
+      const response = await axios.get(`${BACKEND_URL}/events?type=today`);
       dispatch({ type: GET_TODAYS_EVENTS_FROM_BD, data: response.data });
     } catch (err) {
       console.log(err);
@@ -26,7 +30,7 @@ export const getEvents = () => {
 export const getEventById = (id: string) => {
   return async (dispatch: Dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:5000/events/${id}`);
+      const response = await axios.get(`${BACKEND_URL}/events/${id}`);
       dispatch({ type: GET_EVENT_DATA_BY_ID, data: response.data });
     } catch (err) {
       console.log(err);
@@ -43,7 +47,7 @@ export type checkEventTicketProps = {
 export const checkEventTicket = (data: checkEventTicketProps) => {
   return async (dispatch: Dispatch) => {
     try {
-      const response = await axios.put(`http://localhost:5000/tickets/${data.ticketId}/check`, {
+      const response = await axios.put(`${BACKEND_URL}/tickets/${data.ticketId}/check`, {
         eventId: data.eventId,
       });
 

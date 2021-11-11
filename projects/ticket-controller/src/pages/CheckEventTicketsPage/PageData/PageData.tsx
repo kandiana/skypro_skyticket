@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { checkEventTicket } from '../../../store/actions';
-import { EventsDataShort } from '../../../store/reducer';
+import { EventDataType } from '../../../store/reducer';
 
 import { EventData } from '../../../components/EventData/EventData';
 import { RootState } from '../../../store/store';
@@ -11,7 +11,7 @@ import { ContinuousQrScanner } from 'react-webcam-qr-scanner.ts';
 import QRScanner from 'qr-scanner';
 
 export type PageDataProps = {
-  event: EventsDataShort;
+  event: EventDataType;
 };
 
 export const PageData: FC<PageDataProps> = ({ event }) => {

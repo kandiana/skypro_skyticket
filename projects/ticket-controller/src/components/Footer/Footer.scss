@@ -1,0 +1,13 @@
+@import '/src/variables';
+
+.Footer {
+  width: 100%;
+  padding: 10px 0;
+  background-color: $color-light-gray;
+
+  &__copy {
+    margin: 0;
+    font-size: $font-size-small;
+    text-align: center;
+  }
+}

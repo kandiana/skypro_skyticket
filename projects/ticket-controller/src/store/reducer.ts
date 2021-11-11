@@ -10,18 +10,19 @@ import {
   RESET_TICKETS_DATA,
 } from './actions';
 
-export type EventsDataShort = {
+export type EventDataType = {
   _id: string;
   img: { url: string };
   title: string;
   city: string;
   category: string;
   startTimestamp: Date;
+  endTimestamp: Date;
   tickets: { total: number; sold: number; checked: number };
 };
 
 export type Events = {
-  [key: string]: EventsDataShort;
+  [key: string]: EventDataType;
 };
 
 export type TicketData = {
@@ -74,7 +75,7 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
     case GET_TODAYS_EVENTS_FROM_BD:
       const events: Events = {};
 
-      action.data.events.forEach((event: EventsDataShort) => {
+      action.data.events.forEach((event: EventDataType) => {
         events[event._id] = { ...event };
       });
 
