@@ -23,7 +23,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   if (startDate)
   form.dateFrom = String(+new Date(startDate));
   if (endDate)
-  form.dateTo = String(+new Date(endDate));
+  form.dateTo = String(+new Date(endDate).setHours(24,0,0,0));
 
   const filter = useSelector((state: RootState) => state.formData);
   console.log(filter);

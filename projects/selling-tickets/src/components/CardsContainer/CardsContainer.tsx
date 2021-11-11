@@ -20,17 +20,11 @@ export type EventDataShort = {
   city: string;
   address: string;
   startTimestamp: Date;
+  endTimestamp: Date;
   tickets: { total: string };
 };
 
-const ELEMENTS = {
-  index: 0,
-  disabledNext: false, //работает
-  disabledPrevious: true, //работает
-};
-
 export const CardsContainer: FC = () => {
-  
   let filter = useSelector((state: RootState) => state.formData);
 
   const dispatch = useDispatch();
@@ -40,103 +34,96 @@ export const CardsContainer: FC = () => {
   }, [dispatch]);
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
+
+  const [index, setIndex] = useState(0);
   
-  const [Elements, setIndex] = useState(ELEMENTS);
-  const [Disabled, setDisabled] = useState(ELEMENTS);
-  
+  const finalCards: EventDataShort[] = [];
+
   const CARDS_PER_PAGE = 2;
 
-  const getNextIndex = () => {
-    return Elements.index + CARDS_PER_PAGE;
-  };
-  const getPreviousIndex = () => {
-    return Elements.index - CARDS_PER_PAGE;
-  };
-
   const disabledNextButton = () => {
-    if ( cardsData?.length === undefined || Elements.index + CARDS_PER_PAGE >= cardsData?.length - CARDS_PER_PAGE ) return true;
+    if (index >= finalCards?.length - CARDS_PER_PAGE) return true;
     return false;
   };
   const disabledPreviousButton = () => {
-    console.log(Elements.index);
-    if (Elements.index >= 0) return false;
-    return true;
+    if (index === 0) return true;
+    return false;
   };
 
-    const getNextCards = () => {
-      setIndex((prev) => ({
-        ...prev,
-        index: getNextIndex(),
-      }));
-    };
+  const getNextCards = () => {
+    setIndex((prev) => prev + CARDS_PER_PAGE);
+  };
 
-    const getDisabled = () => {
-      setDisabled((prev) => ({
-        ...prev,
-        disabledNext: disabledNextButton(),
-        disabledPrevious: disabledPreviousButton(),
-      }));
-    };
+  const getPreviousCards = () => {
+    setIndex((prev) => prev - CARDS_PER_PAGE);
+  };
 
-    const getPreviousCards = () => {
-      setIndex((prev) => ({
-        ...prev,
-        index: getPreviousIndex(),
-      }));
-    };
+  function getNewArr(
+    arr: EventDataShort[],
+    dateCardFrom: string,
+    dateCardTo: string,
+    categoryCard: string,
+    titleCard: string
+  ) {
 
-
-  function getNewArr(arr: EventDataShort[], categoryCard: string, titleCard: string) {
-    const result = [];
-
-    if (categoryCard === '' && titleCard === '') {
+    if (dateCardFrom === '' && categoryCard === '' && titleCard === '') {
       for (let i = 0; i < arr.length; i++) {
-        result.push(arr[i]);
+        finalCards.push(arr[i]);
       }
     }
     if (categoryCard !== '') {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].category.toLowerCase() === categoryCard) {
-          result.push(arr[i]);
+          finalCards.push(arr[i]);
         }
       }
     }
     if (titleCard !== '') {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].title.toLowerCase().includes(titleCard)) {
-          result.push(arr[i]);
+          finalCards.push(arr[i]);
         }
       }
     }
-    const arrCards = result.slice(Elements.index, Elements.index + 2);
+    if (dateCardFrom !== '') {
+      for (let i = 0; i < arr.length; i++) {
+        if(String(arr[i].startTimestamp) <= dateCardTo && String(arr[i].endTimestamp) >= dateCardFrom) {
+          finalCards.push(arr[i]);
+        }
+      }
+    }
+    const arrCards = finalCards.slice(index, index + 2);
 
     return arrCards;
   }
   return (
     <div className="CardsContainer">
-      <Button size="S" handleClick={() => { getPreviousCards(); getDisabled();}} disabled={Disabled.disabledPrevious}>
+      <Button size="S" handleClick={getPreviousCards} disabled={disabledPreviousButton()}>
         <FontAwesomeIcon icon={faMinus} />
       </Button>
       {cardsData === undefined ? (
         <EventLoader />
       ) : (
-        getNewArr(cardsData, filter.event, filter.search).map((card) => (
-          <EventCard
-            key={card._id}
-            _id={card._id}
-            category={card.category}
-            img={card.img}
-            title={card.title}
-            description={card.description}
-            city={card.city}
-            address={card.address}
-            startTimestamp={card.startTimestamp}
-            categoryOther={''}
-            tickets={{ total: '' }}
-          />
-        ))
+        getNewArr(cardsData, filter.dateFrom, filter.dateTo, filter.event, filter.search).map(
+          (card) => (
+            <EventCard
+              key={card._id}
+              _id={card._id}
+              category={card.category}
+              img={card.img}
+              title={card.title}
+              description={card.description}
+              city={card.city}
+              address={card.address}
+              startTimestamp={card.startTimestamp}
+              endTimestamp={card.endTimestamp}
+              categoryOther={''}
+              tickets={{ total: '' }}
+            />
+          )
+        )
       )}
-      <Button size="S" handleClick={() => { getNextCards(); getDisabled();}} disabled={Disabled.disabledNext}>
+      <Button size="S" handleClick={getNextCards} disabled={disabledNextButton()}>
         <FontAwesomeIcon icon={faPlus} />
       </Button>
     </div>
