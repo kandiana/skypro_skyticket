@@ -25,11 +25,12 @@ export type EventDataShort = {
 
 const ELEMENTS = {
   index: 0,
-  disabledNext: false,
-  disabledPrevious: true,
+  disabledNext: false, //работает
+  disabledPrevious: true, //работает
 };
 
 export const CardsContainer: FC = () => {
+  
   let filter = useSelector((state: RootState) => state.formData);
 
   const dispatch = useDispatch();
@@ -39,49 +40,51 @@ export const CardsContainer: FC = () => {
   }, [dispatch]);
 
   const cardsData = useSelector((state: RootState) => state.cardsData);
-
-  const CARDS_PER_PAGE = 2;
-
+  
   const [Elements, setIndex] = useState(ELEMENTS);
-
-  const getNextCards = () => {
-    setIndex((prev) => ({
-      ...prev,
-      disabledNext: disabledNextButton(),
-      index: getNextIndex(),
-      disabledPrevious: disabledPreviousButton(),
-    }));
-  };
+  const [Disabled, setDisabled] = useState(ELEMENTS);
+  
+  const CARDS_PER_PAGE = 2;
 
   const getNextIndex = () => {
     return Elements.index + CARDS_PER_PAGE;
   };
-  const disabledNextButton = () => {
-    if (
-      cardsData?.length === undefined ||
-      Elements.index + CARDS_PER_PAGE >= cardsData?.length - CARDS_PER_PAGE
-    )
-      return true;
-    return false;
-  };
-
-  const getPrevioustCards = () => {
-    setIndex((prev) => ({
-      ...prev,
-      disabledPrevious: disabledPreviousButton(),
-      index: getPreviousIndex(),
-      disabledNext: disabledNextButton(),
-    }));
-  };
-
   const getPreviousIndex = () => {
     return Elements.index - CARDS_PER_PAGE;
   };
+
+  const disabledNextButton = () => {
+    if ( cardsData?.length === undefined || Elements.index + CARDS_PER_PAGE >= cardsData?.length - CARDS_PER_PAGE ) return true;
+    return false;
+  };
   const disabledPreviousButton = () => {
     console.log(Elements.index);
-    if (Elements.index + CARDS_PER_PAGE > 0) return false;
+    if (Elements.index >= 0) return false;
     return true;
   };
+
+    const getNextCards = () => {
+      setIndex((prev) => ({
+        ...prev,
+        index: getNextIndex(),
+      }));
+    };
+
+    const getDisabled = () => {
+      setDisabled((prev) => ({
+        ...prev,
+        disabledNext: disabledNextButton(),
+        disabledPrevious: disabledPreviousButton(),
+      }));
+    };
+
+    const getPreviousCards = () => {
+      setIndex((prev) => ({
+        ...prev,
+        index: getPreviousIndex(),
+      }));
+    };
+
 
   function getNewArr(arr: EventDataShort[], categoryCard: string, titleCard: string) {
     const result = [];
@@ -111,7 +114,7 @@ export const CardsContainer: FC = () => {
   }
   return (
     <div className="CardsContainer">
-      <Button size="S" handleClick={getPrevioustCards} disabled={Elements.disabledPrevious}>
+      <Button size="S" handleClick={() => { getPreviousCards(); getDisabled();}} disabled={Disabled.disabledPrevious}>
         <FontAwesomeIcon icon={faMinus} />
       </Button>
       {cardsData === undefined ? (
@@ -133,7 +136,7 @@ export const CardsContainer: FC = () => {
           />
         ))
       )}
-      <Button size="S" handleClick={getNextCards} disabled={Elements.disabledNext}>
+      <Button size="S" handleClick={() => { getNextCards(); getDisabled();}} disabled={Disabled.disabledNext}>
         <FontAwesomeIcon icon={faPlus} />
       </Button>
     </div>
