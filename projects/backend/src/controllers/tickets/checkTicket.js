@@ -53,7 +53,9 @@ module.exports = async (req, res) => {
     }
 
     // check ticket
-    const ticketCheckResult = await db.tickets.updateOne(ticketFilter, { $set: { checked: true } });
+    const ticketCheckResult = await db.tickets.updateOne(ticketFilter, {
+      $set: { checked: true, checkDate: Date.now() },
+    });
 
     if (ticketCheckResult.modifiedCount === 0) {
       res.send({

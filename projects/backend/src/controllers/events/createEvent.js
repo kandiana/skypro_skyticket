@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
 
   // set tickets object
   req.body.tickets = {
-    total: Number(req.body.ticketsTotal),
+    total: Number(req.body.ticketsTotal) || 0,
     sold: 0,
     checked: 0,
   };

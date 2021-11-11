@@ -33,7 +33,11 @@ module.exports = async (req, res) => {
 
     if (ticketsLeft < number) {
       const phrase = ticketsLeft === 1 ? 'ticket is' : 'tickets are';
-      res.send({ status: 'error', message: `only ${ticketsLeft} ${phrase} left` });
+      res.send({
+        status: 'error',
+        message: `only ${ticketsLeft} ${phrase} left`,
+        ticketsLeft: ticketsLeft,
+      });
       return;
     }
   } catch (err) {
@@ -43,7 +47,7 @@ module.exports = async (req, res) => {
   }
 
   // set other tickets parameters
-  req.body.date = Date.now();
+  req.body.buyDate = Date.now();
   req.body.checked = false;
 
   try {
