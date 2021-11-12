@@ -48,7 +48,6 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const imgName = `${Date.now()}-${nanoid()}.${file.mimetype.split('/')[1]}`;
-    console.log('here');
 
     req.body.img = {
       name: imgName,

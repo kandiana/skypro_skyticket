@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server",
     "dev": "cross-env NODE_ENV=development nodemon src/server",
-    "prod": "npm run build && npm start",
+    "prod": "npm run build npm start",
     "build": "cross-env NODE_ENV=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -8,6 +8,10 @@ module.exports = async (req, res) => {
 
   let eventOld, filter;
 
+  if (!req.body.img) {
+    req.body.img = {};
+  }
+
   // look for needed item in bd
   try {
     filter = { _id: new ObjectId(id) };
