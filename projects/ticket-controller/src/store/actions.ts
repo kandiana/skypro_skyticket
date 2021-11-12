@@ -11,6 +11,7 @@ export const GET_EVENT_DATA_BY_ID = 'GET_EVENT_DATA_BY_ID' as const;
 export const GET_EVENTS_DATA_FROM_BD_ERROR = 'GET_EVENTS_DATA_FROM_BD_ERROR' as const;
 
 export const CHECK_EVENT_TICKET = 'CHECK_EVENT_TICKET' as const;
+export const CHECK_EVENT_TICKET_START = 'CHECK_EVENT_TICKET_START' as const;
 export const CHECK_EVENT_TICKET_ERROR = 'CHECK_EVENT_TICKET_ERROR' as const;
 export const CHECK_EVENT_TICKET_REQUEST_ERROR = 'CHECK_EVENT_TICKET_REQUEST_ERROR' as const;
 export const RESET_TICKETS_DATA = 'RESET_TICKETS_DATA' as const;
@@ -44,8 +45,14 @@ export type checkEventTicketProps = {
   ticketId: string;
 };
 
+let timer: ReturnType<typeof setTimeout>;
+
 export const checkEventTicket = (data: checkEventTicketProps) => {
+  clearTimeout(timer);
+
   return async (dispatch: Dispatch) => {
+    dispatch({ type: CHECK_EVENT_TICKET_START });
+
     try {
       const response = await axios.put(`${BACKEND_URL}/tickets/${data.ticketId}/check`, {
         eventId: data.eventId,
@@ -63,6 +70,10 @@ export const checkEventTicket = (data: checkEventTicketProps) => {
       console.log(err);
       dispatch({ type: CHECK_EVENT_TICKET_REQUEST_ERROR, error: err });
     }
+
+    timer = setTimeout(() => {
+      dispatch(resetTicketsData());
+    }, 5000);
   };
 };
 

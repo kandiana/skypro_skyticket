@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { checkEventTicket } from '../../../store/actions';
+import { checkEventTicket, resetTicketsData } from '../../../store/actions';
 import { EventDataType } from '../../../store/reducer';
 import { RootState } from '../../../store/store';
 
 import { EventData } from '../../../components/EventData/EventData';
-
+import { ScanResult } from '../../../components/ScanResult/ScanResult';
 import { ContinuousQrScanner } from 'react-webcam-qr-scanner.ts';
 import QRScanner from 'qr-scanner';
 
@@ -18,40 +18,23 @@ export type PageDataProps = {
 
 export const PageData: FC<PageDataProps> = ({ event }) => {
   const dispatch = useDispatch();
-  const ticketData = useSelector((state: RootState) => state.tickets);
+  const scanResult = useSelector((state: RootState) => state.tickets);
   const [qrCode, setQrCode] = useState('');
   QRScanner.WORKER_PATH = '/qr-scanner-worker.min.js';
 
   useEffect(() => {
     if (qrCode === '') {
+      dispatch(resetTicketsData());
       return;
     }
 
     dispatch(checkEventTicket({ eventId: event._id, ticketId: qrCode }));
   }, [dispatch, event._id, qrCode]);
 
-  const showStatusMessage = () => {
-    if (ticketData.status === 'error') {
-      return 'Некорректный запрос';
-    }
-
-    switch (ticketData.data?.status) {
-      case 'ok':
-        return 'Успех';
-
-      case 'error':
-        console.log(ticketData.data);
-        return ticketData.data.messageRus;
-
-      default:
-        return;
-    }
-  };
-
   return (
     <div className="PageData">
       <EventData event={event} />
-      <p className="PageData__status">Статус: {showStatusMessage()}</p>
+      <ScanResult scanResult={scanResult} />
       <ContinuousQrScanner className="PageData__scanner" onQrCode={setQrCode} />
     </div>
   );

@@ -8,6 +8,7 @@ import {
   CHECK_EVENT_TICKET_ERROR,
   CHECK_EVENT_TICKET_REQUEST_ERROR,
   RESET_TICKETS_DATA,
+  CHECK_EVENT_TICKET_START,
 } from './actions';
 
 export type EventDataType = {
@@ -142,6 +143,18 @@ export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_T
           },
         },
       };
+
+    case CHECK_EVENT_TICKET_START: {
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          status: 'waiting',
+          message: undefined,
+          data: undefined,
+        },
+      };
+    }
 
     case CHECK_EVENT_TICKET_ERROR:
       return {
