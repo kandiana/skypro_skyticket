@@ -1,12 +1,10 @@
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button } from '../../components/Button/Button';
-import { CardsContainer } from '../../components/CardsContainer/CardsContainer';
+import { CardsContainer} from '../../components/CardsContainer/CardsContainer';
 import { EventFilter } from '../../components/EventFilter/EventFilter';
 import { getFormFilter } from '../../store/actions';
 
 import './MainPage.scss';
-
 export type FormType = {
   dateFrom: string;
   dateTo: string;
@@ -23,7 +21,6 @@ const EMPTY_FORM: FormType = {
 
 export const MainPage: FC = () => {
   const [form, setForm] = useState(EMPTY_FORM);
-  console.log('!!!', form)
 
   const dispatch = useDispatch();
 
@@ -31,15 +28,10 @@ export const MainPage: FC = () => {
     dispatch(getFormFilter(form));
   };
 
-  const handleClick = () => {
-    console.log('click');
-  };
-
   return (
     <div className="MainPage">
       <EventFilter onSave={saveFilter} setForm={setForm} form={form}/>
       <CardsContainer />
-      <Button handleClick={handleClick}>Купить</Button>
     </div>
   );
 };

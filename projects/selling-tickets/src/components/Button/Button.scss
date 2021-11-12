@@ -15,12 +15,9 @@
     border-color: $dark-gray;
   }
 
-  &:last-child {
-    margin: 0;
-  }
-
   &_small {
     min-width: 20px;
+    max-height: 30px;
     padding: 3px;
     font-size: $font-size-small;
     border-radius: 5px;

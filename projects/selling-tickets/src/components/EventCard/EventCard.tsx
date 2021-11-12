@@ -13,6 +13,7 @@ export const EventCard: FC<EventDataShort> = ({
   title,
   img,
   startTimestamp,
+  endTimestamp,
   _id,
   category,
   tickets,

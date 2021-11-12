@@ -19,7 +19,6 @@ type urlParams = {
 
 export const EventPage: FC = () => {
   let { id } = useParams<urlParams>();
-  console.log(id);
 
   const dispatch = useDispatch();
 
@@ -28,7 +27,6 @@ export const EventPage: FC = () => {
   }, [dispatch, id]);
 
   const cardData = useSelector((state: RootState) => state.cardData);
-  console.log(cardData);
 
   return (
     <div className="EventPage">
