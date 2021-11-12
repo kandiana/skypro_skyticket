@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getEvents } from '../../store/actions';
-import { EventDataType } from '../../store/reducer';
+import { getEvents } from '../../store/thunk/events';
+import { EventDataShortType } from '../../store/store.types';
 import { RootState } from '../../store/store';
 
 import { EventCard } from '../../components/EventCard/EventCard';
@@ -23,11 +23,11 @@ export const MainPage: FC = () => {
     setFilter(event.currentTarget.value);
   };
 
-  const getEventsArray = (): EventDataType[] => {
+  const getEventsArray = (): EventDataShortType[] => {
     return Object.keys(eventsData.data).map((id: string) => eventsData.data[id]);
   };
 
-  const filterEventsData = (array: EventDataType[]) => {
+  const filterEventsData = (array: EventDataShortType[]) => {
     return array.filter((event) => event.title.includes(filter));
   };
 

@@ -1,8 +1,9 @@
 import { FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { checkEventTicket, resetTicketsData } from '../../../store/actions';
-import { EventDataType } from '../../../store/reducer';
+import { checkEventTicket } from '../../../store/thunk/tickets';
+import { resetTicketsData } from '../../../store/actions';
+import { EventDataType } from '../../../store/store.types';
 import { RootState } from '../../../store/store';
 
 import { EventData } from '../../../components/EventData/EventData';

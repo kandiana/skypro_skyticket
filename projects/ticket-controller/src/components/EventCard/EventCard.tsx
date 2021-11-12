@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { format } from 'date-fns';
-import { EventDataType } from '../../store/reducer';
+import { EventDataShortType } from '../../store/store.types';
 
 import './EventCard.scss';
 
 export type EventCardProps = {
-  event: EventDataType;
+  event: EventDataShortType;
 };
 
 export const EventCard: FC<EventCardProps> = ({ event }) => {

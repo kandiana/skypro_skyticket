@@ -1,5 +1,3 @@
-import { AnyAction } from 'redux';
-
 import {
   GET_TODAYS_EVENTS_FROM_BD,
   GET_EVENT_DATA_BY_ID,
@@ -9,57 +7,10 @@ import {
   CHECK_EVENT_TICKET_REQUEST_ERROR,
   RESET_TICKETS_DATA,
   CHECK_EVENT_TICKET_START,
+  RootAction,
 } from './actions';
 
-export type EventDataType = {
-  _id: string;
-  img: { url: string };
-  title: string;
-  city: string;
-  category: string;
-  startTimestamp: Date;
-  endTimestamp: Date;
-  tickets: { total: number; sold: number; checked: number };
-};
-
-export type Events = {
-  [key: string]: EventDataType;
-};
-
-export type TicketData = {
-  _id: string;
-  eventId: string;
-  buyer: string;
-  date: number;
-  checked: boolean;
-  number: number;
-};
-
-export type CheckTicketSuccessData = {
-  status: 'ok';
-  ticket: TicketData;
-  ticketsChecked: string | number;
-  ticketsSold: number;
-};
-
-export type CheckTicketErrorData = {
-  status: 'error';
-  message: string;
-  messageRus: string;
-};
-
-export type STATE_TYPE = {
-  events: {
-    status: string;
-    data: Events;
-    message?: string;
-  };
-  tickets: {
-    status: string;
-    data?: CheckTicketSuccessData | CheckTicketErrorData;
-    message?: string;
-  };
-};
+import { EventDataType, Events, STATE_TYPE } from './store.types';
 
 const INITIAL_STATE: STATE_TYPE = {
   events: {
@@ -71,7 +22,7 @@ const INITIAL_STATE: STATE_TYPE = {
   },
 };
 
-export const eventsReducer = (state = INITIAL_STATE, action: AnyAction): STATE_TYPE => {
+export const eventsReducer = (state = INITIAL_STATE, action: RootAction): STATE_TYPE => {
   switch (action.type) {
     case GET_TODAYS_EVENTS_FROM_BD:
       const events: Events = {};

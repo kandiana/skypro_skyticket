@@ -2,11 +2,13 @@ import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { getEventById, resetTicketsData } from '../../store/actions';
+import { getEventById } from '../../store/thunk/events';
+import { resetTicketsData } from '../../store/actions';
 import { RootState } from '../../store/store';
 
 import { PageData } from './PageData/PageData';
 import { Button } from '../../components/Button/Button';
+import { Loader } from '../../components/Loader/Loader';
 
 import './CheckEventTicketsPage.scss';
 
@@ -30,6 +32,15 @@ export const CheckEventTicketsPage: FC = () => {
   };
 
   const renderPageData = () => {
+    // we need this property to render data
+    if (eventsData.data[id] && !('checked' in eventsData.data[id]?.tickets)) {
+      return (
+        <div className="CheckEventTicketsPage_stretched">
+          <Loader />
+        </div>
+      );
+    }
+
     switch (eventsData.status) {
       case 'ok':
         return <PageData event={eventsData.data[id]} />;
@@ -38,7 +49,11 @@ export const CheckEventTicketsPage: FC = () => {
         return 'Ошибка подключения к базе данных';
 
       default:
-        return 'Лоадер';
+        return (
+          <div className="CheckEventTicketsPage_stretched">
+            <Loader />
+          </div>
+        );
     }
   };
 

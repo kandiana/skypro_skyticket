@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { EventDataType } from '../../store/reducer';
+import { EventDataType } from '../../store/store.types';
 import { format } from 'date-fns';
 
 import './EvendData.scss';

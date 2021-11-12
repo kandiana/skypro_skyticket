@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 
-import { CheckTicketErrorData, CheckTicketSuccessData } from '../../store/reducer';
+import { CheckTicketErrorData, CheckTicketSuccessData } from '../../store/store.types';
 
 import { Loader } from '../Loader/Loader';
 
