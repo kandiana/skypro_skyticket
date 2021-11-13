@@ -2,14 +2,14 @@ import { FC } from 'react';
 
 import './Footer.scss';
 
-export type HeaderProps = {
+export type FooterProps = {
   title: string;
 };
 
-export const Footer: FC<HeaderProps> = ({ title }) => {
+export const Footer: FC<FooterProps> = ({ title }) => {
   return (
-    <header className="Footer">
+    <footer className="Footer">
       <div className="Footer__title">{title}</div>
-    </header>
+    </footer>
   );
 };
