@@ -2,7 +2,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
   height: 100%;
+}
+
+.container {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
 }
 
 .hidden {

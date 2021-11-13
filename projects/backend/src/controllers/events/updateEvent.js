@@ -8,6 +8,10 @@ module.exports = async (req, res) => {
 
   let eventOld, filter;
 
+  if (!req.body.img) {
+    req.body.img = {};
+  }
+
   // look for needed item in bd
   try {
     filter = { _id: new ObjectId(id) };
@@ -34,6 +38,10 @@ module.exports = async (req, res) => {
   for (const key of Object.keys(req.body)) {
     const value = req.body[key];
 
+    if (value === '') {
+      continue;
+    }
+
     switch (key) {
       case 'categoryOther':
         if (value === '') {
@@ -58,9 +66,7 @@ module.exports = async (req, res) => {
         break;
 
       default:
-        if (value !== '') {
-          update[key] = value;
-        }
+        update[key] = value;
         break;
     }
   }

@@ -1,0 +1,21 @@
+{
+  "author": "donatello",
+  "short_name": "SkyControl",
+  "name": "SkyTicket: tickets controller",
+  "icons": [
+    {
+      "src": "/public/ticket-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/public/ticket-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "minimal-ui",
+  "orientation": "portrait",
+  "description": "SkyTicket app for checking tickets"
+}

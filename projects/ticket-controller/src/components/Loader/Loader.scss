@@ -1,0 +1,55 @@
+@import '/src/variables';
+
+.Loader {
+  position: relative;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 5px auto;
+  color: $color-gray;
+  background-color: $color-gray;
+  border-radius: 5px;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    color: $color-gray;
+    background-color: $color-gray;
+    border-radius: 5px;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0s;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    color: $color-gray;
+    background-color: $color-gray;
+    border-radius: 5px;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: $color-gray;
+  }
+
+  60%,
+  100% {
+    background-color: $color-white;
+  }
+}

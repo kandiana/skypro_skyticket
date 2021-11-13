@@ -1,0 +1,14 @@
+@import '/src/variables';
+
+.Header {
+  position: sticky;
+  width: 100%;
+  padding: 10px 0;
+  font-size: $font-size-xlarge;
+
+  &__time {
+    margin: 0;
+    font-size: $font-size-normal;
+    text-align: right;
+  }
+}

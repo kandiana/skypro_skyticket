@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
       res.send({
         status: 'error',
         message: 'ticket is already checked',
-        messageRus: 'Билет уже отмечен',
+        messageRus: 'Билет уже был проверен',
       });
       return;
     }

@@ -1,6 +1,11 @@
 const fs = require('fs');
 
 module.exports = (folder, name, s3) => {
+  if (!name) {
+    console.log(`no image to delete`);
+    return;
+  }
+
   if (process.env.NODE_ENV === 'production') {
     s3.deleteObject(
       {

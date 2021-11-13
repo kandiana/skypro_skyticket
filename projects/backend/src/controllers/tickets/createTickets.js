@@ -65,7 +65,7 @@ module.exports = async (req, res) => {
 
     // find all created tickets
     const query = {
-      date: { $eq: req.body.date },
+      buyDate: { $eq: req.body.buyDate },
     };
 
     const ticketsCreated = await db.tickets.find(query).toArray();

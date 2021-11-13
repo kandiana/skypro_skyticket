@@ -3,6 +3,10 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = async (req, res) => {
   const db = req.db;
 
+  if (!req.body.img) {
+    req.body.img = {};
+  }
+
   // categoryOther is saved only when not empty
   if (req.body.categoryOther === '') {
     delete req.body.categoryOther;
