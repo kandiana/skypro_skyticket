@@ -13,7 +13,6 @@ const SidebarContent = (props) => {
         <li>
           <Link to="/dashboard" className="waves-effect">
             <i className="ti-home"></i>
-            {/* <span className="badge badge-pill badge-primary float-right">2</span> */}
             <span>Главная страница</span>
           </Link>
         </li>
@@ -30,96 +29,6 @@ const SidebarContent = (props) => {
             <i className="ti-save"></i>
             <span>Архив</span>
           </Link>
-        </li>
-
-        <li className="menu-title"></li>
-        <li className="menu-title">тут будут фичи</li>
-        <li>
-          <Link to="/#" className="has-arrow waves-effect">
-            <i className="ti-archive"></i>
-            <span> Authentication </span>
-          </Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to="pages-login-2">Login 2</Link>
-            </li>
-            <li>
-              <Link to="pages-register-2">Register 2</Link>
-            </li>
-            <li>
-              <Link to="pages-recoverpw-2">Recover Password 2</Link>
-            </li>
-            <li>
-              <Link to="pages-lock-screen-2">Lock Screen 2</Link>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <Link to="/#" className="has-arrow waves-effect">
-            <i className="ti-support"></i>
-            <span> Extra Pages </span>
-          </Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to="pages-timeline">Timeline</Link>
-            </li>
-            <li>
-              <Link to="pages-invoice">Invoice</Link>
-            </li>
-            <li>
-              <Link to="pages-directory">Directory</Link>
-            </li>
-            <li>
-              <Link to="pages-blank">Blank Page</Link>
-            </li>
-            <li>
-              <Link to="pages-404">Error 404</Link>
-            </li>
-            <li>
-              <Link to="pages-500">Error 500</Link>
-            </li>
-            <li>
-              <Link to="pages-pricing">Pricing</Link>
-            </li>
-            <li>
-              <Link to="pages-gallery">Gallery</Link>
-            </li>
-            <li>
-              <Link to="pages-maintenance">Maintenance</Link>
-            </li>
-            <li>
-              <Link to="pages-comingsoon">Coming Soon</Link>
-            </li>
-            <li>
-              <Link to="pages-faq">FAQs</Link>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <Link to="/#" className="has-arrow waves-effect">
-            <i className="ti-more"></i>
-            <span>Multi Level</span>
-          </Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to="/#">Level 1.1</Link>
-            </li>
-            <li>
-              <Link to="/#" className="has-arrow">
-                Level 1.2
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="/#">Level 2.1</Link>
-                </li>
-                <li>
-                  <Link to="/#">Level 2.2</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>

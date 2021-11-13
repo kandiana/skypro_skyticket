@@ -97,14 +97,6 @@ class TopBar extends Component {
                   </span>
                 </Link>
               </div>
-              <button
-                type="button"
-                onClick={this.toggleMenu}
-                className="btn btn-sm px-3 font-size-24 header-item waves-effect"
-                id="vertical-menu-btn"
-              >
-                <i className="mdi mdi-menu"></i>
-              </button>
 
               <div className="d-none d-sm-block">
                 <Dropdown
