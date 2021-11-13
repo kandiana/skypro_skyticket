@@ -3,7 +3,7 @@
 .Button {
   min-width: 100px;
   margin-bottom: 5px;
-  background-color: $light-gray;
+  background-color: $dark-gray;
   border: 2px solid transparent;
   cursor: pointer;
 
@@ -28,6 +28,7 @@
     min-width: 50px;
     padding: 5px 8px;
     font-size: $font-size-normal;
+    color: $yellow;
     border-radius: 10px;
     border-width: 2px;
   }
@@ -44,8 +45,8 @@
     background-color: $light-blue;
 
     &:hover {
-      color: white;
-      fill: white;
+      color: $white;
+      fill: $white;
       background-color: $blue;
     }
 
@@ -58,8 +59,8 @@
     background-color: $light-red;
 
     &:hover {
-      color: white;
-      fill: white;
+      color: $white;
+      fill: $white;
       background-color: $red;
     }
 
