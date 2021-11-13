@@ -34,7 +34,7 @@
     "@types/jest": "26.0.24",
     "@types/node": "12.20.36",
     "@types/react": "17.0.33",
-    "@types/react-datepicker": ".1.7",
+    "@types/react-datepicker": "file:.1.7",
     "@types/react-dom": "17.0.10",
     "@types/react-router-dom": "5.3.2",
     "axios": "0.24.0",
@@ -48,14 +48,9 @@
     "react-redux": "7.2.6",
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
-<<<<<<< HEAD
     "redux": "4.1.2",
-    "redux-thunk": "2.4.0",
-=======
-    "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
->>>>>>> 7bdd2a7 (Work store)
     "web-vitals": "1.1.2"
   },
   "dependencies": {

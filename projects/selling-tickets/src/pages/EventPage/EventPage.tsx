@@ -39,14 +39,6 @@ export const EventPage: FC = () => {
     dispatch(fetchEventPage(id));
   }, [dispatch, id]);
 
-  // useEffect(() => {
-  //   dispatch(fetchBuytPage(id, form.countTicket, form.nameBayer));
-  // }, [dispatch, form.countTicket, form.nameBayer, id]);
-
-  // const ticketData = useSelector((state: RootState['ticketBuyRedusor']) => state);
-
-  // console.log('ticketData Event page: ', ticketData);
-
   const cardData = useSelector((state: RootState) => state.reducer.cardData);
 
   const handleChange = useCallback((e) => {
@@ -69,52 +61,42 @@ export const EventPage: FC = () => {
       {cardData === undefined ? (
         <EventLoader />
       ) : (
-<<<<<<< HEAD
         <div className="EventPage">
           <div className="EventPage__image">
             <EventImage imagePath={cardData.img.url} />
           </div>
           <div className="EventPage__info">
             <EventTitle title={cardData.title} />
+            <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
+              <div
+                style={{
+                  width: '1000px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Input
+                  name="nameBayer"
+                  placeholder={'Введите свое имя'}
+                  onChange={handleChange}
+                  value={form.nameBayer}
+                  onFocus={() => {}}
+                />
+                <Input
+                  name="countTicket"
+                  placeholder={''}
+                  onChange={handleChange}
+                  value={form.countTicket}
+                  onFocus={() => {}}
+                />
+                <button type="submit">Купить</button>
+              </div>
+            </form>
             <EventDescription description={cardData.description} />
             <EventCity city={cardData.city} />
             <EventAddress address={cardData.address} />
             <EventDate date={cardData.startTimestamp} />
           </div>
-=======
-        <div>
-          <EventImage imagePath={cardData.img.url} />
-          <EventTitle title={cardData.title} />
-          <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
-            <div
-              style={{
-                width: '1000px',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Input
-                name="nameBayer"
-                placeholder={'Введите свое имя'}
-                onChange={handleChange}
-                value={form.nameBayer}
-                onFocus={() => {}}
-              />
-              <Input
-                name="countTicket"
-                placeholder={''}
-                onChange={handleChange}
-                value={form.countTicket}
-                onFocus={() => {}}
-              />
-              <button type="submit">Купить</button>
-            </div>
-          </form>
-          <EventDescription description={cardData.description} />
-          <EventCity city={cardData.city} />
-          <EventAddress address={cardData.address} />
-          <EventDate date={cardData.startTimestamp} />
->>>>>>> c5f53b5 (Last Night)
         </div>
       )}
     </div>

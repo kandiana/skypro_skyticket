@@ -2,16 +2,13 @@ import { FC, useState, useCallback } from 'react';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
-import DatePicker, { registerLocale  } from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 
 import './EventFilter.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-<<<<<<< HEAD
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
 import { ru } from 'date-fns/locale';
-=======
->>>>>>> 42f6d72 (fix problem type)
 
 type EventFilterProps = {
   onSave: () => void;
@@ -24,7 +21,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  registerLocale("ru", ru);
+  registerLocale('ru', ru);
 
   if (startDate) form.dateFrom = String(+new Date(startDate));
   if (endDate) form.dateTo = String(+new Date(endDate).setHours(24, 0, 0, 0));
@@ -88,7 +85,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             minDate={new Date()}
             showDisabledMonthNavigation
             isClearable={true}
-            locale='ru'
+            locale="ru"
             placeholderText="Дата от"
             dateFormat="dd.MM.yyyy"
           />
@@ -102,7 +99,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             endDate={endDate}
             minDate={startDate}
             isClearable={true}
-            locale='ru'
+            locale="ru"
             placeholderText="Дата до"
             dateFormat="dd.MM.yyyy"
           />
@@ -110,7 +107,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
         </div>
-        <div className='EventFilter__search'>
+        <div className="EventFilter__search">
           <div className="EventFilter__field">
             <Input
               name="search"

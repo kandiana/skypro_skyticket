@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
@@ -63,3 +62,7 @@ export const BuyPage: FC = () => {
     </div>
   );
 };
+function useEffect(arg0: () => void, arg1: (string | import("redux").Dispatch<any>)[]) {
+  throw new Error('Function not implemented.');
+}
+
