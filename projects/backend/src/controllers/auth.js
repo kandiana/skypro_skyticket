@@ -1,5 +1,6 @@
 const fs = require('fs');
-const { usersFolder } = require('../config');
+const { usersFolder, LOGOUT_TIMEOUT, timers } = require('../config');
+const { logout } = require('../utils');
 
 module.exports = async (req, res) => {
   const db = req.db;
@@ -21,6 +22,13 @@ module.exports = async (req, res) => {
     }
 
     await db.users.updateOne(filter, { $set: { logged: true } });
+
+    const timer = setTimeout(() => {
+      console.log('2');
+      logout(db);
+    }, LOGOUT_TIMEOUT);
+
+    timers.push(timer);
 
     fs.writeFileSync(`${usersFolder}/login.txt`, login);
 

@@ -2,7 +2,7 @@ const { isLogged } = require('../../utils');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = async (req, res) => {
-  const login = await isLogged(req);
+  const login = await isLogged(req.db);
 
   if (!login) {
     res.redirect('/');

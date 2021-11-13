@@ -1,6 +1,6 @@
 const fs = require('fs');
-const { usersFolder, LOGOUT_TIMEOUT, timers } = require('../config');
-const logout = require('./logout');
+const deleteFile = require('./deleteFile');
+const { usersFolder } = require('../config');
 
 module.exports = async (db) => {
   const userPath = `${usersFolder}/login.txt`;
@@ -16,22 +16,14 @@ module.exports = async (db) => {
 
     const user = await db.users.findOne(filter);
 
-    if (!user?.logged) {
+    if (!user || user.logged === false) {
       return;
     }
 
-    clearTimeout(timers.pop());
+    await db.users.updateOne(filter, { $set: { logged: false } });
 
-    const timer = setTimeout(() => {
-      console.log('1');
-      logout(db);
-    }, LOGOUT_TIMEOUT);
-
-    timers.push(timer);
-
-    return login;
+    deleteFile(usersFolder, 'login.txt');
   } catch (err) {
     console.log(err);
-    return;
   }
 };
