@@ -40,12 +40,12 @@ export const EventPage: FC = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    dispatch(fetchBuytPage('618bcae07c9cbfe02881bfb4', '3', '3333333'));
+    dispatch(fetchBuytPage('618e6673c961bec6eb005280', '2', '3333333'));
   }, [dispatch]);
 
   const ticketData = useSelector((state: RootState['ticketBuyRedusor']) => state);
 
-  console.log('ticketData', ticketData);
+  console.log('ticketData Event page: ', ticketData);
 
   const cardData = useSelector((state: RootState) => state.reducer.cardData);
 

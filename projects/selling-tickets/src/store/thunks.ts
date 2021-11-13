@@ -28,7 +28,7 @@ export const fetchBuytPage = (id: string, number: string, buyerName: string) => 
       number: number,
       buyer: buyerName,
     });
-    console.log('response post ---------------------', response);
-    dispatch({ type: BUY_TICKET_ACTION, formTicket: response.data.event });
+    console.log('RESPONSE PORT::::::::', response);
+    dispatch({ type: BUY_TICKET_ACTION, formTicket: response.data.tickets });
   };
 };

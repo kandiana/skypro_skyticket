@@ -13,11 +13,14 @@ export type FormType = {
   event: string;
 };
 
-export type BuyTicketType = {
-  id: string;
-  name: string;
-  ticket: [];
-};
+export type BuyTicketType = [
+  {
+    _id: string;
+    eventId: string;
+    buyer: string;
+    ticket: [];
+  }
+];
 
 const EMPTY_FORM: FormType = {
   dateFrom: '',

@@ -47,8 +47,14 @@
     "react-redux": "7.2.6",
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
+<<<<<<< HEAD
     "redux": "4.1.2",
     "redux-thunk": "2.4.0",
+=======
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.0",
+>>>>>>> 7bdd2a7 (Work store)
     "web-vitals": "1.1.2"
   },
   "dependencies": {
