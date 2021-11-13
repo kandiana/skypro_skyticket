@@ -41,12 +41,14 @@ export const BuyPage: FC = () => {
       ) : (
         <div>
           <h1>Ваши билеты:</h1>
-          {ticketData === undefined ? (
+          {ticketData.ticket === [] ? (
             <EventLoader />
           ) : (
-            <div style={{ padding: '10px 20px', display: 'inline-block' }}>
-              <QRCode value="http://facebook.github.io/react/" renderAs="svg" />
-            </div>
+            ticketData.ticket.map((oneTicket) => (
+              <div key={oneTicket} style={{ padding: '10px 20px', display: 'inline-block' }}>
+                <QRCode value={oneTicket} renderAs="svg" />
+              </div>
+            ))
           )}
           <h2>Информация о событии:</h2>
           <div style={{ border: '1px solid black', padding: '0 20px 0 20px', maxWidth: '1000px' }}>
