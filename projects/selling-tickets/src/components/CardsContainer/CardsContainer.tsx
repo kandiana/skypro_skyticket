@@ -39,7 +39,7 @@ export const CardsContainer: FC = () => {
 
   const finalCards: EventDataShort[] = [];
 
-  const CARDS_PER_PAGE = 5;
+  const CARDS_PER_PAGE = 4;
 
   const disabledNextButton = () => {
     if (index >= finalCards?.length - CARDS_PER_PAGE) return true;
@@ -101,7 +101,9 @@ export const CardsContainer: FC = () => {
   return (
     <div className="CardsContainer">
       <div className="CardsContainer__Cards">
-        {cardsData === undefined ? (
+        {!cardsData ? (
+          <p className="CardsContainer__text">Подходящих мероприятий нет</p>
+        ) : cardsData === undefined ? (
           <EventLoader />
         ) : (
           getNewArr(cardsData, filter.dateFrom, filter.dateTo, filter.event, filter.search).map(

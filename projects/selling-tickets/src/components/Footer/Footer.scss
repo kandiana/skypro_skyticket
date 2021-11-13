@@ -1,0 +1,15 @@
+@import '/src/variables';
+
+.Footer {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  background-color: $dark-gray;
+
+  &__title {
+    font-size: 14px;
+    color: $white;
+  }
+}
