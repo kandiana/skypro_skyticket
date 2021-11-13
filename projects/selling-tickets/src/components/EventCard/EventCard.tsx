@@ -5,7 +5,6 @@ import { EventTitle } from '../EventTitle/EventTitle';
 import { EventDate } from '../EventDate/EventDate';
 import { EventDataShort } from '../CardsContainer/CardsContainer';
 import { EventCity } from '../EventCity/EventCity';
-import { EventAddress } from '../EventAddress/EventAddress';
 
 import './EventCard.scss';
 

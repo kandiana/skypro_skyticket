@@ -2,12 +2,13 @@ import { FC, useState, useCallback } from 'react';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale  } from 'react-datepicker';
 
 import './EventFilter.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
+import { ru } from 'date-fns/locale';
 
 type EventFilterProps = {
   onSave: () => void;
@@ -19,6 +20,8 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   const EVENTS = ['Театр', 'Фестиваль', 'Спорт', 'Кино', 'Стендап', 'Экскурсия', 'Шоу', 'Дети'];
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+
+  registerLocale("ru", ru);
 
   if (startDate) form.dateFrom = String(+new Date(startDate));
   if (endDate) form.dateTo = String(+new Date(endDate).setHours(24, 0, 0, 0));
@@ -82,6 +85,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             minDate={new Date()}
             showDisabledMonthNavigation
             isClearable={true}
+            locale='ru'
             placeholderText="Дата от"
             dateFormat="dd.MM.yyyy"
           />
@@ -95,6 +99,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             endDate={endDate}
             minDate={startDate}
             isClearable={true}
+            locale='ru'
             placeholderText="Дата до"
             dateFormat="dd.MM.yyyy"
           />
