@@ -5,7 +5,7 @@ import { EventImage } from '../../components/EventImage/EventImage';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
 import { RootState } from '../../store/store';
-import { fetchEventPage } from '../../store/thunks';
+import { fetchBuytPage, fetchEventPage } from '../../store/thunks';
 import { EventCity } from '../../components/EventCity/EventCity';
 import { EventAddress } from '../../components/EventAddress/EventAddress';
 import { EventLoader } from '../../components/EventLoader/EventLoader';
@@ -39,7 +39,11 @@ export const EventPage: FC = () => {
     dispatch(fetchEventPage(id));
   }, [dispatch, id]);
 
-  const cardData = useSelector((state: RootState) => state.cardData);
+  useEffect(() => {
+    dispatch(fetchBuytPage('618bcae07c9cbfe02881bfb4', '3', '3333333'));
+  }, [dispatch]);
+
+  const cardData = useSelector((state: RootState) => state.reducer.cardData);
 
   const handleChange = useCallback((e) => {
     setForm((prev: FormBuyType) => ({
@@ -91,12 +95,14 @@ export const EventPage: FC = () => {
                 placeholder={'Введите свое имя'}
                 onChange={handleChange}
                 value={form.nameBayer}
+                onFocus={() => {}}
               />
               <Input
                 name="countTicket"
                 placeholder={''}
                 onChange={handleChange}
                 value={form.countTicket}
+                onFocus={() => {}}
               />
               <button type="submit">Купить</button>
             </div>

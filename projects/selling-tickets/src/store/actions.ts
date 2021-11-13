@@ -11,8 +11,8 @@ export function getFormFilter(form: FormType) {
   return { type: FORM_FILTER_ACTION, form };
 }
 
-export function getTicket(form: BuyTicketType) {
-  return { type: BUY_TICKET_ACTION, form };
+export function getTicket(formTicket: BuyTicketType) {
+  return { type: BUY_TICKET_ACTION, formTicket };
 }
 
 export function getBuyTicket(form: FormType) {

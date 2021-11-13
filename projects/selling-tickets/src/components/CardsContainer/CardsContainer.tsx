@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import { EventCard } from '../EventCard/EventCard';
 import { EventLoader } from '../EventLoader/EventLoader';
 import { RootState } from '../../store/store';
@@ -25,7 +25,7 @@ export type EventDataShort = {
 };
 
 export const CardsContainer: FC = () => {
-  let filter = useSelector((state: RootState) => state.formData);
+  let filter = useSelector((state: RootState) => state.reducer.formData);
 
   const dispatch = useDispatch();
 
@@ -33,8 +33,7 @@ export const CardsContainer: FC = () => {
     dispatch(fetchEventsShortData());
   }, [dispatch]);
 
-  const cardsData = useSelector((state: RootState) => state.cardsData);
-
+  const cardsData = useSelector((state: RootState) => state.reducer.cardsData);
   const [index, setIndex] = useState(0);
 
   const finalCards: EventDataShort[] = [];

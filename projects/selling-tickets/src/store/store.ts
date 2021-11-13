@@ -8,8 +8,8 @@ const rootReduser = combineReducers({ reducer, ticketBuyRedusor });
 
 export const store = createStore(rootReduser, composeWithDevTools(applyMiddleware(thunk)));
 
-export type RootState = ReturnType<typeof reducer>;
+export type RootState = ReturnType<typeof rootReduser>;
 
-export type RootStateTicket = ReturnType<typeof ticketBuyRedusor>;
+export type RootStateTicket = ReturnType<typeof rootReduser>;
 
 store.subscribe(() => console.log(store.getState()));

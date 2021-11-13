@@ -21,14 +21,16 @@ export const fetchEventPage = (id: string) => {
   };
 };
 
-export const fetchBuytPage = (id: string) => {
+export const fetchBuytPage = (id: string, number: string, buyerName: string) => {
   return async (dispatch: Dispatch, getState: () => RootStateTicket) => {
-    const storeData = getState();
-    console.log(storeData);
-    const response = await axios.get(`http://localhost:5000/events/${id}`);
+    const response = await axios.post('http://localhost:5000/tickets/create', {
+      eventId: { id },
+      number: { number },
+      buyer: { buyerName },
+    });
     // const responseTicket = await axios.post(`localhost:5000/tickets/create/${id}`);
-    console.log('response', response);
+    console.log('response post ---------------------', response);
 
-    dispatch({ type: BUY_TICKET_ACTION, form: response.data.tickets });
+    dispatch({ type: BUY_TICKET_ACTION, formTicket: response.data.event });
   };
 };

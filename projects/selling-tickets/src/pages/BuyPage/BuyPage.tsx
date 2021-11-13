@@ -39,7 +39,7 @@ export const BuyPage: FC = () => {
     dispatch(fetchEventPage(id));
   }, [dispatch, id]);
 
-  const cardData = useSelector((state: RootState) => state.cardData);
+  const cardData = useSelector((state: RootState) => state.reducer.cardData);
   console.log(cardData);
 
   return (

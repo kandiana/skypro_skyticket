@@ -5,6 +5,7 @@ import { EventFilter } from '../../components/EventFilter/EventFilter';
 import { getFormFilter } from '../../store/actions';
 
 import './MainPage.scss';
+
 export type FormType = {
   dateFrom: string;
   dateTo: string;
