@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { Row, Col, Card, CardBody, Alert } from "reactstrap";
+import React, { Component } from 'react';
+import { Row, Col, Card, CardBody, Alert } from 'reactstrap';
 
 // Redux
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
 
 // availity-reactstrap-validation
-import { AvForm, AvField } from "availity-reactstrap-validation";
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-import Loader from "../../components/Loader";
+import Loader from '../../components/Loader';
 // actions
-import { loginUser } from "../../store/actions";
+import { loginUser } from '../../store/actions';
 
 // import images
-import logoSm from "../../assets/images/logo-sm.png";
+import logoSm from '../../assets/images/logo-sm.png';
 
 class Login extends Component {
   constructor(props) {
@@ -47,10 +47,8 @@ class Login extends Component {
                   <Card className="overflow-hidden">
                     <div className="bg-primary">
                       <div className="text-primary text-center p-4">
-                        <h5 className="text-white font-size-20">
-                          Добро пожаловать в SkyTicket
-                        </h5>
-                      
+                        <h5 className="text-white font-size-20">Добро пожаловать в SkyTicket</h5>
+
                         <Link to="/" className="logo logo-admin">
                           <img src={logoSm} height="20" alt="logo" />
                         </Link>
@@ -90,14 +88,7 @@ class Login extends Component {
                           </div>
 
                           <Row className="form-group">
-                            <Col sm={6}>
-                              &nbsp;
-                              {/* <div className="custom-control custom-checkbox">
-                                                            <input type="checkbox" className="custom-control-input" id="customControlInline" />
-                                                            <label className="custom-control-label" for="customControlInline">Remember me</label>
-                                                        </div> */}
-                            </Col>
-                            <Col sm={6} className="text-right">
+                            <Col sm={12} className="text-right">
                               <button
                                 className="btn btn-primary w-md waves-effect waves-light"
                                 type="submit"
@@ -106,27 +97,13 @@ class Login extends Component {
                               </button>
                             </Col>
                           </Row>
-
                         </AvForm>
                       </div>
                     </CardBody>
                   </Card>
                 </div>
                 <div className="mt-5 text-center">
-                  <p>
-                    Не зарегестрированны? {" "}
-                    <Link
-                      to="pages-register"
-                      className="font-weight-medium text-primary"
-                    >
-                      {" "}
-                      Очень жаль.{" "}
-                    </Link>{" "}
-                  </p>
-                  <p className="mb-0">
-                    © {new Date().getFullYear()} Veltrix. Crafted with{" "}
-                    <i className="mdi mdi-heart text-danger"></i> by Themesbrand
-                  </p>
+                  <p>Обратитесь к администратору для создания аккаунта.</p>
                 </div>
               </Col>
             </Row>
@@ -137,7 +114,7 @@ class Login extends Component {
   }
 }
 
-const mapStatetoProps = state => {
+const mapStatetoProps = (state) => {
   const { error, loading } = state.Login;
   return { error, loading };
 };
