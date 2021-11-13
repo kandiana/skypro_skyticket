@@ -28,11 +28,14 @@ export const EventCard: FC<EventDataShort> = ({
 
   return (
     <div className="EventCard" onClick={goToEventPage}>
-      <EventImage imagePath={img.url} />
-      <EventTitle title={title} />
-      <EventCity city={city} />
-      <EventAddress address={address} />
-      <EventDate date={startTimestamp} />
+      <div className="EventCard__image">
+        <EventImage imagePath={img.url} />
+      </div>
+      <div className="EventCard__info">
+        <EventTitle title={title} />
+        <EventCity city={city} />
+        <EventDate date={startTimestamp} />
+      </div>
     </div>
   );
 };
