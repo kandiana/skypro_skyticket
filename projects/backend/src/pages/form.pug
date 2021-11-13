@@ -39,7 +39,7 @@ block content
         option(value="Шоу" selected=(event ? event.category === 'Шоу' : false)) Шоу
         option(value="Дети" selected=(event ? event.category === 'Дети' : false)) Дети
         option(value="Другое" selected=(event ? event.category === 'Другое' : false)) Другое
-        input.input.input_small.hidden(type="text" id="categoryOther" name="categoryOther")
+      input.input.input_small(type="text" id="categoryOther" name="categoryOther" value=(event ? event.categoryOther : ''))
     .form__field
       label.label Начало
       input.input(type="datetime-local" id="startTimestamp" name="startTimestamp" required value=(event ? event.startTimestamp : ''))

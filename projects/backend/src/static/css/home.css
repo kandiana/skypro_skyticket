@@ -12,6 +12,9 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 32%;
   padding: 10px 20px;
   box-shadow: 0 0 3px #4344454d, 0 1px 1px #4344454d;

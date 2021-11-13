@@ -5,6 +5,12 @@ const select = document.querySelector('#category');
 const selectInput = document.querySelector('#categoryOther');
 const numberOfTicketsInput = document.querySelector('#ticketsTotal');
 
+if (select.value !== 'Другое') {
+  selectInput.classList.add('hidden');
+  selectInput.required = false;
+  selectInput.value = '';
+}
+
 select.addEventListener('change', (event) => {
   const target = event.target;
 

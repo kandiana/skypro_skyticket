@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
   for (const key of Object.keys(req.body)) {
     const value = req.body[key];
 
-    if (value === '') {
+    if (value === '' && key !== 'categoryOther') {
       continue;
     }
 

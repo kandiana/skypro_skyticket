@@ -33,19 +33,22 @@ const renderCard = (eventData, container) => {
   titleBlock.textContent = eventData.title;
   card.appendChild(titleBlock);
 
+  const bodyBlock = document.createElement('div');
+  card.appendChild(bodyBlock);
+
   const cityBlock = document.createElement('p');
   cityBlock.classList.add('card__item');
   cityBlock.textContent = eventData.city;
-  card.appendChild(cityBlock);
+  bodyBlock.appendChild(cityBlock);
 
   const categoryBlock = document.createElement('p');
   categoryBlock.classList.add('card__item');
   categoryBlock.textContent = `Тип: ${eventData.category}`;
-  card.appendChild(categoryBlock);
+  bodyBlock.appendChild(categoryBlock);
 
   const cardButtons = document.createElement('div');
   cardButtons.classList.add('card__buttons');
-  card.appendChild(cardButtons);
+  bodyBlock.appendChild(cardButtons);
 
   const changeButton = document.createElement('button');
   changeButton.classList.add('button');
