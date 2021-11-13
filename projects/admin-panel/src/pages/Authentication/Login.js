@@ -32,11 +32,6 @@ class Login extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="home-btn d-none d-sm-block">
-          <Link to="/" className="text-dark">
-            <i className="fas fa-home h2"></i>
-          </Link>
-        </div>
         <div className="account-pages my-5 pt-5">
           <div className="container">
             <Row className="justify-content-center">
@@ -89,12 +84,11 @@ class Login extends Component {
 
                           <Row className="form-group">
                             <Col sm={12} className="text-right">
-                              <button
-                                className="btn btn-primary w-md waves-effect waves-light"
-                                type="submit"
-                              >
-                                Log In
-                              </button>
+                              <div className="btn  w-md waves-effect waves-light">
+                                <Link to="/" className="text-dark">
+                                  Войти
+                                </Link>
+                              </div>
                             </Col>
                           </Row>
                         </AvForm>
