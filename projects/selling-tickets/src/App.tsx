@@ -22,22 +22,6 @@ const App: FC = () => {
           <EventPage />
         </Route>
         <Route path="/">
-          <Button color="red" handleClick={handleClick} disabled={false}>
-            Купить
-          </Button>
-          <Button size="S" handleClick={handleClick} disabled={false}>
-            <FontAwesomeIcon icon={faPlus} />
-          </Button>
-          <Button size="M" handleClick={handleClick} disabled={false}>
-            Средняя
-          </Button>
-          <Button size="L" color="blue" handleClick={handleClick} disabled={false}>
-            Большая
-          </Button>
-          <Button size="M" color="red" handleClick={handleClick} disabled={false}>
-            <FontAwesomeIcon icon={faPlus} />
-            {' Добавить'}
-          </Button>
           <MainPage />
         </Route>
       </Switch>

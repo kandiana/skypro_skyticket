@@ -17,17 +17,14 @@ type EventFilterProps = {
 
 export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => {
   const EVENTS = ['Театр', 'Фестиваль', 'Спорт', 'Кино', 'Стендап', 'Экскурсия', 'Шоу', 'Дети'];
-  const [startDate, setStartDate] = useState<Date|null>(null);
-  const [endDate, setEndDate] = useState<Date|null>(null);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
 
-  if (startDate)
-  form.dateFrom = String(+new Date(startDate));
-  if (endDate)
-  form.dateTo = String(+new Date(endDate).setHours(24,0,0,0));
+  if (startDate) form.dateFrom = String(+new Date(startDate));
+  if (endDate) form.dateTo = String(+new Date(endDate).setHours(24, 0, 0, 0));
 
   const filter = useSelector((state: RootState) => state.formData);
   console.log(filter);
-  
 
   const saveFormData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -76,30 +73,23 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
     <form className="EventFilter" action="" onSubmit={saveFormData}>
       <div className={filterWrapper}>
         <div className="EventFilter__field">
-          <DatePicker 
-            selected={startDate} 
+          <DatePicker
+            selected={startDate}
             onChange={(date: Date | null) => setStartDate(date)}
             selectsStart
             startDate={startDate}
-            endDate={endDate} 
+            endDate={endDate}
             minDate={new Date()}
             showDisabledMonthNavigation
             isClearable={true}
             placeholderText="Дата от"
             dateFormat="dd.MM.yyyy"
           />
-          {/* <Input
-            name="dateFrom"
-            placeholder="Дата от"
-            onChange={handleChange}
-            onFocus={handleFocus}
-            value={form.dateFrom}
-          /> */}
         </div>
         <div className="EventFilter__field">
-        <DatePicker 
-            selected={endDate} 
-            onChange={(date: Date | null) => setEndDate(date)} 
+          <DatePicker
+            selected={endDate}
+            onChange={(date: Date | null) => setEndDate(date)}
             selectsEnd
             startDate={startDate}
             endDate={endDate}
@@ -108,29 +98,24 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             placeholderText="Дата до"
             dateFormat="dd.MM.yyyy"
           />
-          {/* <Input
-            name="dateTo"
-            placeholder="Дата до"
-            onChange={handleChange}
-            onFocus={handleFocus}
-            value={form.dateTo}
-          /> */}
         </div>
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
         </div>
-        <div className="EventFilter__field">
-          <Input
-            name="search"
-            placeholder="Поиск"
-            onChange={handleChange}
-            onFocus={handleFocus}
-            value={form.search}
-          />
+        <div className='EventFilter__search'>
+          <div className="EventFilter__field">
+            <Input
+              name="search"
+              placeholder="Поиск"
+              onChange={handleChange}
+              onFocus={handleFocus}
+              value={form.search}
+            />
+          </div>
+          <button type="submit" className="EventFilter__button">
+            Отправить
+          </button>
         </div>
-        <button type="submit" className="EventFilter__button">
-          Отправить
-        </button>
       </div>
       <button
         type="button"

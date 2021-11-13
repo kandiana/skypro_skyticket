@@ -1,7 +1,6 @@
 @import '/src/variables';
 
 .EventCard {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,10 +8,32 @@
   height: 400px;
   box-shadow: $shadow;
   margin: 10px;
+  border-radius: 20px;
+
+  &__image {
+    width: 100%;
+    height: 60%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 40%;
+    padding-left: 15px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .EventCard {
     height: 300px;
+
+    &__info {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-content: space-around;
+    }
   }
 }

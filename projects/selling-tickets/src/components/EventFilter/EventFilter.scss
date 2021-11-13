@@ -1,18 +1,25 @@
 @import '/src/variables';
 
+input, .EventFilter__button {
+  width: 200px;
+  height: 30px;
+  margin: 5px;
+  font-size: 20px;
+}
+
 .EventFilter {
   width: 100%;
 
   &__wrapper {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
   }
 
-  &__input {
-    width: 200px;
-    height: 20px;
-    margin: 5px;
+  &__search {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__burger-button {
@@ -21,26 +28,26 @@
 }
 
 @media screen and (max-width: $tablet) {
+  input, .EventFilter__button {
+    width: 250px;
+    height: 36px;
+    font-size: 20px;
+    color: $white;
+    background-color: $blue;
+    border: none;
+  }
+
   .EventFilter {
     &__wrapper {
       display: none;
     }
-    
-    &__burger-wrapper{
+
+    &__burger-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
       background-color: $grey;
-    }
-
-    &__input {
-      width: 250px;
-      height: 36px;
-      font-size: 20px;
-      color: $white;
-      background-color: $blue;
-      border: none;
     }
 
     &__burger-button {
@@ -54,7 +61,7 @@
       background-color: transparent;
       cursor: pointer;
       border: none;
-      
+
       &_closed::after {
         content: '';
         position: absolute;
