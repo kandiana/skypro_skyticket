@@ -13,14 +13,12 @@ export type FormType = {
   event: string;
 };
 
-export type BuyTicketType = [
-  {
-    _id: string;
-    eventId: string;
-    buyer: string;
-    ticket: [];
-  }
-];
+export type BuyTicketsType = {
+  _id: string;
+  eventId: string;
+  buyer: string;
+  ticket: string[];
+};
 
 const EMPTY_FORM: FormType = {
   dateFrom: '',
@@ -31,7 +29,6 @@ const EMPTY_FORM: FormType = {
 
 export const MainPage: FC = () => {
   const [form, setForm] = useState(EMPTY_FORM);
-  console.log('!!!', form);
 
   const dispatch = useDispatch();
 

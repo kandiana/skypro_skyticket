@@ -1,7 +1,7 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { EventImage } from '../../components/EventImage/EventImage';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
 import { RootState } from '../../store/store';
@@ -13,25 +13,14 @@ import { EventDescription } from '../../components/EventDescription/EventDescrip
 
 import './BuyPage.scss';
 
-// export type FormBuyType = {
-//   nameBayer: string;
-//   countTicket: number;
-// };
-
-// const EMPTY_FORM: FormBuyType = {
-//   nameBayer: '',
-//   countTicket: 1,
-// };
-
-// const [form, setForm] = useState(EMPTY_FORM);
-
 type urlParams = {
   id: string;
 };
 
 export const BuyPage: FC = () => {
   let { id } = useParams<urlParams>();
-  console.log(id);
+
+  let QRCode = require('qrcode.react');
 
   const dispatch = useDispatch();
 
@@ -40,7 +29,10 @@ export const BuyPage: FC = () => {
   }, [dispatch, id]);
 
   const cardData = useSelector((state: RootState) => state.reducer.cardData);
-  console.log(cardData);
+
+  const ticketData = useSelector((state: RootState) => state.tickets);
+
+  console.log(ticketData);
 
   return (
     <div className="BuyPage">
@@ -48,12 +40,22 @@ export const BuyPage: FC = () => {
         <EventLoader />
       ) : (
         <div>
-          <EventImage imagePath={cardData.img.url} />
-          <EventTitle title={cardData.title} />
-          <EventDescription description={cardData.description} />
-          <EventCity city={cardData.city} />
-          <EventAddress address={cardData.address} />
-          <EventDate date={cardData.startTimestamp} />
+          <h1>Ваши билеты:</h1>
+          {ticketData === undefined ? (
+            <EventLoader />
+          ) : (
+            <div style={{ padding: '10px 20px', display: 'inline-block' }}>
+              <QRCode value="http://facebook.github.io/react/" renderAs="svg" />
+            </div>
+          )}
+          <h2>Информация о событии:</h2>
+          <div style={{ border: '1px solid black', padding: '0 20px 0 20px', maxWidth: '1000px' }}>
+            <EventTitle title={cardData.title} />
+            <EventDescription description={cardData.description} />
+            <EventCity city={cardData.city} />
+            <EventAddress address={cardData.address} />
+            <EventDate date={cardData.startTimestamp} />
+          </div>
         </div>
       )}
     </div>

@@ -10,7 +10,6 @@ export type InputProps = {
 };
 
 export const Input: FC<InputProps> = ({ name, placeholder, onChange, value, onFocus }) => {
-  console.log(value)
   return (
     <input
       className="Input"

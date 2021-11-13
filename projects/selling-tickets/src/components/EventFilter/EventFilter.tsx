@@ -6,9 +6,12 @@ import DatePicker, { registerLocale  } from 'react-datepicker';
 
 import './EventFilter.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+<<<<<<< HEAD
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
 import { ru } from 'date-fns/locale';
+=======
+>>>>>>> 42f6d72 (fix problem type)
 
 type EventFilterProps = {
   onSave: () => void;
@@ -69,7 +72,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   );
 
   const handleFocus = () => {
-    console.log('focus');
+    // console.log('focus');
   };
 
   return (

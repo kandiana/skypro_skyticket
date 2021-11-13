@@ -1,28 +1,31 @@
-import { BuyTicketType } from '../pages/MainPage/MainPage';
-import { BUY_TICKET_ACTION, RootAction } from './actions';
+import { BuyTicketsType } from '../pages/MainPage/MainPage';
+import { Reducer } from 'redux';
+import { BUY_TICKETS_ACTION, RootAction } from './actions';
 
-const defaultState: BuyTicketType = [
-  {
-    _id: '',
-    eventId: '',
-    buyer: '',
-    ticket: [],
-  },
-];
+type TicketsState = Omit<BuyTicketsType, "_id">;
 
-export const ticketBuyRedusor = (state = defaultState, action: RootAction) => {
+const defaultState: TicketsState = {
+  eventId: '',
+  buyer: '',
+  ticket: [],
+};
+
+export const ticketBuyRedusor: Reducer<TicketsState, RootAction> = (state = defaultState, action: RootAction) => {
   switch (action.type) {
-    case BUY_TICKET_ACTION:
+    case BUY_TICKETS_ACTION:
       const allBuyCards = [];
 
-      for (let i = 0; i < action.formTicket.length; i++) {
-        allBuyCards.push(action.formTicket[i]._id);
+      for (let i = 0; i < action.formTickets.length; i++) {
+        allBuyCards.push(action.formTickets[i]._id);
       }
-      return {
-        id: action.formTicket[0].eventId,
-        buyer: action.formTicket[0].buyer,
+
+      const rrr = {
+        ...state,
+        eventId: action.formTickets[0].eventId,
+        buyer: action.formTickets[0].buyer,
         ticket: [...allBuyCards],
       };
+      return rrr;
     default:
       return state;
   }

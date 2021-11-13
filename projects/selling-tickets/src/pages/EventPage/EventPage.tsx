@@ -1,11 +1,11 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventImage } from '../../components/EventImage/EventImage';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
 import { RootState } from '../../store/store';
-import { fetchBuytPage, fetchEventPage } from '../../store/thunks';
+import { fetchBuyPage, fetchEventPage } from '../../store/thunks';
 import { EventCity } from '../../components/EventCity/EventCity';
 import { EventAddress } from '../../components/EventAddress/EventAddress';
 import { EventLoader } from '../../components/EventLoader/EventLoader';
@@ -39,13 +39,13 @@ export const EventPage: FC = () => {
     dispatch(fetchEventPage(id));
   }, [dispatch, id]);
 
-  useEffect(() => {
-    dispatch(fetchBuytPage('618e6673c961bec6eb005280', '2', '3333333'));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchBuytPage(id, form.countTicket, form.nameBayer));
+  // }, [dispatch, form.countTicket, form.nameBayer, id]);
 
-  const ticketData = useSelector((state: RootState['ticketBuyRedusor']) => state);
+  // const ticketData = useSelector((state: RootState['ticketBuyRedusor']) => state);
 
-  console.log('ticketData Event page: ', ticketData);
+  // console.log('ticketData Event page: ', ticketData);
 
   const cardData = useSelector((state: RootState) => state.reducer.cardData);
 
@@ -56,13 +56,12 @@ export const EventPage: FC = () => {
     }));
   }, []);
 
-  console.log(form);
+  const history = useHistory();
 
   const saveFormBuyTicket = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // const saveTicket = () => {
-    dispatch(FormBuyTicketType(form));
-    // };
+    dispatch(fetchBuyPage(id, form.countTicket, form.nameBayer));
+    history.push(`/buy/${id}`);
   };
 
   return (
@@ -121,6 +120,3 @@ export const EventPage: FC = () => {
     </div>
   );
 };
-function FormBuyTicketType(form: FormBuyType): any {
-  throw new Error('Function not implemented.');
-}
