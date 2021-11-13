@@ -1,6 +1,7 @@
 @import './variables';
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -16,7 +17,6 @@ html, body {
     padding: 0 140px;
   }
 }
-
 
 @media screen and (max-width: $tablet) {
   .App__main {
