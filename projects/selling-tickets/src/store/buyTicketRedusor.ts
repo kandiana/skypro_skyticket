@@ -11,7 +11,8 @@ export const ticketBuyRedusor = (state = defaultState, action: RootAction) => {
   switch (action.type) {
     case BUY_TICKET_ACTION:
       return {
-        state: action.formTicket,
+        ...state,
+        formTicket: action.formTicket,
       };
     default:
       return state;

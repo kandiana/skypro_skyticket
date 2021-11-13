@@ -1,10 +1,10 @@
 import { ARR_CARDS_ACTION, BUY_TICKET_ACTION, EVENT_PAGE_ACTION } from './actions';
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { RootState, RootStateTicket } from './store';
+import { RootState } from './store';
 
 export const fetchEventsShortData = () => {
-  return async (dispatch: Dispatch, getState: () => RootState) => {
+  return async (dispatch: Dispatch, getState: () => RootState['reducer']) => {
     // const storeData = getState();
     const response = await axios.get('http://localhost:5000/events');
 
@@ -13,7 +13,7 @@ export const fetchEventsShortData = () => {
 };
 
 export const fetchEventPage = (id: string) => {
-  return async (dispatch: Dispatch, getState: () => RootState) => {
+  return async (dispatch: Dispatch, getState: () => RootState['reducer']) => {
     // const storeData = getState();
     const response = await axios.get(`http://localhost:5000/events/${id}`);
 
@@ -22,15 +22,13 @@ export const fetchEventPage = (id: string) => {
 };
 
 export const fetchBuytPage = (id: string, number: string, buyerName: string) => {
-  return async (dispatch: Dispatch, getState: () => RootStateTicket) => {
+  return async (dispatch: Dispatch, getState: () => RootState['ticketBuyRedusor']) => {
     const response = await axios.post('http://localhost:5000/tickets/create', {
-      eventId: { id },
-      number: { number },
-      buyer: { buyerName },
+      eventId: id,
+      number: number,
+      buyer: buyerName,
     });
-    // const responseTicket = await axios.post(`localhost:5000/tickets/create/${id}`);
     console.log('response post ---------------------', response);
-
     dispatch({ type: BUY_TICKET_ACTION, formTicket: response.data.event });
   };
 };

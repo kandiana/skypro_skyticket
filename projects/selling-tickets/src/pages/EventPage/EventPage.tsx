@@ -43,6 +43,10 @@ export const EventPage: FC = () => {
     dispatch(fetchBuytPage('618bcae07c9cbfe02881bfb4', '3', '3333333'));
   }, [dispatch]);
 
+  const ticketData = useSelector((state: RootState['ticketBuyRedusor']) => state);
+
+  console.log('ticketData', ticketData);
+
   const cardData = useSelector((state: RootState) => state.reducer.cardData);
 
   const handleChange = useCallback((e) => {
