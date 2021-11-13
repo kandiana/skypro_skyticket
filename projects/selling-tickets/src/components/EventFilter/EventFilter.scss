@@ -1,46 +1,75 @@
 @import '/src/variables';
 
+input,
+.EventFilter__button {
+  width: 200px;
+  height: 30px;
+  margin: 5px;
+  padding: 0 0 3px 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
 .EventFilter {
   width: 100%;
 
   &__wrapper {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
+    background-color: $dark-gray;
+    border-radius: 10px;
   }
 
-  &__input {
-    width: 200px;
-    height: 20px;
-    margin: 5px;
+  &__search {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__burger-button {
     display: none;
   }
+
+  &__button {
+    padding-left: 1px;
+    background-color: $dark-yellow;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $yellow;
+    }
+  }
 }
 
 @media screen and (max-width: $tablet) {
+  input,
+  .EventFilter__button {
+    width: 250px;
+    height: 36px;
+    font-size: 20px;
+    border: none;
+  }
+
   .EventFilter {
+    display: flex;
+    justify-content: center;
+
     &__wrapper {
       display: none;
     }
-    
-    &__burger-wrapper{
+
+    &__burger-wrapper {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      width: 100%;
-      background-color: $grey;
-    }
-
-    &__input {
-      width: 250px;
-      height: 36px;
-      font-size: 20px;
-      color: $white;
-      background-color: $blue;
-      border: none;
+      width: 90%;
+      height: 250px;
+      background-color: $dark-gray;
+      box-shadow: $shadow;
+      border-radius: 10px;
     }
 
     &__burger-button {
@@ -54,7 +83,7 @@
       background-color: transparent;
       cursor: pointer;
       border: none;
-      
+
       &_closed::after {
         content: '';
         position: absolute;

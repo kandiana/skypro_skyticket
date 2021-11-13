@@ -6,5 +6,7 @@ export type EventTitleProps = {
 };
 
 export const EventTitle: FC<EventTitleProps> = ({ title }) => {
-  return <h2 className="EventTitle">{title}</h2>;
+  let newTitle = title[0].toUpperCase() + title.slice(1);
+  
+  return <h2 className="EventTitle">{newTitle}</h2>;
 };

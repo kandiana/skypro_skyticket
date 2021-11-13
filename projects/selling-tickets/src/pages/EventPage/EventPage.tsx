@@ -9,7 +9,7 @@ import { fetchEventPage } from '../../store/thunks';
 import { EventCity } from '../../components/EventCity/EventCity';
 import { EventAddress } from '../../components/EventAddress/EventAddress';
 import { EventLoader } from '../../components/EventLoader/EventLoader';
-import { EventDescription } from '../../components/CardsContainer/EventDescription/EventDescription';
+import { EventDescription } from '../../components/EventDescription/EventDescription';
 
 import './EventPage.scss';
 
@@ -33,13 +33,17 @@ export const EventPage: FC = () => {
       {cardData === undefined ? (
         <EventLoader />
       ) : (
-        <div>
-          <EventImage imagePath={cardData.img.url} />
-          <EventTitle title={cardData.title} />
-          <EventDescription description={cardData.description} />
-          <EventCity city={cardData.city} />
-          <EventAddress address={cardData.address} />
-          <EventDate date={cardData.startTimestamp} />
+        <div className="EventPage">
+          <div className="EventPage__image">
+            <EventImage imagePath={cardData.img.url} />
+          </div>
+          <div className="EventPage__info">
+            <EventTitle title={cardData.title} />
+            <EventDescription description={cardData.description} />
+            <EventCity city={cardData.city} />
+            <EventAddress address={cardData.address} />
+            <EventDate date={cardData.startTimestamp} />
+          </div>
         </div>
       )}
     </div>
