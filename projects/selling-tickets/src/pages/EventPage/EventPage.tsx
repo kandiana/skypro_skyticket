@@ -70,9 +70,10 @@ export const EventPage: FC = () => {
             <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
               <div
                 style={{
-                  width: '1000px',
+                  width: '500px',
                   display: 'flex',
                   justifyContent: 'space-between',
+                  border: '1px solid black',
                 }}
               >
                 <Input
