@@ -8,3 +8,4 @@ projects/**/dist
 projects/**/build
 projects/**/src/assets
 projects/**/src/_variables.scss
+projects/admin-panel

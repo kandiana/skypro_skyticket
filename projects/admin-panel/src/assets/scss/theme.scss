@@ -1,0 +1,106 @@
+// Light Theme
+@import "./bootstrap.scss";
+@import "./app.scss";
+
+// Dark Theme
+// @import "./bootstrap-dark.scss";
+// @import "./app-dark.scss";
+
+//RTL Mode
+// @import "./bootstrap.scss";
+// @import "./app-rtl.scss";
+
+@import "./icons.scss";
+
+// Theme Custom Scss for react version
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y,
+.ps__rail-y {
+  width: auto !important;
+}
+.rdw-editor-main {
+  border: 1px solid $card-border-color !important;
+  border-radius: 4px !important;
+  min-height: 130px !important;
+}
+
+.mb-30 {
+  margin-bottom: 30px !important;
+}
+
+.dataTables_filter {
+  float: right;
+}
+
+.dataTables_paginate .pagination {
+  float: right;
+}
+
+.rdw-editor-wrapper {
+  min-height: 180px !important;
+}
+
+.ReactModal__Overlay {
+  z-index: 10001 !important;
+}
+
+.react-datepicker-wrapper {
+  .form-control {
+    width: 405% !important;
+  }
+}
+
+.dropzone {
+  h3 {
+    text-align: center !important;
+    padding-top: 100px !important;
+  }
+  div {
+    min-height: 200px !important;
+  }
+  min-height: 200px !important;
+}
+
+input[type="radio"] + label {
+  cursor: pointer !important;
+}
+
+.topnav .navbar-nav .nav-item .nav-link.active {
+  color: $primary !important;
+}
+.input-color {
+  color: $input-color !important;
+}
+.rangeslider__fill {
+  background-color: $primary !important;
+}
+.rating-container {
+  background-color: transparent !important;
+}
+
+//Calender 
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+  margin-right: 2px;
+  color: white !important;
+  font-weight: 100 !important;
+  padding: 8px 5px 8px 7px !important;
+}
+.fc-daygrid-event-dot {
+  display: none !important;
+}
+.fc-daygrid-dot-event .fc-event-title {
+  font-weight: 500 !important;
+}
+
+#external-events {
+  .external-event {
+    text-align: left !important;
+    padding: 7px 0px 6px 22px !important;
+  }
+  i {
+    font-size: 11px !important;
+  }
+}
