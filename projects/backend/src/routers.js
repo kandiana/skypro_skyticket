@@ -35,6 +35,7 @@ mainRouter.post('/exit', exit);
 
 mainRouter.get('/home', pages.home);
 mainRouter.get('/new', pages.newEvent);
+mainRouter.get('/:id', pages.updateEvent);
 mainRouter.get('/404', pages.notFound);
 mainRouter.get('/', pages.auth);
 

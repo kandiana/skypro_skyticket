@@ -43,7 +43,8 @@ body {
 }
 
 .footer {
-  padding: 20px 0;
+  padding: 15px 0;
+  background-color: #cccccc;
 }
 
 .main {
@@ -51,6 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 0 10px;
 }
 
 .title {
@@ -64,12 +66,13 @@ body {
   text-align: center;
 }
 
-.exit {
-  color: black;
+a {
+  font-size: 20px;
+  color: blue;
   text-decoration: none;
 }
 
-.exit:hover {
+a:hover {
   text-decoration: underline;
 }
 

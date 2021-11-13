@@ -1,7 +1,7 @@
 extends layout.pug
 
 block styles
-  link(rel='stylesheet' href='/form.css')
+  link(rel='stylesheet' href='/css/form.css')
 
 block content
   form.form.form_centered(action="/auth" method="POST")
@@ -10,4 +10,4 @@ block content
     input.input(name="password" placeholder="Пароль" type="password" required )
     button.button Войти
 
-  script(src='/auth.js')
+  script(src='/js/auth.js')

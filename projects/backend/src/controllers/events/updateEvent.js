@@ -8,10 +8,6 @@ module.exports = async (req, res) => {
 
   let eventOld, filter;
 
-  if (!req.body.img) {
-    req.body.img = {};
-  }
-
   // look for needed item in bd
   try {
     filter = { _id: new ObjectId(id) };
@@ -20,7 +16,9 @@ module.exports = async (req, res) => {
 
     // if not found, delete uploaded file if there was one and send error
     if (!eventOld) {
-      deleteFile(imagesFolder, req.body.img.name, req.s3);
+      if (req.body.img) {
+        deleteFile(imagesFolder, req.body.img.name, req.s3);
+      }
       res.send({ status: 'error', message: 'event not found' });
       return;
     }
@@ -76,7 +74,9 @@ module.exports = async (req, res) => {
 
     // if nothing is modified, delete uploaded image and send error
     if (result.modifiedCount === 0) {
-      deleteFile(imagesFolder, req.body.img.name, req.s3);
+      if (req.body.img) {
+        deleteFile(imagesFolder, req.body.img.name, req.s3);
+      }
 
       res.send({ status: 'error', message: 'nothing was modified' });
       return;

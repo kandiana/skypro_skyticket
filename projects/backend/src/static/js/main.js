@@ -1,8 +1,7 @@
 const exit = document.querySelector('.exit');
 
 const sendExitRequest = () => {
-  const location = window.location.origin;
-  const requestURL = `${location}/exit`;
+  const requestURL = `${window.location.origin}/exit`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('POST', requestURL);
@@ -17,7 +16,7 @@ const sendExitRequest = () => {
     }
 
     if (target.status == 200) {
-      window.location.href = location;
+      window.location.href = window.location.origin;
     } else {
       console.log(target.status, target.statusText);
     }

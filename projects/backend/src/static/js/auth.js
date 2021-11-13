@@ -5,8 +5,7 @@ const exitButton = document.querySelector('.exit');
 exitButton.classList.add('hidden');
 
 const sendAuthRequest = (parameters, onSuccess) => {
-  const location = window.location.href;
-  const requestURL = `${location}auth`;
+  const requestURL = `${window.location.origin}/auth`;
   const body =
     'login=' +
     encodeURIComponent(parameters.login) +
@@ -32,7 +31,7 @@ const sendAuthRequest = (parameters, onSuccess) => {
       onSuccess(target.responseText);
     } else {
       console.log(target.status, target.statusText);
-      window.location.href = `${location}404`;
+      window.location.href = `${window.location.origin}/404`;
     }
   });
 };
@@ -42,7 +41,7 @@ const processAuthResponse = (responseText) => {
 
   if (data.status === 'ok') {
     console.log('ok');
-    window.location.href = `${location}home`;
+    window.location.href = `${window.location.origin}/home`;
   } else {
     if (data.message === 'authorization denied') {
       error.textContent = 'Неверные логин или пароль';

@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
 
   if (login) {
     const pageTitle = 'Создать мероприятие';
-    return res.render('newEvent', { pageTitle });
+    return res.render('form', { pageTitle });
   } else {
     res.redirect('/');
   }

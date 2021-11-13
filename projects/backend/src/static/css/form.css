@@ -1,10 +1,30 @@
+.preview {
+  align-self: flex-start;
+  height: 80px;
+  min-width: 100px;
+  margin-bottom: 5px;
+}
+
+.img {
+  display: block;
+  height: 100%;
+}
+
+.text {
+  width: 100%;
+  height: 100%;
+  padding: calc(50% - 20px) 0;
+  line-height: 1;
+  text-align: center;
+  border: 2px solid gray;
+}
+
 .form {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   min-width: 240px;
   width: 100%;
-  padding: 10px 0;
 }
 
 .form_centered {
@@ -16,7 +36,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .label {
@@ -34,7 +54,7 @@
   max-width: 400px;
   width: 100%;
   margin-bottom: 10px;
-  padding: 10px 20px;
+  padding: 6px 20px;
   font-size: 16px;
   border: 2px solid #cccccc;
   border-radius: 5px;
@@ -57,7 +77,7 @@
   min-width: 400px;
   max-width: 400px;
   width: 100%;
-  height: 120px;
+  height: 80px;
   padding: 10px;
   font-size: 16px;
   border: 2px solid #cccccc;
@@ -74,7 +94,7 @@
   max-width: 180px;
   width: 100%;
   margin-right: 40px;
-  padding: 10px 20px;
+  padding: 6px 20px;
   font-size: 16px;
   border: 2px solid #cccccc;
   border-radius: 5px;
@@ -92,7 +112,7 @@
 .button {
   align-self: center;
   min-width: 150px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   font-size: 16px;
   border-width: 2px;
   border-radius: 10px;
@@ -114,4 +134,9 @@
   font-size: 14px;
   text-align: center;
   color: red;
+}
+
+.link {
+  align-self: flex-start;
+  margin-bottom: 15px;
 }
