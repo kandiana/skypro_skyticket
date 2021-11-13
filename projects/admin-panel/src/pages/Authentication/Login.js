@@ -84,11 +84,12 @@ class Login extends Component {
 
                           <Row className="form-group">
                             <Col sm={12} className="text-right">
-                              <div className="btn  w-md waves-effect waves-light">
-                                <Link to="/" className="text-dark">
-                                  Войти
-                                </Link>
-                              </div>
+                              <button
+                                className="btn btn-primary w-md waves-effect waves-light"
+                                type="submit"
+                              >
+                                Log In
+                              </button>
                             </Col>
                           </Row>
                         </AvForm>
