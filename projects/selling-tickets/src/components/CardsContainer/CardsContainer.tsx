@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 import { EventCard } from '../EventCard/EventCard';
 import { EventLoader } from '../EventLoader/EventLoader';
 import { RootState } from '../../store/store';
@@ -128,10 +128,10 @@ export const CardsContainer: FC = () => {
       </div>
       <div className="CardsContainer__Buttons">
         <Button size="M" handleClick={getPreviousCards} disabled={disabledPreviousButton()}>
-          <FontAwesomeIcon icon={faMinus} />
+          <FontAwesomeIcon icon={faAngleDoubleLeft} />
         </Button>
         <Button size="M" handleClick={getNextCards} disabled={disabledNextButton()}>
-          <FontAwesomeIcon icon={faPlus} />
+          <FontAwesomeIcon icon={faAngleDoubleRight} />
         </Button>
       </div>
     </div>

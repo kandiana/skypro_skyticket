@@ -11,7 +11,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header title="SkyTicket" />
-      <div className="App__main">
+      <main className="App__main">
         <Switch>
           <Route path="/events/:id">
             <EventPage />
@@ -20,7 +20,7 @@ const App: FC = () => {
             <MainPage />
           </Route>
         </Switch>
-      </div>
+      </main>
 
       <Footer title={'Copyright © 2021 Donatello Inc.'} />
     </div>

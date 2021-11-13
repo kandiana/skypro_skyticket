@@ -5,6 +5,7 @@ html, body {
 }
 
 .App {
+  flex-grow: 1;
   width: 100%;
 
   &__main {
