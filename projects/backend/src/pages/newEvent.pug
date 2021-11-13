@@ -1,0 +1,48 @@
+extends layout.pug
+
+block styles
+  link(rel='stylesheet' href='/form.css')
+
+block content
+  form.form(action="/events/create" method="POST" enctype="multipart/form-data")
+    .form__field
+      label.label Картинка
+      input(type="file" id="image" name="image" accept="image/png, image/jpeg" required )
+    .form__field
+      label.label Название
+      input.input(type="text" id="title" name="title" placeholder="Название мероприятия" required )
+    .form__field
+      label.label Город
+      input.input(type="text" id="city" name="city" placeholder="Город" required )
+    .form__field
+      label.label Адрес
+      input.input(type="text" id="address" name="address" placeholder="Адрес" required )
+    .form__field
+      label.label.label_top Описание
+      textarea.textarea(type="text" id="description" name="description" placeholder="Описание мероприятия" required )
+    .form__field
+      label.label Тип
+      select.select(id="category" name="category" required)
+        option(value="" selected) Выберите...
+        option(value="Театр") Театр
+        option(value="Фестиваль") Фестиваль
+        option(value="Спорт") Спорт
+        option(value="Кино") Кино
+        option(value="Стендап") Стендап
+        option(value="Экскурсия") Экскурсия
+        option(value="Шоу") Шоу
+        option(value="Дети") Дети
+        option(value="Другое") Другое
+        input.input.input_small.hidden(type="text" id="categoryOther" name="categoryOther")
+    .form__field
+      label.label Начало
+      input.input(type="datetime-local" id="startTimestamp" name="startTimestamp" required )
+    .form__field
+      label.label Окончание
+      input.input(type="datetime-local" id="endTimestamp" name="endTimestamp" required )
+    .form__field
+      label.label Билеты
+      input.input.input_small(type="number" id="ticketsTotal" name="ticketsTotal" required )
+    button.button.button_left Создать
+
+  script(src='/newEvent.js')

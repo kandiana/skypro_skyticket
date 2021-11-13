@@ -1,5 +1,7 @@
 public/images/**
+private/users/**
 !public/images/.gitkeep
+!private/users/.gitkeep
 notes.txt
 rootkey.csv
 

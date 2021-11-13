@@ -20,6 +20,7 @@ module.exports = async (app) => {
 
     db.events = db.collection('events');
     db.tickets = db.collection('tickets');
+    db.users = db.collection('users');
 
     return db;
   } catch (err) {

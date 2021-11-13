@@ -15,6 +15,10 @@ mongoClient(app).then((database) => {
   db = database;
 });
 
+// setup view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'pages'));
+
 // set up middlewares
 setupMiddlewares(app);
 

@@ -1,0 +1,27 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title SkyTicket - Admin Panel
+
+  block styles
+  block scripts
+
+    link(rel='stylesheet' href='/layout.css')
+
+  body
+    .container
+      header.header
+        h1.title #{pageTitle}
+        a.exit(href="/") Выйти
+
+      main.main
+        block content
+
+      footer.footer
+        p.copy Copyright &copy; 2021 Donatello Inc.
+
+    script(src='/main.js')
+    

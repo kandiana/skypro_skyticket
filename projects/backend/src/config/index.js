@@ -9,9 +9,12 @@ const DB_NAME = process.env.DB_NAME;
 
 const imagesFolder = path.resolve(__dirname, '../../public/images');
 
+const usersFolder = path.resolve(__dirname, '../../private/users');
+
 module.exports = {
   PORT,
   DB_URL,
   DB_NAME,
   imagesFolder,
+  usersFolder,
 };
