@@ -28,7 +28,7 @@ export const MainPage: FC = () => {
   };
 
   const filterEventsData = (array: EventDataShortType[]) => {
-    return array.filter((event) => event.title.includes(filter));
+    return array.filter((event) => event.title.toLowerCase().includes(filter.toLowerCase()));
   };
 
   const renderEventsInfo = () => {
