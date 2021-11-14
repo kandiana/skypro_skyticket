@@ -18,21 +18,19 @@
   &__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     height: 40%;
     padding-left: 15px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $tablet) {
   .EventCard {
     height: 300px;
 
     &__info {
       display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
       align-content: space-around;
     }
   }

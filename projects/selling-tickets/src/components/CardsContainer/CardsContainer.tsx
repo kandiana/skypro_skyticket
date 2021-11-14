@@ -65,7 +65,7 @@ export const CardsContainer: FC = () => {
     titleCard: string
   ) {
     if (dateCardFrom === '' && categoryCard === '' && titleCard === '') {
-      for (let i = 0; i < arr.length; i++) {
+      for (let i = arr.length - 1; i >= 0; i--) {
         finalCards.push(arr[i]);
       }
     }

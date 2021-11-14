@@ -18,3 +18,12 @@
     font-size: 24px;
   }
 }
+
+@media screen and (max-width: $tablet) {
+  .Header {
+    &__logo {
+      width: 50px;
+      margin: 0 10px;
+    }
+  }
+}
