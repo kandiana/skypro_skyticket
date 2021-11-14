@@ -9,5 +9,5 @@ export type EventDateProps = {
 };
 
 export const EventDate: FC<EventDateProps> = ({ date }) => {
-  return <p className="EventDate">{format(date, 'dd MMMM yyyy', {locale: ru})}</p>;
+  return <p className="EventDate">{format(date, 'dd MMMM yyyy', { locale: ru })}</p>;
 };
