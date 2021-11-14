@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
@@ -31,7 +31,17 @@ export const BuyPage: FC = () => {
 
   const ticketData = useSelector((state: RootState) => state.tickets);
 
-  console.log(ticketData);
+  function downloadQRCode(Id_qrcode: string) {
+    const qrCodeURL: string = (document.getElementById(Id_qrcode) as HTMLCanvasElement)
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+    let aEl = document.createElement('a');
+    aEl.href = qrCodeURL;
+    aEl.download = 'QR_Code.png';
+    document.body.appendChild(aEl);
+    aEl.click();
+    document.body.removeChild(aEl);
+  }
 
   return (
     <div className="BuyPage">
@@ -39,21 +49,25 @@ export const BuyPage: FC = () => {
         <EventLoader />
       ) : (
         <div>
-          <h1>{ticketData.buyer} ваши билеты:</h1>
+          <h1>{ticketData.buyer} Ваши билеты:</h1>
           <div className="BuyPage__tickets-block">
             {ticketData.ticket === [] ? (
               <EventLoader />
             ) : (
               ticketData.ticket.map((oneTicket) => (
-                <div className="BuyPage__ticket" key={oneTicket}>
-                  <QRCode value={oneTicket} renderAs="svg" />
-                  <Link to={oneTicket} target="_blank" download>
-                    Скачать
-                  </Link>
+                <div
+                  className="BuyPage__ticket"
+                  style={{ cursor: 'pointer' }}
+                  key={oneTicket}
+                  onClick={() => downloadQRCode(oneTicket)}
+                >
+                  <QRCode value={oneTicket} renderAs="canvas" id={oneTicket} />
+                  <p className="BuyPage__ticket-url">Скачать</p>
                 </div>
               ))
             )}
           </div>
+
           <h2>Информация о событии:</h2>
           <div className="BuyPage__text-block">
             <EventTitle title={cardData.title} />
