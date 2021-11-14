@@ -17,7 +17,14 @@
 
   &__text-block {
     width: auto;
-    padding: 0 20px;
+    padding: 20px;
+    margin-bottom: 20px;
     border: 1px solid black;
   }
+}
+
+.BuyPage__ticket-url {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
