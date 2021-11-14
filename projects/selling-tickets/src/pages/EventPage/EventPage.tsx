@@ -68,14 +68,7 @@ export const EventPage: FC = () => {
           <div className="EventPage__info">
             <EventTitle title={cardData.title} />
             <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
-              <div
-                style={{
-                  width: '500px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  border: '1px solid black',
-                }}
-              >
+              <div className="buy_page-div">
                 <Input
                   name="nameBayer"
                   placeholder={'Введите свое имя'}
@@ -83,12 +76,13 @@ export const EventPage: FC = () => {
                   value={form.nameBayer}
                   onFocus={() => {}}
                 />
-                <Input
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
                   name="countTicket"
-                  placeholder={''}
                   onChange={handleChange}
                   value={form.countTicket}
-                  onFocus={() => {}}
                 />
                 <button type="submit">Купить</button>
               </div>
