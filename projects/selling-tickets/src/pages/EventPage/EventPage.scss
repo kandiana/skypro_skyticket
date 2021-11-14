@@ -15,6 +15,10 @@
   }
 }
 
+.Input {
+  border: 2px solid #fab803;
+}
+
 @media screen and (max-width: $tablet) {
   .EventPage {
     flex-direction: column;

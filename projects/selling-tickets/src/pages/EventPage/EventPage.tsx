@@ -70,10 +70,12 @@ export const EventPage: FC = () => {
             <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
               <div
                 style={{
-                  width: '500px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
+                  width: '235px',
+                  display: 'block',
                   border: '1px solid black',
+                  padding: '10px',
+                  borderRadius: '10px',
+                  background: 'black',
                 }}
               >
                 <Input
@@ -90,7 +92,20 @@ export const EventPage: FC = () => {
                   value={form.countTicket}
                   onFocus={() => {}}
                 />
-                <button type="submit">Купить</button>
+                <button
+                  style={{
+                    background: '#fab803',
+                    fontSize: '20px',
+                    borderRadius: '10px',
+                    width: '200px',
+                    margin: '5px',
+                    border: 'none',
+                    padding: '3px 0 6px 0',
+                  }}
+                  type="submit"
+                >
+                  Купить
+                </button>
               </div>
             </form>
             <EventDescription description={cardData.description} />
