@@ -120,6 +120,3 @@ export const EventPage: FC = () => {
     </div>
   );
 };
-function stepDown() {
-  throw new Error('Function not implemented.');
-}

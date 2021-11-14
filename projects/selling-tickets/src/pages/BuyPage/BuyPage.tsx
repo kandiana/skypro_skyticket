@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { EventTitle } from '../../components/EventTitle/EventTitle';
 import { EventDate } from '../../components/EventDate/EventDate';
@@ -40,15 +40,35 @@ export const BuyPage: FC = () => {
       ) : (
         <div>
           <h1>{ticketData.buyer} ваши билеты:</h1>
-          {ticketData.ticket === [] ? (
-            <EventLoader />
-          ) : (
-            ticketData.ticket.map((oneTicket) => (
-              <div key={oneTicket} style={{ padding: '10px 20px', display: 'inline-block' }}>
-                <QRCode value={oneTicket} renderAs="svg" />
-              </div>
-            ))
-          )}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            {ticketData.ticket === [] ? (
+              <EventLoader />
+            ) : (
+              ticketData.ticket.map((oneTicket) => (
+                <div
+                  key={oneTicket}
+                  style={{
+                    padding: '10px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    width: '150px',
+                  }}
+                >
+                  <QRCode value={oneTicket} renderAs="svg" />
+                  <Link to={oneTicket} target="_blank" download>
+                    Скачать
+                  </Link>
+                </div>
+              ))
+            )}
+          </div>
           <h2>Информация о событии:</h2>
           <div style={{ border: '1px solid black', padding: '0 20px 0 20px', width: 'auto' }}>
             <EventTitle title={cardData.title} />
