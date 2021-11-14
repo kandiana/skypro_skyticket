@@ -1,15 +1,14 @@
 @import './variables';
 
-html,
-body {
-  height: 100%;
-}
-
 .App {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
 
   &__main {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
