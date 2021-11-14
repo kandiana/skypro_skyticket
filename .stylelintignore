@@ -4,6 +4,7 @@ dist
 build
 projects/**/node_modules
 projects/**/public
+projects/**/private
 projects/**/dist
 projects/**/build
 projects/**/src/assets

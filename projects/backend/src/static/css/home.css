@@ -1,0 +1,53 @@
+.link {
+  align-self: flex-start;
+  margin: 10px 0 20px;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 2%;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  padding: 10px 20px;
+  box-shadow: 0 0 3px #4344454d, 0 1px 1px #4344454d;
+  border-radius: 10px;
+}
+
+.card__item {
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.card__title {
+  padding-bottom: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.card__buttons {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.button {
+  min-width: 80px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  background-color: gray;
+}

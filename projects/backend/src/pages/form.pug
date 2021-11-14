@@ -1,0 +1,54 @@
+extends layout.pug
+
+block styles
+  link(rel='stylesheet' href='/css/form.css')
+
+block content
+  a.link(href="/home") На главную
+  .preview
+    if event && event.img.url
+      img.img(src=event.img.url alt="Превью")
+    else
+      p.text Превью
+  form.form(action="/events/create" method="POST" enctype="multipart/form-data")
+    .form__field
+      label.label Картинка
+      input(type="file" id="image" name="image" accept="image/png, image/jpeg" )
+    .form__field
+      label.label Название
+      input.input(type="text" id="title" name="title" placeholder="Название мероприятия" required value=(event ? event.title : ''))
+    .form__field
+      label.label Город
+      input.input(type="text" id="city" name="city" placeholder="Город" required value=(event ? event.city : ''))
+    .form__field
+      label.label Адрес
+      input.input(type="text" id="address" name="address" placeholder="Адрес" required value=(event ? event.address : ''))
+    .form__field
+      label.label.label_top Описание
+      textarea.textarea(type="text" id="description" name="description" placeholder="Описание мероприятия" required) #{event ? event.description: ''}
+    .form__field
+      label.label Тип
+      select.select(id="category" name="category" required)
+        option(value="" selected=(!event || event.category === '')) Выберите...
+        option(value="Театр" selected=(event ? event.category === 'Театр' : false)) Театр
+        option(value="Фестиваль" selected=(event ? event.category === 'Фестиваль' : false)) Фестиваль
+        option(value="Спорт" selected=(event ? event.category === 'Спорт' : false)) Спорт
+        option(value="Кино" selected=(event ? event.category === 'Кино' : false)) Кино
+        option(value="Стендап" selected=(event ? event.category === 'Стендап' : false)) Стендап
+        option(value="Экскурсия" selected=(event ? event.category === 'Экскурсия' : false)) Экскурсия
+        option(value="Шоу" selected=(event ? event.category === 'Шоу' : false)) Шоу
+        option(value="Дети" selected=(event ? event.category === 'Дети' : false)) Дети
+        option(value="Другое" selected=(event ? event.category === 'Другое' : false)) Другое
+      input.input.input_small(type="text" id="categoryOther" name="categoryOther" value=(event ? event.categoryOther : ''))
+    .form__field
+      label.label Начало
+      input.input(type="datetime-local" id="startTimestamp" name="startTimestamp" required value=(event ? event.startTimestamp : ''))
+    .form__field
+      label.label Окончание
+      input.input(type="datetime-local" id="endTimestamp" name="endTimestamp" required value=(event ? event.endTimestamp : ''))
+    .form__field
+      label.label Билеты
+      input.input.input_small(type="number" id="ticketsTotal" name="ticketsTotal" inputmode='number' required value=(event ? event.tickets.total : ''))
+    button.button.button_left #{event ? 'Обновить' : 'Создать'}
+
+  script(src='/js/event.js')

@@ -4,8 +4,10 @@ const { multerConfig } = require('./utils');
 // router controllers
 const ping = require('./controllers/ping');
 const auth = require('./controllers/auth');
+const exit = require('./controllers/exit');
 const events = require('./controllers/events');
 const tickets = require('./controllers/tickets');
+const pages = require('./controllers/pages');
 
 // events router
 const eventsRouter = new Router();
@@ -29,6 +31,13 @@ const mainRouter = new Router();
 
 mainRouter.get('/ping', ping);
 mainRouter.post('/auth', auth);
+mainRouter.post('/exit', exit);
+
+mainRouter.get('/home', pages.home);
+mainRouter.get('/new', pages.newEvent);
+mainRouter.get('/:id', pages.updateEvent);
+mainRouter.get('/404', pages.notFound);
+mainRouter.get('/', pages.auth);
 
 module.exports = {
   mainRouter,
