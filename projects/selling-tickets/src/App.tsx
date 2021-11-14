@@ -6,6 +6,7 @@ import { EventPage } from './pages/EventPage/EventPage';
 import { MainPage } from './pages/MainPage/MainPage';
 
 import './App.scss';
+import { BuyPage } from './pages/BuyPage/BuyPage';
 
 const App: FC = () => {
   return (
@@ -15,6 +16,9 @@ const App: FC = () => {
         <Switch>
           <Route path="/events/:id">
             <EventPage />
+          </Route>
+          <Route path="/buy/:id">
+            <BuyPage />
           </Route>
           <Route path="/">
             <MainPage />

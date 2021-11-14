@@ -1,6 +1,12 @@
 import { EventDataShort } from '../components/CardsContainer/CardsContainer';
 import { FormType } from '../pages/MainPage/MainPage';
-import { ARR_CARDS_ACTION, EVENT_PAGE_ACTION, FORM_FILTER_ACTION, RootAction } from './actions';
+import {
+  ARR_CARDS_ACTION,
+  BUY_PAGE_ACTION,
+  EVENT_PAGE_ACTION,
+  FORM_FILTER_ACTION,
+  RootAction,
+} from './actions';
 
 type STATE = {
   formData: FormType;
@@ -25,13 +31,18 @@ export function reducer(state: STATE = INITIAL_STATE, action: RootAction) {
         formData: action.form,
       };
 
+    case BUY_PAGE_ACTION:
+      return {
+        ...state,
+        formData: action.form,
+      };
+
     case ARR_CARDS_ACTION:
-      const allArrCards=[];
+      const allArrCards = [];
 
       for (let i = 0; i < action.eventCards.length; i++) {
         allArrCards.push(action.eventCards[i]);
       }
-
       return {
         ...state,
         cardsData: [...allArrCards],

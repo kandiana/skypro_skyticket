@@ -2,7 +2,7 @@ import { FC, useState, useCallback } from 'react';
 import { Input } from '../Input/Input';
 import { Select } from '../Select/Select';
 import { FormType } from '../../pages/MainPage/MainPage';
-import DatePicker, { registerLocale  } from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 
 import './EventFilter.scss';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -21,12 +21,12 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  registerLocale("ru", ru);
+  registerLocale('ru', ru);
 
   if (startDate) form.dateFrom = String(+new Date(startDate));
   if (endDate) form.dateTo = String(+new Date(endDate).setHours(24, 0, 0, 0));
 
-  const filter = useSelector((state: RootState) => state.formData);
+  const filter = useSelector((state: RootState) => state.reducer.formData);
   console.log(filter);
 
   const saveFormData = (e: { preventDefault: () => void }) => {
@@ -69,7 +69,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
   );
 
   const handleFocus = () => {
-    console.log('focus');
+    // console.log('focus');
   };
 
   return (
@@ -85,7 +85,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             minDate={new Date()}
             showDisabledMonthNavigation
             isClearable={true}
-            locale='ru'
+            locale="ru"
             placeholderText="Дата от"
             dateFormat="dd.MM.yyyy"
           />
@@ -99,7 +99,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
             endDate={endDate}
             minDate={startDate}
             isClearable={true}
-            locale='ru'
+            locale="ru"
             placeholderText="Дата до"
             dateFormat="dd.MM.yyyy"
           />
@@ -107,7 +107,7 @@ export const EventFilter: FC<EventFilterProps> = ({ onSave, setForm, form }) => 
         <div className="EventFilter__field">
           <Select name="event" placeholder="privet" onChange={handleChange} options={EVENTS} />
         </div>
-        <div className='EventFilter__search'>
+        <div className="EventFilter__search">
           <div className="EventFilter__field">
             <Input
               name="search"
