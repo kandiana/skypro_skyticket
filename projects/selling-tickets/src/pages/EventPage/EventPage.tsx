@@ -68,17 +68,7 @@ export const EventPage: FC = () => {
           <div className="EventPage__info">
             <EventTitle title={cardData.title} />
             <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
-              <div
-                className="buy_page-div"
-                style={{
-                  width: '235px',
-                  display: 'block',
-                  border: '1px solid black',
-                  padding: '10px',
-                  borderRadius: '10px',
-                  background: 'black',
-                }}
-              >
+              <div className="buy_page-div">
                 <Input
                   name="nameBayer"
                   placeholder={'Введите свое имя'}
@@ -94,20 +84,7 @@ export const EventPage: FC = () => {
                   onChange={handleChange}
                   value={form.countTicket}
                 />
-                <button
-                  style={{
-                    background: '#fab803',
-                    fontSize: '20px',
-                    borderRadius: '10px',
-                    width: '200px',
-                    margin: '15px 5px 10px 5px',
-                    border: 'none',
-                    padding: '3px 0 6px 0',
-                  }}
-                  type="submit"
-                >
-                  Купить
-                </button>
+                <button type="submit">Купить</button>
               </div>
             </form>
             <EventDescription description={cardData.description} />

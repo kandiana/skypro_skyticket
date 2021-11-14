@@ -15,9 +15,28 @@
   }
 }
 
+.buy_page-div {
+  display: block;
+  width: 235px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: black;
+}
+
 .buy_page-div input {
   padding: 20px 10px;
   border: 2px solid #fab803;
+}
+
+.buy_page-div button {
+  width: 200px;
+  margin: 15px 5px 10px;
+  padding: 3px 0 6px;
+  background: #fab803;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: $tablet) {
