@@ -69,6 +69,7 @@ export const EventPage: FC = () => {
             <EventTitle title={cardData.title} />
             <form className="buy_page" action="submit" onSubmit={saveFormBuyTicket}>
               <div
+                className="buy_page-div"
                 style={{
                   width: '235px',
                   display: 'block',
@@ -85,12 +86,13 @@ export const EventPage: FC = () => {
                   value={form.nameBayer}
                   onFocus={() => {}}
                 />
-                <Input
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
                   name="countTicket"
-                  placeholder={''}
                   onChange={handleChange}
                   value={form.countTicket}
-                  onFocus={() => {}}
                 />
                 <button
                   style={{
@@ -98,7 +100,7 @@ export const EventPage: FC = () => {
                     fontSize: '20px',
                     borderRadius: '10px',
                     width: '200px',
-                    margin: '5px',
+                    margin: '15px 5px 10px 5px',
                     border: 'none',
                     padding: '3px 0 6px 0',
                   }}
@@ -118,3 +120,6 @@ export const EventPage: FC = () => {
     </div>
   );
 };
+function stepDown() {
+  throw new Error('Function not implemented.');
+}

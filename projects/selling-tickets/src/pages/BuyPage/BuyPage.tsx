@@ -39,7 +39,7 @@ export const BuyPage: FC = () => {
         <EventLoader />
       ) : (
         <div>
-          <h1>Ваши билеты:</h1>
+          <h1>{ticketData.buyer} ваши билеты:</h1>
           {ticketData.ticket === [] ? (
             <EventLoader />
           ) : (
@@ -50,7 +50,7 @@ export const BuyPage: FC = () => {
             ))
           )}
           <h2>Информация о событии:</h2>
-          <div style={{ border: '1px solid black', padding: '0 20px 0 20px', maxWidth: '1000px' }}>
+          <div style={{ border: '1px solid black', padding: '0 20px 0 20px', width: 'auto' }}>
             <EventTitle title={cardData.title} />
             <EventDescription description={cardData.description} />
             <EventCity city={cardData.city} />
