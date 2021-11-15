@@ -2,7 +2,7 @@ import { BuyTicketsType } from '../pages/MainPage/MainPage';
 import { Reducer } from 'redux';
 import { BUY_TICKETS_ACTION, RootAction } from './actions';
 
-type TicketsState = Omit<BuyTicketsType, "_id">;
+type TicketsState = Omit<BuyTicketsType, '_id'>;
 
 const defaultState: TicketsState = {
   eventId: '',
@@ -10,7 +10,10 @@ const defaultState: TicketsState = {
   ticket: [],
 };
 
-export const ticketBuyRedusor: Reducer<TicketsState, RootAction> = (state = defaultState, action: RootAction) => {
+export const ticketBuyRedusor: Reducer<TicketsState, RootAction> = (
+  state = defaultState,
+  action: RootAction
+) => {
   switch (action.type) {
     case BUY_TICKETS_ACTION:
       const allBuyCards = [];
